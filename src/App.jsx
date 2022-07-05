@@ -3,6 +3,7 @@ import { themes } from "./styles/globalStyles";
 import { ThemeProvider } from "styled-components";
 import { GlobalThemeContext } from "./Providers/models/theme/theme";
 import { useContext } from "react";
+import RoutesApp from "./routes";
 
 
 function App() {
@@ -11,11 +12,8 @@ function App() {
   return (
     <ThemeProvider theme={themes[currentTheme]}>
       <>
-        <GlobalStyle />        
-        <h1>Hello Easy Cooking</h1>
-        <p>Cozinhando fácil!</p>
-
-
+        <GlobalStyle />
+        <RoutesApp/>
       </>
     </ThemeProvider>
   );
