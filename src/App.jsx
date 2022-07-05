@@ -11,10 +11,11 @@ function App() {
   return (
     <ThemeProvider theme={themes[currentTheme]}>
       <>
-        <GlobalStyle />
-        
+        <GlobalStyle />        
         <h1>Hello Easy Cooking</h1>
         <p>Cozinhando fácil!</p>
+
+
       </>
     </ThemeProvider>
   );
