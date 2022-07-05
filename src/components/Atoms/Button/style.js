@@ -17,5 +17,12 @@ background-color: ${(props) => props.theme.button.backgroundColor};
     transition: .3s;
 }
 
+@media(max-width: 567px){
+
+    height: 6vh;
+
+}
+
+
 `
 
