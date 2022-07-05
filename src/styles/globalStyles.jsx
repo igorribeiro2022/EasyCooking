@@ -7,7 +7,7 @@ const lightTheme = {
     backgroundColorTwo: "#ea1d2cff",
     greenOne: "#f3ffc6ff",
     greenTwo: "#b6d048ff",
-    translucideBlack: "rgba(0,0,0,0.4)",
+    translucideBlack: "rgba(0,0,0,0.6)",
     button: {
         textColor: "#ffffff",
         backgroundColor: "#ea1d2cff",
@@ -21,7 +21,7 @@ const darkTheme = {
     backgroundColorTwo: "#cd131fff",
     greenOne: "#607a00ff",
     greenTwo: "#2a310cff",
-    translucideBlack: "rgba(0,0,0,0.4)",
+    translucideBlack: "rgba(0,0,0,0.6)",
     button: {
       textColor: "#ffffffff",
       backgroundColor: "#cd131fff",
