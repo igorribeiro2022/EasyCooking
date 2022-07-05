@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const lightTheme = {
     colorOne: "#000000",
     colorTwo: "#ffffffff",
-    backgroundColorOne: "#f6f4f6ff",
+    backgroundColorOne: "#E6E6E6",
     backgroundColorTwo: "#ea1d2cff",
     greenOne: "#f3ffc6ff",
     greenTwo: "#b6d048ff",
