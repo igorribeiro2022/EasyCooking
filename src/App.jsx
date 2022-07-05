@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalThemeContext } from "./Providers/models/theme/theme";
 import { useContext } from "react";
 
+
 function App() {
   const { currentTheme } = useContext(GlobalThemeContext);
 
@@ -11,6 +12,7 @@ function App() {
     <ThemeProvider theme={themes[currentTheme]}>
       <>
         <GlobalStyle />
+        
         <h1>Hello Easy Cooking</h1>
         <p>Cozinhando fácil!</p>
       </>
