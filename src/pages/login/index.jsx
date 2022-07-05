@@ -17,10 +17,10 @@ export default function LoginPage() {
             </figure>
             <Form>
                 <div>
-                    <label>Nome</label>
+                    <label>Email</label>
                     <div>
                         <GiCook/>
-                        <input type="text" placeholder="Digite seu nome"/>
+                        <input type="email" placeholder="Digite seu email"/>
                     </div>
                 </div>
                 <div>
