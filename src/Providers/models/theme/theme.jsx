@@ -6,7 +6,6 @@ export function GlobalTheme({ children }) {
 
     const themeLocal = localStorage.getItem("themeSite") || "dark"
     const [currentTheme, setCurrentTheme] = useState(themeLocal);
-
     function getOpositeTheme() {
   
       setCurrentTheme(currentTheme === "light" ? "dark" : "light");
