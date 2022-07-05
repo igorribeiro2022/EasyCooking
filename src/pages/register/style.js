@@ -22,4 +22,14 @@ span{
     font-size: 1.2rem
 }
 
+@media( max-width: 567px ){
+    flex-direction: column;
+    gap: 0;
+
+    background-image: linear-gradient(to bottom, ${(props) => props.theme.backgroundColorTwo}, ${(props) => props.theme.backgroundColorTwo}, rgb(0,0,0,0));
+    img{
+        width: 90%;
+    }
+}
+
 `

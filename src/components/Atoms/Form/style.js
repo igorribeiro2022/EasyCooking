@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const StyledForm = styled.form`
 
+    box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -49,6 +51,19 @@ export const StyledForm = styled.form`
         color: white;
     }
 
+    @media(max-width: 567px){
+        width: 90vw;
+
+        div{
+            gap: 2px;
+        }
+
+        input{
+            height: 5vh;
+        }
+
+
+    }
 
 
 `
