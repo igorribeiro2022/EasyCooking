@@ -16,7 +16,7 @@ export default function RegisterPage() {
     name: yup
       .string()
       .required("Campo obrigatório!")
-      .max(10, "Máximo 10 caracteres!")
+      .max(25, "Máximo 20 caracteres!")
       .matches(
         "[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$",
         "Seu nome deve conter apenas letras!"
@@ -56,7 +56,9 @@ export default function RegisterPage() {
 
   return (
     <MainPage>
-      <img src={logoWhite} alt="Logo" />
+      <figure>
+        <img src={logoWhite} alt="Logo" />
+      </figure>
 
       <Form onSubmit={handleSubmit(submiting)}>
         <div>
