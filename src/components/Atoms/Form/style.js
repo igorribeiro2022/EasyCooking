@@ -2,19 +2,19 @@ import styled from "styled-components";
 
 export const StyledForm = styled.form`
 
+    box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    padding: 7px;
 
+    padding: 7px;
+    gap: 3vh;
     width: 25vw;
     min-height: 40vh;
 
     /* border: 2px solid black; */
-    border-radius: 10px;
-
-    
 
     background-color: ${(props) => props.theme.translucideBlack};
 
@@ -26,6 +26,7 @@ export const StyledForm = styled.form`
         gap: 7px;
         width: 90%;
         margin: auto;
+
     }
 
 
@@ -47,6 +48,17 @@ export const StyledForm = styled.form`
     }
 
 
+    @media(max-width: 567px){
+        width: 90vw;
+
+        div{
+            gap: 2px;
+        }
+
+        input{
+            height: 5vh;
+        }
+    }
 
 `
 

@@ -1,10 +1,11 @@
 import { StyledForm } from "./style"
 
-export const Form = ({children}) => {
+ export const Form = ({children, onSubmit}) => {
 
     return (
-        <StyledForm>
+        <StyledForm onSubmit={onSubmit}>
             {children}
         </StyledForm>
     )
 }
+
