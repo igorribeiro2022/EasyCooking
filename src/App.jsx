@@ -1,7 +1,7 @@
 import { GlobalStyle } from "./styles/globalStyles";
 import { themes } from "./styles/globalStyles";
 import { ThemeProvider } from "styled-components";
-import { GlobalThemeContext } from "./providers/models/theme/theme";
+import { GlobalThemeContext } from "./Providers/models/theme/theme";
 import { useContext } from "react";
 import RoutesApp from "./routes";
 
