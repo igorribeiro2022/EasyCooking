@@ -7,36 +7,34 @@ export const UserContext = createContext([]);
 export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  async function createUser(email, password, name) {
+  async function createUser(email, password, name, callback) {
     const data = { email, password, name };
+    try {
+      const res = Api.post("/register", data);
 
-    const res = Api.post("/register", data)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    return res;
+      if (callback) {
+        callback(res);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }
 
-  async function loginUser(email, password) {
+  async function loginUser(email, password, callback) {
     const data = { email, password };
+    try {
+      const res = await Api.post("/login", data);
 
-    const res = await Api.post("/login", data)
-      .then((response) => {
-        setUser(response.data.user);
+      setUser(res.data.user);
 
-        localStorage.setItem(
-          "@Easy:Token",
-          JSON.stringify(response.data.accessToken)
-        );
-        localStorage.setItem("@Easy:Id", JSON.stringify(response.data.user.id));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    return res;
+      localStorage.setItem("@Easy:Token", JSON.stringify(res.data.token));
+
+      if (callback) {
+        callback(res.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
