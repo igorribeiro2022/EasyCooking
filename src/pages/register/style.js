@@ -49,13 +49,9 @@ img{
     width: 100%;
 }
 
-
-
-
-
 span{
     color: ${(props) => props.theme.button.backgroundColor};
-    font-size: 1.2rem
+    font-size: 0.9rem;
 }
 
 @media( max-width: 567px ){
