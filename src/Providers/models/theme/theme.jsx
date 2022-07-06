@@ -3,8 +3,9 @@ import { createContext, useState } from "react";
 export const GlobalThemeContext = createContext([]);
 
 export function GlobalTheme({ children }) {
-  const themeLocal = localStorage.getItem("themeSite") || "light";
-  const [currentTheme, setCurrentTheme] = useState(themeLocal);
+
+  // const themeLocal = localStorage.getItem("themeSite") || "dark";
+  const [currentTheme, setCurrentTheme] = useState("dark");
 
   function getOpositeTheme() {
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");

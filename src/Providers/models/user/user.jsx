@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 //import { useNavigate } from "react-router-dom";
 import { Api } from "../../../services/api";
 
@@ -12,25 +13,47 @@ export function UserProvider({ children }) {
   async function createUser(email, password, name, callback) {
     const data = { email, password, name };
 
-    const res = Api.post("/register", data)
+    toast.promise(Api.post("/register", data), {
+      pending: {
+        render() {
+          return "Organizando a cozinha"
+        }
+      },
+      success: {render(){
+        return "Tômperos adicionados, cozinha pronta!"
+      },
+      icon: "🍴"},
+      error: "Vergonha da profissón, verifique seus dados!",
+    })
       .then((response) => {
         console.log(response.data);
         setRegister(true);
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
     if (callback) {
       callback(register);
     }
-    return res;
+    
   }
 
   async function loginUser(email, password, callback) {
     const data = { email, password };
 
-    const res = await Api.post("/login", data)
-      .then((response) => {
+    toast.promise(Api.post("/login", data), {
+      pending: {
+        render() {
+          return "Preparando a cozinha!"
+        }
+      },
+      success: {render(){
+        return "Voilá"
+      },
+      icon: "🤌🏼"},
+      error: "Não conseguimos abrir a cozinha, verifique seus dados!",
+    })      
+    .then((response) => {
         setUser(response.data.user);
         setLogin(true);
 
@@ -47,7 +70,7 @@ export function UserProvider({ children }) {
       .catch((err) => {
         console.log(err);
       });
-    return res;
+    
   }
 
   return (
