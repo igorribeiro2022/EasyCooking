@@ -13,7 +13,7 @@ font-size: 1rem;
 color: ${(props) => props.theme.button.textColor};
 background-color: ${(props) => props.theme.button.backgroundColor};
 
-margin: 10px 0;
+margin-bottom: 15px;
 
 :hover{
     filter: brightness(1.3);

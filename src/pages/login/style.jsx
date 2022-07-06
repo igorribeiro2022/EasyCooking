@@ -16,8 +16,11 @@ export const Page = styled.div`
         width: 90%;
         max-width: 400px;
         margin: 0 auto;
+        border-radius: 10px;
 
         div {
+            margin-top: 25px 0;
+            color: ${(props) => props.theme.button.backgroundColor};
             div {
                 display: flex;
                 width: 100%;
