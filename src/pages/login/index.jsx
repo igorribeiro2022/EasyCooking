@@ -19,10 +19,6 @@ export default function LoginPage() {
     password: yup
       .string()
       .required("Digite sua senha!")
-      .matches(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/,
-        "Senha fraca!"
-      ),
   });
 
   const {

@@ -14,8 +14,12 @@ background-image: linear-gradient(to right, ${(props) => props.theme.backgroundC
 
 img{
     color: #fff;
-    width: 40%;
+    width: 100%;
 }
+
+
+
+
 
 span{
     color: ${(props) => props.theme.button.backgroundColor};
