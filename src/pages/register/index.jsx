@@ -2,15 +2,20 @@ import { Form } from "../../components/Atoms/Form";
 import { MainPage } from "./style";
 import logoWhite from "../../assets/logoWhite.svg";
 import { Button } from "../../components/Atoms/Button";
-
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../Providers/models/user/user";
+import { GiCook } from "react-icons/gi";
+import { GiKnifeFork } from "react-icons/gi";
+import { TbCookieOff } from "react-icons/tb";
+import { TbCookie } from "react-icons/tb";
+import { HiOutlineMail } from "react-icons/hi";
 
 export default function RegisterPage() {
   const { createUser } = useContext(UserContext);
+  const [ inputType, setInputType ] = useState("password");
 
   const formSchema = yup.object().shape({
     name: yup
@@ -23,11 +28,11 @@ export default function RegisterPage() {
       ),
     email: yup
       .string()
-      .required("Campo obrigatório!")
+      .required("E-mail obrigatório!")
       .email("E-mail inválido!"),
     password: yup
       .string()
-      .required("Campo obrigatório!")
+      .required("Senha obrigatória!")
       .min(8, "Mínimo 8 caracteres!")
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
@@ -65,21 +70,44 @@ export default function RegisterPage() {
           <label>
             Nome {errors.name && <span> - {errors.name.message}</span>}
           </label>
-          <input type="text" {...register("name")} />
+
+          <div>
+            <GiCook />
+            <input type="text" {...register("name")} />
+          </div>
         </div>
 
         <div>
           <label>
             E-mail {errors.email && <span> - {errors.email.message}</span>}
           </label>
-          <input type="text" {...register("email")} />
+
+          <div>
+            <HiOutlineMail />
+            <input type="text" {...register("email")} />
+          </div>
         </div>
 
         <div>
           <label>
             Senha {errors.password && <span> - {errors.password.message}</span>}
           </label>
-          <input type="password" {...register("password")} />
+
+          <div>
+            <GiKnifeFork />
+            <input type={inputType} {...register("password")} />
+            {inputType === "password" ? (
+              <TbCookieOff
+                className="view"
+                onClick={() => setInputType("text")}
+              />
+            ) : (
+              <TbCookie
+                className="view"
+                onClick={() => setInputType("password")}
+              />
+            )}
+          </div>
         </div>
 
         <div>
@@ -89,7 +117,22 @@ export default function RegisterPage() {
               <span> - {errors.confirmPassword.message}</span>
             )}
           </label>
-          <input type="password" {...register("confirmPassword")} />
+
+          <div>
+            <GiKnifeFork />
+            <input type={inputType} {...register("confirmPassword")} />
+            {inputType === "password" ? (
+              <TbCookieOff
+                className="view"
+                onClick={() => setInputType("text")}
+              />
+            ) : (
+              <TbCookie
+                className="view"
+                onClick={() => setInputType("password")}
+              />
+            )}
+          </div>
         </div>
 
         <Button type="submit">Cadastrar</Button>

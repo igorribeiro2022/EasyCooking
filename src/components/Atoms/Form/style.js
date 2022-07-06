@@ -15,13 +15,19 @@ export const StyledForm = styled.form`
 
     width: 25vw;
     min-height: 40vh;
+    
 
-    border: 2px solid black;
     border-radius: 10px;
 
     
 
     background-color: ${(props) => props.theme.translucideBlack};
+
+    span {
+        font-size: 0.9rem;
+        color: ${(props) => props.theme.button.backgroundColor};
+
+    }
 
     div{
         display: flex;
@@ -49,6 +55,11 @@ export const StyledForm = styled.form`
     label{
         font-size: 18px;
         color: white;
+
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
     }
 
     @media(max-width: 567px){

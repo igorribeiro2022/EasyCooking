@@ -40,7 +40,9 @@ export default function LoginPage() {
       </figure>
       <Form onSubmit={handleSubmit(onSubmitFunction)}>
         <div>
-          <label>Email</label>
+          <label>
+            E-mail {errors.email && <span> - {errors.email.message}</span>}
+          </label>
           <div>
             <GiCook />
             <input
@@ -49,10 +51,11 @@ export default function LoginPage() {
               {...register("email")}
             />
           </div>
-          {errors.email?.message}
         </div>
         <div>
-          <label>Senha</label>
+          <label>
+            Senha {errors.password && <span> - {errors.password.message}</span>}
+          </label>
           <div>
             <GiKnifeFork />
             <input
@@ -72,7 +75,6 @@ export default function LoginPage() {
               />
             )}
           </div>
-          {errors.password?.message}
         </div>
         <Button type="submit">Login</Button>
       </Form>

@@ -1,16 +1,48 @@
 import styled from "styled-components";
 
 export const MainPage = styled.div`
+width: 100vw;
+height: 100vh;
+background-image: linear-gradient(to right, ${(props) => props.theme.backgroundColorTwo}, ${(props) => props.theme.backgroundColorTwo}, rgb(0,0,0,0));
 
 display: flex;
 align-items: center;
 justify-content: center;
 gap: 12vw;
 
-width: 100vw;
-height: 100vh;
 
-background-image: linear-gradient(to right, ${(props) => props.theme.backgroundColorTwo}, ${(props) => props.theme.backgroundColorTwo}, rgb(0,0,0,0));
+.view {
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+    }
+form {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 10px;
+
+    div {
+            margin-top: 25px 0;
+            color: ${(props) => props.theme.button.backgroundColor};
+            div {
+                display: flex;
+                width: 100%;
+                flex-direction: row;
+                align-items: center;
+                background-color: white;
+                border-radius: 10px;
+                padding: 0 10px;
+
+                svg {
+                    width: 21px;
+                    height: 21px;
+
+                    color: #0000009b;
+                }
+            }
+        }
+}
 
 img{
     color: #fff;

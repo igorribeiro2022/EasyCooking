@@ -10,6 +10,8 @@ export const Page = styled.div`
 
     .view {
         cursor: pointer;
+        width: 25px;
+        height: 25px;
     }
 
     form {
