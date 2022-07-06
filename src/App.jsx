@@ -5,7 +5,6 @@ import { GlobalThemeContext } from "./Providers/models/theme/theme";
 import { useContext } from "react";
 import RoutesApp from "./routes";
 
-
 function App() {
   const { currentTheme } = useContext(GlobalThemeContext);
 
@@ -13,7 +12,7 @@ function App() {
     <ThemeProvider theme={themes[currentTheme]}>
       <>
         <GlobalStyle />
-        <RoutesApp/>
+        <RoutesApp />
       </>
     </ThemeProvider>
   );
