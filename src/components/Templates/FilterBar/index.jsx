@@ -8,15 +8,23 @@ export const FilterBar = () => {
     <FilterBarContainer>
       <div className="filterBar">
         <select name="filter" >
-        <option value="a">A</option>
-        <option value="b">B</option>
+        <option value="Recipe">Receitas</option>
+        <option value="Ingredient">Ingredientes</option>
         </select>
 
-        <input type="text" placeholder="digitar"/>
+        <input type="text" placeholder="Digite aqui"/>
 
         <button>Pesquisar</button>
       </div>
+      <div className='filterButtons'>
+        <button className='B1'>Receitas</button>
+        <button className='B2'>Receitas</button>
+        <button className='B3'>Receitas</button>
+        <button className='B4'>Receitas</button>
+      </div>
     </FilterBarContainer>
+
+
     </>
   )
 }
