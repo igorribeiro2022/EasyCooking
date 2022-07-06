@@ -7,6 +7,7 @@ export const RecipeCardContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     border: 1px solid #e6e6e6;
+    margin-top: 30px;
     background-color: orange;
     border-radius: 5px;
     border: none;
@@ -30,7 +31,7 @@ export const RecipeCardContainer = styled.div`
     font-size: 20px;
     font-weight: bold;
     margin-top: 20px;
-    margin-left: 10px;
+    margin-left: 25px;
 
 
 }
