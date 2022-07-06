@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Form } from "../../components/Atoms/Form";
 import { Page } from "./style";
 import { GiCook } from "react-icons/gi";
@@ -83,3 +84,13 @@ export default function LoginPage() {
     </Page>
   );
 }
+=======
+
+export default function LoginPage() {
+    return (
+        <div>
+            <h1>Login</h1>
+        </div>
+    )
+}
+>>>>>>> develop
