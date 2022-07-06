@@ -6,23 +6,25 @@ import { TbCookieOff } from "react-icons/tb";
 import { TbCookie } from "react-icons/tb";
 import logoWhite from "../../assets/logoWhite.svg";
 import { Button } from "../../components/Atoms/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { UserContext } from "../../providers/models/user/user";
 
 export default function LoginPage() {
   const [inputType, setInputType] = useState("password");
+  const { loginUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  console.log(user);
 
   const formSchema = yup.object().shape({
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
-    password: yup
-      .string()
-      .required("Digite sua senha!")
-      .matches(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/,
-        "Senha fraca!"
-      ),
+    password: yup.string().required("Digite sua senha!"),
+    // .matches(
+    //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/,
+    //   "Senha fraca!"
+    // ),
   });
 
   const {
@@ -33,8 +35,8 @@ export default function LoginPage() {
     resolver: yupResolver(formSchema),
   });
 
-  function onSubmitFunction(data) {
-    console.log(data);
+  function onSubmitFunction({ email, password }) {
+    loginUser(email, password);
   }
 
   return (
