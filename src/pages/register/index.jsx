@@ -16,7 +16,7 @@ export default function RegisterPage() {
     name: yup
       .string()
       .required("Campo obrigatório!")
-      .max(25, "Máximo 20 caracteres!")
+      .max(25, "Máximo 25 caracteres!")
       .matches(
         "[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$",
         "Seu nome deve conter apenas letras!"
