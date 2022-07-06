@@ -1,6 +1,6 @@
 import {FullRecipeContainer} from './style';
 
-function FullRecipe({state,setState}){
+export const FullRecipe = ({state,setState}) => {
 
     return (
         <FullRecipeContainer>
@@ -21,6 +21,3 @@ function FullRecipe({state,setState}){
         </FullRecipeContainer>
     );
 }
-
-export default FullRecipe;
-  
