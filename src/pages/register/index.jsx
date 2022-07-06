@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext } from "react";
-import { UserContext } from "../../Providers/models/user/user";
+import { UserContext } from "../../providers/models/user/user";
 
 export default function RegisterPage() {
   const { createUser } = useContext(UserContext);
