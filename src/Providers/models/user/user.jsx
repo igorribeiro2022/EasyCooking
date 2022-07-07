@@ -50,7 +50,7 @@ export function UserProvider({ children }) {
       success: {render(){
         return "Voilá"
       },
-      icon: "🤌🏼"},
+      icon: "👨🏻‍🍳"},
       error: "Não conseguimos abrir a cozinha, verifique seus dados!",
     })      
     .then((response) => {
