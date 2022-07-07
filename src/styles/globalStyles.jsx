@@ -3,10 +3,10 @@ import { createGlobalStyle } from "styled-components";
 const lightTheme = {
     colorOne: "#000000",
     colorTwo: "#ffffffff",
-    backgroundColorOne: "#f6f4f6ff",
-    backgroundColorTwo: "#ea1d2cff",
-    greenOne: "#f3ffc6ff",
-    greenTwo: "#b6d048ff",
+    backgroundColorOne: "#ECECEC",
+    backgroundColorTwo: "#EA1D2C",
+    orange: "#FF642B",
+    yellow: "#F5E200",
     translucideBlack: "rgba(0,0,0,0.6)",
     button: {
         textColor: "#ffffff",
@@ -17,13 +17,13 @@ const lightTheme = {
 const darkTheme = {
     colorOne: "#ffffffff",
     colorTwo: "#ffffffff",
-    backgroundColorOne: "#121212ff",
+    backgroundColorOne: "#121212",
     backgroundColorTwo: "#5D090E",
-    greenOne: "#607a00ff",
-    greenTwo: "#2a310cff",
+    orange: "#F64F11",
+    yellow: "#FFEB0A",
     translucideBlack: "rgba(0,0,0,0.6)",
     button: {
-      textColor: "#ffffffff",
+      textColor: "#ffffff",
       backgroundColor: "#cd131fff",
     },
 };
