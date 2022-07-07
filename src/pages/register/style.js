@@ -47,12 +47,22 @@ form {
 img{
     color: #fff;
     width: 100%;
+    cursor: pointer;
 }
 
 span{
     color: ${(props) => props.theme.button.backgroundColor};
     font-size: 0.9rem;
 }
+
+.link{
+    font-size: 1rem;
+    color: ${props => props.theme.button.backgroundColor};
+
+    cursor: pointer;
+}
+
+
 
 @media( max-width: 567px ){
     flex-direction: column;

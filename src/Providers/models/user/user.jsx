@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { toast } from "react-toastify";
-//import { useNavigate } from "react-router-dom";
 import { Api } from "../../../services/api";
+
 
 export const UserContext = createContext([]);
 
@@ -9,6 +9,7 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
+ 
 
   async function createUser(email, password, name, callback) {
     const data = { email, password, name };

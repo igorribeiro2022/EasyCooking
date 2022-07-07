@@ -34,7 +34,7 @@ export const Page = styled.div`
 
                 svg {
                     width: 21px;
-                    height: 21px;
+                    height: 21px;                    
 
                     color: #0000009b;
                 }
@@ -50,10 +50,18 @@ export const Page = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
     }
 
     img {
         width: 100%;
+    }
+
+    .link{
+        cursor: pointer;
+
+        font-size: 1rem;
+        color: ${props => props.theme.button.backgroundColor};
     }
 
     @media (min-width: 668px) {
