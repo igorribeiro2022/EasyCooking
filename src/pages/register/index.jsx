@@ -12,10 +12,16 @@ import { GiKnifeFork } from "react-icons/gi";
 import { TbCookieOff } from "react-icons/tb";
 import { TbCookie } from "react-icons/tb";
 import { HiOutlineMail } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
   const { createUser } = useContext(UserContext);
   const [ inputType, setInputType ] = useState("password");
+  const navigate = useNavigate()
+
+  const handleNavigate = (page) => {
+    navigate(page)
+  }
 
   const formSchema = yup.object().shape({
     name: yup
@@ -62,7 +68,7 @@ export default function RegisterPage() {
   return (
     <MainPage>
       <figure>
-        <img src={logoWhite} alt="Logo" />
+        <img onClick={() => handleNavigate('/')} src={logoWhite} alt="Logo" />
       </figure>
 
       <Form onSubmit={handleSubmit(submiting)}>
@@ -136,6 +142,7 @@ export default function RegisterPage() {
         </div>
 
         <Button type="submit">Cadastrar</Button>
+        <p>Já tem cadastro? Faça login <span className="link" onClick={() => handleNavigate('/login')}>aqui</span></p>
       </Form>
     </MainPage>
   );
