@@ -11,10 +11,18 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { UserContext } from "../../Providers/models/user/user";
+import { useNavigate } from "react-router-dom";
+
 
 export default function LoginPage() {
   const [inputType, setInputType] = useState("password");
   const { loginUser } = useContext(UserContext);
+  const navigate = useNavigate()
+
+  const callBackNavigate = (page) => {
+    navigate(page)
+  }
+  
 
   const formSchema = yup.object().shape({
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -29,14 +37,14 @@ export default function LoginPage() {
     resolver: yupResolver(formSchema),
   });
 
-  function onSubmitFunction({ email, password }) {
-    loginUser(email, password);
+  function onSubmitFunction({ email, password}) {
+    loginUser(email, password, () => callBackNavigate('/'))   
   }
 
   return (
     <Page>
       <figure>
-        <img src={logoWhite} alt="Easy Cooking" />
+        <img src={logoWhite} alt="Easy Cooking"  onClick={() => callBackNavigate('/')}/>
       </figure>
       <Form onSubmit={handleSubmit(onSubmitFunction)}>
         <div>
@@ -77,6 +85,7 @@ export default function LoginPage() {
           </div>
         </div>
         <Button type="submit">Login</Button>
+        <p>Ainda não tem cadastro? Cadasatre-se <span className="link" onClick={() => callBackNavigate('/cadastro')}>aqui</span></p>
       </Form>
     </Page>
   );
