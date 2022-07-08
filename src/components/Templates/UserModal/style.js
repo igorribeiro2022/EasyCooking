@@ -12,7 +12,8 @@ export const UserModalContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        background-color: white;
+        background-color: ${(props) => props.theme.colorHeader};
+        box-shadow: 0px 0px 10px 0px ${(props) => props.theme.translucideBlack};
     }
 
     .UserButton{
@@ -39,5 +40,11 @@ export const UserModalContainer = styled.div`
         border: none;
         border-radius: 5px;
         margin-top: 15px;
+        background-color: #EF6F6F;
+        color: white;
+    }
+    .UserModalContent button:hover{
+        background-color: #EA1D2C;
+
     }
 `;

@@ -7,7 +7,6 @@ export const FilterBarContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-color: #E6E6E6;
     height: 140px;
     
 
@@ -36,6 +35,7 @@ export const FilterBarContainer = styled.div`
     height: 40px;
     width: 500px;
     border: none;
+    background-color: #f6f4f6ff;
     padding-left: 10px;
     
 

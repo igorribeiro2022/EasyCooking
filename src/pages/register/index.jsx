@@ -1,6 +1,7 @@
 import { Form } from "../../components/Atoms/Form";
 import { MainPage } from "./style";
 import logoWhite from "../../assets/logoWhite.svg";
+import LogoV2Black from "../../assets/LogoV2-Black.png";
 import { Button } from "../../components/Atoms/Button";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -67,11 +68,14 @@ export default function RegisterPage() {
 
   return (
     <MainPage>
+      <div className="logoDiv">
       <figure>
-        <img onClick={() => handleNavigate('/')} src={logoWhite} alt="Logo" />
+        <img onClick={() => handleNavigate('/')} src={LogoV2Black} alt="Logo" />
       </figure>
-
+      <p>Facilitando sua vida no dia a dia. Guiando sua cozinha com harmonia,pensado para você!</p>
+      </div>
       <Form onSubmit={handleSubmit(submiting)}>
+        <h2>Cadastre-se</h2>
         <div>
           <label>
             Nome {errors.name && <span> - {errors.name.message}</span>}
@@ -142,7 +146,7 @@ export default function RegisterPage() {
         </div>
 
         <Button type="submit">Cadastrar</Button>
-        <p>Já tem cadastro? Faça login <span className="link" onClick={() => handleNavigate('/login')}>aqui</span></p>
+        <h4>Já tem cadastro? Faça login <span className="link" onClick={() => handleNavigate('/login')}>aqui</span></h4>
       </Form>
     </MainPage>
   );

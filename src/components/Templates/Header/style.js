@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: 120px;
-    background-color: #E6E6E6;
+    background-color: ${(props) => props.theme.colorHeader};
+    box-shadow: 0px 0px 10px 0px ${(props) => props.theme.translucideBlack};
     
 .Header{
     display: flex;
