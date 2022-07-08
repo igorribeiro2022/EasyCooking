@@ -63,6 +63,7 @@ export default function RegisterPage() {
     createUser(email, password, name, async (e) => {
       const res = await e;
       console.log(res);
+      handleNavigate('/login')
     });
   };
 
