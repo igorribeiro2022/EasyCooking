@@ -20,9 +20,10 @@ export const HeaderContainer = styled.header`
 
 }
 .Header img{
-    width: 200px;
-    height: 90px;
-    margin-left: 80px;
+    width: 220px;
+    height: 180px;
+
+    cursor: pointer;
 }
 .Header button{
     width: 40px;
