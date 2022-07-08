@@ -5,7 +5,8 @@ import { GiKnifeFork } from "react-icons/gi";
 import { TbCookieOff } from "react-icons/tb";
 import { TbCookie } from "react-icons/tb";
 import loginImg from "../../assets/LoginImg.png";
-import LogoV2Black from "../../assets/LogoV2-Black.png";import { Button } from "../../components/Atoms/Button";
+import LogoV2Black from "../../assets/LogoV2-Black.png";
+import { Button } from "../../components/Atoms/Button";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,16 +14,15 @@ import * as yup from "yup";
 import { UserContext } from "../../Providers/models/user/user";
 import { useNavigate } from "react-router-dom";
 
-
 export default function LoginPage() {
   const [inputType, setInputType] = useState("password");
   const { loginUser } = useContext(UserContext);
-  const navigate = useNavigate()
+  const { verify } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const callBackNavigate = (page) => {
-    navigate(page)
-  }
-  
+    navigate(page);
+  };
 
   const formSchema = yup.object().shape({
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -37,16 +37,15 @@ export default function LoginPage() {
     resolver: yupResolver(formSchema),
   });
 
-  function onSubmitFunction({ email, password}) {
-    loginUser(email, password, () => callBackNavigate('/'))   
+  function onSubmitFunction({ email, password }) {
+    loginUser(email, password, () => callBackNavigate("/"));
   }
 
   return (
     <Page>
-
       <div className="mainDiv">
         <figure>
-          <img src={LogoV2Black} alt="Easy Cooking"/>
+          <img src={LogoV2Black} alt="Easy Cooking" />
         </figure>
         <Form onSubmit={handleSubmit(onSubmitFunction)}>
           <h1>Faça seu login</h1>
@@ -65,7 +64,8 @@ export default function LoginPage() {
           </div>
           <div>
             <label>
-              Senha {errors.password && <span> - {errors.password.message}</span>}
+              Senha{" "}
+              {errors.password && <span> - {errors.password.message}</span>}
             </label>
             <div>
               <GiKnifeFork />
@@ -88,13 +88,24 @@ export default function LoginPage() {
             </div>
           </div>
           <Button type="submit">Login</Button>
-          <h4>Ainda não tem cadastro? Cadasatre-se <span className="link" onClick={() => callBackNavigate('/cadastro')}>aqui</span></h4>
+          <h4>
+            Ainda não tem cadastro? Cadasatre-se{" "}
+            <span
+              className="link"
+              onClick={() => callBackNavigate("/cadastro")}
+            >
+              aqui
+            </span>
+          </h4>
         </Form>
-    
       </div>
 
-      <img className="pic" src={loginImg} alt="Easy Cooking"  onClick={() => callBackNavigate('/')}/>
-
+      <img
+        className="pic"
+        src={loginImg}
+        alt="Easy Cooking"
+        onClick={() => callBackNavigate("/")}
+      />
     </Page>
   );
 }
