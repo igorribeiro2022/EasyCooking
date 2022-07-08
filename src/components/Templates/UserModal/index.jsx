@@ -5,7 +5,7 @@ export const UserModal = ({state,setState}) => {
 
     const navigate = useNavigate();
 
- 
+    const isLogged = localStorage.getItem("@Easy:Token")
 
     return (
         <UserModalContainer>
@@ -23,9 +23,15 @@ export const UserModal = ({state,setState}) => {
                                 navigate("/dashboard");
                             }}>Dashboard</button>
 
-                            <button onClick={() => {
-                                navigate("/login");
-                            }}>Logout</button>
+                            {isLogged ? (
+                                <button onClick={() => {
+                                    localStorage.clear()
+                                    navigate("/login");
+                                }}>Logout</button>
+                            ) : (
+                                <button onClick={() => navigate("/login")} >Login</button>
+                            )}
+
                         </div>
                     </div>
                     :

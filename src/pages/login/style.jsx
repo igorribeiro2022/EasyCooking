@@ -92,6 +92,8 @@ export const Page = styled.div`
         color: ${props => props.theme.button.backgroundColor};
     }
 
+    
+
     @media (min-width: 800px) {
         .pic{
             max-width: 710px;

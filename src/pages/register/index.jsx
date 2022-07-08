@@ -1,6 +1,5 @@
 import { Form } from "../../components/Atoms/Form";
 import { MainPage } from "./style";
-import logoWhite from "../../assets/logoWhite.svg";
 import LogoV2Black from "../../assets/LogoV2-Black.png";
 import { Button } from "../../components/Atoms/Button";
 import { useForm } from "react-hook-form";
@@ -63,6 +62,7 @@ export default function RegisterPage() {
     createUser(email, password, name, async (e) => {
       const res = await e;
       console.log(res);
+      handleNavigate('/login')
     });
   };
 

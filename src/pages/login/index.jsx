@@ -4,7 +4,6 @@ import { GiCook } from "react-icons/gi";
 import { GiKnifeFork } from "react-icons/gi";
 import { TbCookieOff } from "react-icons/tb";
 import { TbCookie } from "react-icons/tb";
-import logoWhite from "../../assets/logoWhite.svg";
 import loginImg from "../../assets/LoginImg.png";
 import LogoV2Black from "../../assets/LogoV2-Black.png";import { Button } from "../../components/Atoms/Button";
 import { useContext, useState } from "react";
@@ -49,8 +48,11 @@ export default function LoginPage() {
         <figure>
           <img src={LogoV2Black} alt="Easy Cooking"/>
         </figure>
+        
         <Form onSubmit={handleSubmit(onSubmitFunction)}>
-          <h1>Faça seu login</h1>
+
+            <h1>Faça seu login</h1>
+
           <div>
             <label>
               E-mail {errors.email && <span> - {errors.email.message}</span>}
@@ -87,14 +89,22 @@ export default function LoginPage() {
                 />
               )}
             </div>
+
           </div>
+          
           <Button type="submit">Login</Button>
-          <p>Ainda não tem cadastro? Cadasatre-se <span className="link" onClick={() => callBackNavigate('/cadastro')}>aqui</span></p>
+
+         
+          <h4>Cadasatre-se <span className="link" onClick={() => callBackNavigate('/cadastro')}>aqui</span> ou navegue <span className="link" onClick={() => callBackNavigate('/')}>anônimamente</span></h4>
+          
+
+          
         </Form>
+          
     
       </div>
 
-      <img className="pic" src={loginImg} alt="Easy Cooking"  onClick={() => callBackNavigate('/')}/>
+      <img className="pic" src={loginImg} alt="Easy Cooking"/>
 
     </Page>
   );

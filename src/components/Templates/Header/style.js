@@ -22,6 +22,8 @@ export const HeaderContainer = styled.header`
 .Header img{
     width: 220px;
     height: 180px;
+
+    cursor: pointer;
 }
 .Header button{
     width: 40px;
