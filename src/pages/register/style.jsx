@@ -18,6 +18,10 @@ padding: 10vw;
     height: 25px;
 }
 
+.iconInputs {
+    color: ${(props) => props.theme.colorIcon}
+}
+
 form {
     width: 90%;
     margin: 0 auto;
@@ -25,6 +29,7 @@ form {
     border-radius: 10px;
 
     input {
+        color: ${(props) => props.theme.colorOne};
         ::placeholder{
             font-size: 10pt;
         }
@@ -56,6 +61,7 @@ form {
                 }
             }
     }
+    
     h4 {
         font-weight: 300;
     }

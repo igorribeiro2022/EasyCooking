@@ -4,19 +4,23 @@ import { GiCook } from "react-icons/gi";
 import { GiKnifeFork } from "react-icons/gi";
 import { TbCookieOff } from "react-icons/tb";
 import { TbCookie } from "react-icons/tb";
-import loginImg from "../../assets/LoginImg.png";
-import LogoV2Black from "../../assets/LogoV2-Black.png";import { Button } from "../../components/Atoms/Button";
+import { Button } from "../../components/Atoms/Button";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { UserContext } from "../../Providers/models/user/user";
 import { useNavigate } from "react-router-dom";
+import loginImg from "../../assets/CookNew.png";
+import LogoV2Black from "../../assets/LogoV2-Black.png";
+import LogoWhite from '../../assets/logoWhite-V2.svg'
+import { GlobalThemeContext } from "../../Providers/models/theme/theme";
 
 
 export default function LoginPage() {
   const [inputType, setInputType] = useState("password");
   const { loginUser } = useContext(UserContext);
+  const { currentTheme } = useContext(GlobalThemeContext);
   const navigate = useNavigate()
 
   const callBackNavigate = (page) => {
@@ -45,8 +49,8 @@ export default function LoginPage() {
     <Page>
 
       <div className="mainDiv">
-        <figure>
-          <img src={LogoV2Black} alt="Easy Cooking"/>
+        <figure className="figLogo">
+          {currentTheme === "light" ? <img src={LogoV2Black} alt="Easy Cooking"/> : <img src={LogoWhite} alt="Easy Cooking"/>}
         </figure>
         <Form onSubmit={handleSubmit(onSubmitFunction)}>
           <h1>Faça seu login</h1>
@@ -55,7 +59,7 @@ export default function LoginPage() {
               E-mail {errors.email && <span> - {errors.email.message}</span>}
             </label>
             <div>
-              <GiCook />
+              <GiCook className="iconInputs"/>
               <input
                 type="email"
                 placeholder="Digite seu email"
@@ -68,7 +72,7 @@ export default function LoginPage() {
               Senha {errors.password && <span> - {errors.password.message}</span>}
             </label>
             <div>
-              <GiKnifeFork />
+              <GiKnifeFork className="iconInputs"/>
               <input
                 type={inputType}
                 placeholder="Digite sua senha"
@@ -76,12 +80,12 @@ export default function LoginPage() {
               />
               {inputType === "password" ? (
                 <TbCookieOff
-                  className="view"
+                  className="view iconInputs"
                   onClick={() => setInputType("text")}
                 />
               ) : (
                 <TbCookie
-                  className="view"
+                  className="view iconInputs"
                   onClick={() => setInputType("password")}
                 />
               )}
@@ -92,8 +96,10 @@ export default function LoginPage() {
         </Form>
     
       </div>
-
-      <img className="pic" src={loginImg} alt="Easy Cooking"  onClick={() => callBackNavigate('/')}/>
+      
+      <figure className="figCook">
+        <img className="pic" src={loginImg} alt="Easy Cooking"  onClick={() => callBackNavigate('/')}/>
+      </figure>
 
     </Page>
   );
