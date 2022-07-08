@@ -8,13 +8,24 @@ export const Page = styled.div`
     display: flex;
     flex-direction: row;
     
+    input {
+        color: ${(props) => props.theme.colorOne};
+        ::placeholder{
+            font-size: 10pt;
+        }
+    }
+
     button {
         height: 45px;
         width: 90%;
     }
 
+    .iconInputs {
+        color: ${(props) => props.theme.colorIcon}
+    }
+
     .mainDiv{
-        width: 100%;
+        width: 50%;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -77,7 +88,7 @@ export const Page = styled.div`
         }
     }
 
-    figure {
+    .figLogo {
         width: 60%;
         height: 20%;
         overflow: hidden;
@@ -97,13 +108,16 @@ export const Page = styled.div`
         cursor: pointer;
     }
 
-    .pic{
-        width: 50%;
-        margin-right: 100px;
-        display: none;
-        height: 70%;
-        margin-top: 100px;
+    .figCook {
+        width: 40%;
+        height: 450px;
+        border-radius: 50px;
+        margin: auto;
+    }
 
+    .pic{
+        width: 100%;
+        border-radius: 50px;
     }
 
     .link{

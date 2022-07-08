@@ -1,6 +1,5 @@
 import { Form } from "../../components/Atoms/Form";
 import { MainPage } from "./style";
-import LogoV2Black from "../../assets/LogoV2-Black.png";
 import { Button } from "../../components/Atoms/Button";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -13,10 +12,15 @@ import { TbCookieOff } from "react-icons/tb";
 import { TbCookie } from "react-icons/tb";
 import { HiOutlineMail } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import { GlobalThemeContext } from "../../Providers/models/theme/theme";
+import LogoV2Black from "../../assets/LogoV2-Black.png";
+import LogoWhite from '../../assets/logoWhite-V2.svg'
 
 export default function RegisterPage() {
   const { createUser } = useContext(UserContext);
+  const { currentTheme } = useContext(GlobalThemeContext);
   const { verify } = useContext(UserContext);
+
   const [inputType, setInputType] = useState("password");
   const navigate = useNavigate();
 
@@ -71,11 +75,7 @@ export default function RegisterPage() {
     <MainPage>
       <div className="logoDiv">
         <figure>
-          <img
-            onClick={() => handleNavigate("/")}
-            src={LogoV2Black}
-            alt="Easy Cooking"
-          />
+        {currentTheme === "light" ? <img src={LogoV2Black} alt="Easy Cooking"/> : <img src={LogoWhite} alt="Easy Cooking"/>}
         </figure>
         <p>
           Facilitando sua vida no dia a dia.
@@ -95,7 +95,7 @@ export default function RegisterPage() {
             </label>
 
             <div>
-              <GiCook />
+              <GiCook className="iconInputs"/>
               <input
                 type="text"
                 placeholder="Digite seu nome"
@@ -110,7 +110,7 @@ export default function RegisterPage() {
             </label>
 
             <div>
-              <HiOutlineMail />
+              <HiOutlineMail className="iconInputs"/>
               <input
                 type="text"
                 placeholder="Digite seu melhor email"
@@ -126,7 +126,7 @@ export default function RegisterPage() {
             </label>
 
             <div>
-              <GiKnifeFork />
+              <GiKnifeFork className="iconInputs"/>
               <input
                 type={inputType}
                 placeholder="Digite sua senha"
@@ -134,12 +134,12 @@ export default function RegisterPage() {
               />
               {inputType === "password" ? (
                 <TbCookieOff
-                  className="view"
+                  className="view iconInputs"
                   onClick={() => setInputType("text")}
                 />
               ) : (
                 <TbCookie
-                  className="view"
+                  className="view iconInputs"
                   onClick={() => setInputType("password")}
                 />
               )}
@@ -155,7 +155,7 @@ export default function RegisterPage() {
             </label>
 
             <div>
-              <GiKnifeFork />
+              <GiKnifeFork className="iconInputs"/>
               <input
                 type={inputType}
                 placeholder="Digite novamente sua senha"
@@ -163,12 +163,12 @@ export default function RegisterPage() {
               />
               {inputType === "password" ? (
                 <TbCookieOff
-                  className="view"
+                  className="view iconInputs"
                   onClick={() => setInputType("text")}
                 />
               ) : (
                 <TbCookie
-                  className="view"
+                  className="view iconInputs"
                   onClick={() => setInputType("password")}
                 />
               )}
