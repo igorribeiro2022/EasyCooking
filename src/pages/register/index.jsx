@@ -15,10 +15,12 @@ import { useNavigate } from "react-router-dom";
 import { GlobalThemeContext } from "../../Providers/models/theme/theme";
 import LogoV2Black from "../../assets/LogoV2-Black.png";
 import LogoWhite from '../../assets/logoWhite-V2.svg'
+import { FormControlLabel, Switch } from "@mui/material";
+import { ObjFormControl, ObjSwitch } from "../login/style";
 
 export default function RegisterPage() {
   const { createUser } = useContext(UserContext);
-  const { currentTheme } = useContext(GlobalThemeContext);
+  const { currentTheme, themeSwitch, getOpositeTheme } = useContext(GlobalThemeContext);
   const { verify } = useContext(UserContext);
 
   const [inputType, setInputType] = useState("password");
@@ -80,10 +82,10 @@ export default function RegisterPage() {
         <p>
           Facilitando sua vida no dia a dia.
           <br />
-          Guiando sua <span className="redSpan">cozinha</span> com
+          Guiando sua <span className="red">cozinha</span> com
           <br />
-          <span className="redSpan">harmonia</span>, <br />
-          Pensado para <span className="redSpan">você</span>!
+          <span className="red">harmonia</span>, <br />
+          Pensado para <span className="red">você</span>!
         </p>
       </div>
       <div className="divForm">
@@ -91,7 +93,7 @@ export default function RegisterPage() {
           <h2>Cadastre-se</h2>
           <div>
             <label>
-              Nome {errors.name && <span> - {errors.name.message}</span>}
+              Nome {errors.name && <span className="redSpan"> - {errors.name.message}</span>}
             </label>
 
             <div>
@@ -106,7 +108,7 @@ export default function RegisterPage() {
 
           <div>
             <label>
-              E-mail {errors.email && <span> - {errors.email.message}</span>}
+              E-mail {errors.email && <span className="redSpan"> - {errors.email.message}</span>}
             </label>
 
             <div>
@@ -122,7 +124,7 @@ export default function RegisterPage() {
           <div>
             <label>
               Senha{" "}
-              {errors.password && <span> - {errors.password.message}</span>}
+              {errors.password && <span className="redSpan"> - {errors.password.message}</span>}
             </label>
 
             <div>
@@ -150,7 +152,7 @@ export default function RegisterPage() {
             <label>
               Confirme a senha{" "}
               {errors.confirmPassword && (
-                <span> - {errors.confirmPassword.message}</span>
+                <span className="redSpan"> - {errors.confirmPassword.message}</span>
               )}
             </label>
 
@@ -184,6 +186,17 @@ export default function RegisterPage() {
           </h4>
         </Form>
       </div>
+      <FormControlLabel
+        sx={ObjFormControl}
+          value="end"
+          control={<Switch
+            sx={ObjSwitch}
+            checked={themeSwitch}
+            onChange={() => getOpositeTheme()}
+          />}
+          label="Tema"
+          labelPlacement="start"
+        />
     </MainPage>
   );
 }
