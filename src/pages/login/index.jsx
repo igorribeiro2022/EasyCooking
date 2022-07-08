@@ -5,7 +5,7 @@ import { GiKnifeFork } from "react-icons/gi";
 import { TbCookieOff } from "react-icons/tb";
 import { TbCookie } from "react-icons/tb";
 import { Button } from "../../components/Atoms/Button";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -27,6 +27,11 @@ export default function LoginPage() {
   const callBackNavigate = (page) => {
     navigate(page);
   };
+
+  // useEffect(() => {
+  //   verify && callBackNavigate('/')
+
+  // }, [<LoginPage/>])
 
   const formSchema = yup.object().shape({
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),

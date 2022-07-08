@@ -1,11 +1,17 @@
 import {UserModalContainer} from './style';
 import {useNavigate} from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from "../../../Providers/models/user/user";
 
 export const UserModal = ({state,setState}) => {
 
     const navigate = useNavigate();
+    const { verify } = useContext(UserContext);
+    const { logoutUser } = useContext(UserContext)
+    const {isLoggedinForDashboard} = useContext(UserContext)
 
-    const isLogged = localStorage.getItem("@Easy:Token")
+
+
 
     return (
         <UserModalContainer>
@@ -20,18 +26,20 @@ export const UserModal = ({state,setState}) => {
                             }}>Home</button>
 
                             <button onClick={() => {
-                                navigate("/dashboard");
+                                isLoggedinForDashboard(navigate);
                             }}>Dashboard</button>
 
-                            {isLogged ? (
-                                <button onClick={() => {
-                                    localStorage.clear()
-                                    navigate("/login");
-                                }}>Logout</button>
-                            ) : (
-                                <button onClick={() => navigate("/login")} >Login</button>
-                            )}
 
+                             { 
+                                verify ? (
+                                    <button onClick={() => {
+                                        logoutUser(navigate)
+                                    }}>Logout</button>
+                                ) : (
+                                    <button onClick={() => navigate("/login")}>Login</button>
+                                )}
+    
+                            
                         </div>
                     </div>
                     :
