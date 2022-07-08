@@ -20,8 +20,9 @@ export const HeaderContainer = styled.header`
 
 }
 .Header img{
-    width: 220px;
-    height: 180px;
+    width: 200px;
+    height: 90px;
+    margin-left: 80px;
 }
 .Header button{
     width: 40px;
@@ -30,6 +31,7 @@ export const HeaderContainer = styled.header`
     border: none;
     color: white;
     border-radius: 50%;
+    margin-right: 80px;
 
 }
 `;
