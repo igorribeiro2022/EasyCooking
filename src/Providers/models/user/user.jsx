@@ -25,7 +25,7 @@ export function UserProvider({ children }) {
       }
     }
     verifyToken();
-  }, []);
+  }, [<Home />]);
 
   async function createUser(email, password, name, callback) {
     const data = { email, password, name };
