@@ -9,7 +9,6 @@ import { RecipesContext } from "../../Providers/models/recipes/recipes.jsx";
 function Home() {
   const { ingredients } = useContext(IngredientsContext);
   const { recipes } = useContext(RecipesContext);
-  console.log(recipes);
 
   return (
     <>
