@@ -12,7 +12,7 @@ import * as yup from "yup";
 import { UserContext } from "../../Providers/models/user/user";
 import { useNavigate } from "react-router-dom";
 import loginImg from "../../assets/CookNew.png";
-import LogoV2Black from "../../assets/LogoV2-Black.png";
+import LogoV2Black from "../../assets/logoBlack-V2.svg";
 import LogoWhite from "../../assets/logoWhite-V2.svg";
 import { GlobalThemeContext } from "../../Providers/models/theme/theme";
 import Switch from '@mui/material/Switch';

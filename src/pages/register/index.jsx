@@ -13,7 +13,7 @@ import { TbCookie } from "react-icons/tb";
 import { HiOutlineMail } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { GlobalThemeContext } from "../../Providers/models/theme/theme";
-import LogoV2Black from "../../assets/LogoV2-Black.png";
+import LogoV2Black from "../../assets/logoBlack-V2.svg";
 import LogoWhite from '../../assets/logoWhite-V2.svg'
 import { FormControlLabel, Switch } from "@mui/material";
 import { ObjFormControl, ObjSwitch } from "../login/style";
