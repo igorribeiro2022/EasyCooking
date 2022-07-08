@@ -93,15 +93,13 @@ export default function LoginPage() {
           </div>
           
           <Button type="submit">Login</Button>
-
          
           <h4>Cadasatre-se <span className="link" onClick={() => callBackNavigate('/cadastro')}>aqui</span> ou navegue <span className="link" onClick={() => callBackNavigate('/')}>anônimamente</span></h4>
-          
-
-          
-        </Form>
-          
     
+      
+        </Form>
+         
+   
       </div>
 
       <img className="pic" src={loginImg} alt="Easy Cooking"/>

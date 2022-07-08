@@ -8,6 +8,10 @@ export const Page = styled.div`
     display: flex;
     flex-direction: row;
     
+    button {
+        height: 45px;
+        width: 90%;
+    }
 
     .mainDiv{
         width: 100%;
@@ -23,20 +27,33 @@ export const Page = styled.div`
         width: 25px;
         height: 25px;
     }
-    h1{
+
+    h1 {
         margin-bottom: 20px;
         font-size: 1.3rem;
-        margin-right: 120px;
+        
     }
+
+    h4 {
+        font-weight: 300;
+    }
+
     form {
         width: 100%;
         height: 70%;
         max-width: 390px;
         margin-bottom: 40px;
 
+        display: flex;
+        align-items: center;
+
+
         div {
             margin-top: 25px 0;
-            color: ${(props) => props.theme.button.backgroundColor};
+            color: ${(props) => props.theme.button.colorOne};
+            width: 90%;
+            margin: 0 auto;
+
             div {
                 display: flex;
                 width: 100%;
@@ -45,6 +62,10 @@ export const Page = styled.div`
                 background-color: white;
                 border-radius: 10px;
                 padding: 0 10px;
+                background-color: ${(props) => props.theme.inputColor};
+                border-radius: 40px;
+
+                padding: 0 20px;
 
                 svg {
                     width: 21px;
@@ -57,24 +78,24 @@ export const Page = styled.div`
     }
 
     figure {
-        width: 100%;
-        height: 30%;
+        width: 60%;
+        height: 20%;
         overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
         margin-top: 50px;
+        margin-left: 50px;
         
         background-color: ${(props) => props.theme.background};
     }
 
     figure img {
-        width: 90%;
+        width: 60%;
         height: 100%;
         max-width: 400px;
         cursor: pointer;
     }
-    
 
     .pic{
         width: 50%;
@@ -95,6 +116,19 @@ export const Page = styled.div`
     
 
     @media (min-width: 800px) {
+        figure {
+            width: 60%;
+            height: 20%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+            margin-left: 50px;
+            
+            background-color: ${(props) => props.theme.background};
+        }
+
         .pic{
             max-width: 710px;
             margin-right: 100px;

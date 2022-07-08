@@ -32,6 +32,7 @@ export const HeaderContainer = styled.header`
     border: none;
     color: white;
     border-radius: 50%;
+    margin-right: 80px;
 
 }
 `;

@@ -10,6 +10,8 @@ function Home() {
   const { ingredients } = useContext(IngredientsContext);
   const { recipes } = useContext(RecipesContext);
   console.log(recipes);
+  console.log(ingredients);
+
 
   return (
     <>
@@ -17,13 +19,10 @@ function Home() {
         <Header />
         <FilterBar />
         <Recipes>
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
+        {recipes ? recipes.map((recipe) => ( <RecipeCard key={recipe.id} recipe={recipe} /> ))
+        
+        : <div>Loading...</div>
+        }
         </Recipes>
       </Container>
     </>

@@ -16,12 +16,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
   const { createUser } = useContext(UserContext);
-  const [ inputType, setInputType ] = useState("password");
-  const navigate = useNavigate()
+  const [inputType, setInputType] = useState("password");
+  const navigate = useNavigate();
 
   const handleNavigate = (page) => {
-    navigate(page)
-  }
+    navigate(page);
+  };
 
   const formSchema = yup.object().shape({
     name: yup
@@ -69,85 +69,116 @@ export default function RegisterPage() {
   return (
     <MainPage>
       <div className="logoDiv">
-      <figure>
-        <img onClick={() => handleNavigate('/')} src={LogoV2Black} alt="Logo" />
-      </figure>
-      <p>Facilitando sua vida no dia a dia. Guiando sua cozinha com harmonia,pensado para você!</p>
+        <figure>
+          <img
+            onClick={() => handleNavigate("/")}
+            src={LogoV2Black}
+            alt="Easy Cooking"
+          />
+        </figure>
+        <p>
+          Facilitando sua vida no dia a dia.<br/>Guiando sua <span className="redSpan">cozinha</span> com<br/>
+          <span className="redSpan">harmonia</span>, <br/>Pensado para <span className="redSpan">você</span>!
+        </p>
       </div>
-      <Form onSubmit={handleSubmit(submiting)}>
-        <h2>Cadastre-se</h2>
-        <div>
-          <label>
-            Nome {errors.name && <span> - {errors.name.message}</span>}
-          </label>
+      <div className="divForm">
+        <Form onSubmit={handleSubmit(submiting)}>
+          <h2>Cadastre-se</h2>
+          <div>
+            <label>
+              Nome {errors.name && <span> - {errors.name.message}</span>}
+            </label>
+
+            <div>
+              <GiCook />
+              <input
+                type="text"
+                placeholder="Digite seu nome"
+                {...register("name")}
+              />
+            </div>
+          </div>
 
           <div>
-            <GiCook />
-            <input type="text" {...register("name")} />
-          </div>
-        </div>
+            <label>
+              E-mail {errors.email && <span> - {errors.email.message}</span>}
+            </label>
 
-        <div>
-          <label>
-            E-mail {errors.email && <span> - {errors.email.message}</span>}
-          </label>
+            <div>
+              <HiOutlineMail />
+              <input
+                type="text"
+                placeholder="Digite seu melhor email"
+                {...register("email")}
+              />
+            </div>
+          </div>
 
           <div>
-            <HiOutlineMail />
-            <input type="text" {...register("email")} />
-          </div>
-        </div>
+            <label>
+              Senha{" "}
+              {errors.password && <span> - {errors.password.message}</span>}
+            </label>
 
-        <div>
-          <label>
-            Senha {errors.password && <span> - {errors.password.message}</span>}
-          </label>
+            <div>
+              <GiKnifeFork />
+              <input
+                type={inputType}
+                placeholder="Digite sua senha"
+                {...register("password")}
+              />
+              {inputType === "password" ? (
+                <TbCookieOff
+                  className="view"
+                  onClick={() => setInputType("text")}
+                />
+              ) : (
+                <TbCookie
+                  className="view"
+                  onClick={() => setInputType("password")}
+                />
+              )}
+            </div>
+          </div>
 
           <div>
-            <GiKnifeFork />
-            <input type={inputType} {...register("password")} />
-            {inputType === "password" ? (
-              <TbCookieOff
-                className="view"
-                onClick={() => setInputType("text")}
+            <label>
+              Confirme a senha{" "}
+              {errors.confirmPassword && (
+                <span> - {errors.confirmPassword.message}</span>
+              )}
+            </label>
+
+            <div>
+              <GiKnifeFork />
+              <input
+                type={inputType}
+                placeholder="Digite novamente sua senha"
+                {...register("confirmPassword")}
               />
-            ) : (
-              <TbCookie
-                className="view"
-                onClick={() => setInputType("password")}
-              />
-            )}
+              {inputType === "password" ? (
+                <TbCookieOff
+                  className="view"
+                  onClick={() => setInputType("text")}
+                />
+              ) : (
+                <TbCookie
+                  className="view"
+                  onClick={() => setInputType("password")}
+                />
+              )}
+            </div>
           </div>
-        </div>
 
-        <div>
-          <label>
-            Confirme a senha{" "}
-            {errors.confirmPassword && (
-              <span> - {errors.confirmPassword.message}</span>
-            )}
-          </label>
-
-          <div>
-            <GiKnifeFork />
-            <input type={inputType} {...register("confirmPassword")} />
-            {inputType === "password" ? (
-              <TbCookieOff
-                className="view"
-                onClick={() => setInputType("text")}
-              />
-            ) : (
-              <TbCookie
-                className="view"
-                onClick={() => setInputType("password")}
-              />
-            )}
-          </div>
-        </div>
-
-        <Button type="submit">Cadastrar</Button>
-        <h4>Já tem cadastro? Faça login <span className="link" onClick={() => handleNavigate('/login')}>aqui</span></h4>
-      </Form>
+          <Button type="submit">Cadastrar</Button>
+          <h4>
+            Já tem cadastro? Faça login{" "}
+            <span className="link" onClick={() => handleNavigate("/login")}>
+              aqui
+            </span>
+          </h4>
+        </Form>
+      </div>
     </MainPage>
   );
 }

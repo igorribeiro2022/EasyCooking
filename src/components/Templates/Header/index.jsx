@@ -4,6 +4,7 @@ import { UserModal } from "../../Templates/UserModal";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate()
@@ -13,7 +14,9 @@ export const Header = () => {
   return (
     <HeaderContainer>
         <div className="Header">
+
             <img onClick={() => handleNavigate() } src={EasyCooking}  alt="" />
+
             <button onClick={() => setIsOpen(true)} className="UserButton"></button>
         </div>
         <UserModal state={isOpen} setState={setIsOpen} />
