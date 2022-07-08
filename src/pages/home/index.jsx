@@ -5,13 +5,13 @@ import { Recipes, Container } from "./style.js";
 import { useContext } from "react";
 import { IngredientsContext } from "../../Providers/models/ingredients/ingredients.jsx";
 import { RecipesContext } from "../../Providers/models/recipes/recipes.jsx";
+import { UserContext } from "../../Providers/models/user/user.jsx";
 
 function Home() {
   const { ingredients } = useContext(IngredientsContext);
   const { recipes } = useContext(RecipesContext);
-  console.log(recipes);
-  console.log(ingredients);
-
+  const { verify } = useContext(UserContext);
+  console.log(verify);
 
   return (
     <>
@@ -19,10 +19,13 @@ function Home() {
         <Header />
         <FilterBar />
         <Recipes>
-        {recipes ? recipes.map((recipe) => ( <RecipeCard key={recipe.id} recipe={recipe} /> ))
-        
-        : <div>Loading...</div>
-        }
+          {recipes ? (
+            recipes.map((recipe) => (
+              <RecipeCard key={recipe.id} recipe={recipe} />
+            ))
+          ) : (
+            <div>Loading...</div>
+          )}
         </Recipes>
       </Container>
     </>

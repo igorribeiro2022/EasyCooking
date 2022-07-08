@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
   const { createUser } = useContext(UserContext);
+  const { verify } = useContext(UserContext);
   const [inputType, setInputType] = useState("password");
   const navigate = useNavigate();
 
@@ -77,8 +78,12 @@ export default function RegisterPage() {
           />
         </figure>
         <p>
-          Facilitando sua vida no dia a dia.<br/>Guiando sua <span className="redSpan">cozinha</span> com<br/>
-          <span className="redSpan">harmonia</span>, <br/>Pensado para <span className="redSpan">você</span>!
+          Facilitando sua vida no dia a dia.
+          <br />
+          Guiando sua <span className="redSpan">cozinha</span> com
+          <br />
+          <span className="redSpan">harmonia</span>, <br />
+          Pensado para <span className="redSpan">você</span>!
         </p>
       </div>
       <div className="divForm">
