@@ -7,7 +7,6 @@ export function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState(null);
   const token = localStorage.getItem("@Easy:Token");
   const userId = localStorage.getItem("@Easy:Id");
-  console.log(token);
 
   useEffect(() => {
     async function getRecipes() {

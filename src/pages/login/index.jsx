@@ -16,17 +16,17 @@ import LogoV2Black from "../../assets/LogoV2-Black.png";
 import LogoWhite from '../../assets/logoWhite-V2.svg'
 import { GlobalThemeContext } from "../../Providers/models/theme/theme";
 
-
 export default function LoginPage() {
   const [inputType, setInputType] = useState("password");
   const { loginUser } = useContext(UserContext);
   const { currentTheme } = useContext(GlobalThemeContext);
+  const { verify } = useContext(UserContext);
+  
   const navigate = useNavigate()
 
   const callBackNavigate = (page) => {
-    navigate(page)
-  }
-  
+    navigate(page);
+  };
 
   const formSchema = yup.object().shape({
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -41,19 +41,21 @@ export default function LoginPage() {
     resolver: yupResolver(formSchema),
   });
 
-  function onSubmitFunction({ email, password}) {
-    loginUser(email, password, () => callBackNavigate('/'))   
+  function onSubmitFunction({ email, password }) {
+    loginUser(email, password, () => callBackNavigate("/"));
   }
 
   return (
     <Page>
-
       <div className="mainDiv">
         <figure className="figLogo">
           {currentTheme === "light" ? <img src={LogoV2Black} alt="Easy Cooking"/> : <img src={LogoWhite} alt="Easy Cooking"/>}
         </figure>
+        
         <Form onSubmit={handleSubmit(onSubmitFunction)}>
-          <h1>Faça seu login</h1>
+
+            <h1>Faça seu login</h1>
+
           <div>
             <label>
               E-mail {errors.email && <span> - {errors.email.message}</span>}
@@ -69,7 +71,8 @@ export default function LoginPage() {
           </div>
           <div>
             <label>
-              Senha {errors.password && <span> - {errors.password.message}</span>}
+              Senha{" "}
+              {errors.password && <span> - {errors.password.message}</span>}
             </label>
             <div>
               <GiKnifeFork className="iconInputs"/>
@@ -90,17 +93,22 @@ export default function LoginPage() {
                 />
               )}
             </div>
+
           </div>
+          
           <Button type="submit">Login</Button>
-          <h4>Ainda não tem cadastro? Cadasatre-se <span className="link" onClick={() => callBackNavigate('/cadastro')}>aqui</span></h4>
+         
+          <h4>Cadasatre-se <span className="link" onClick={() => callBackNavigate('/cadastro')}>aqui</span> ou navegue <span className="link" onClick={() => callBackNavigate('/')}>anônimamente</span></h4>
+   
+     
         </Form>
-    
+        
+  
       </div>
-      
+   
       <figure className="figCook">
         <img className="pic" src={loginImg} alt="Easy Cooking"  onClick={() => callBackNavigate('/')}/>
       </figure>
-
     </Page>
   );
 }

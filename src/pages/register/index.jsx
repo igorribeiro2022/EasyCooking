@@ -19,6 +19,7 @@ import LogoWhite from '../../assets/logoWhite-V2.svg'
 export default function RegisterPage() {
   const { createUser } = useContext(UserContext);
   const { currentTheme } = useContext(GlobalThemeContext);
+  const { verify } = useContext(UserContext);
 
   const [inputType, setInputType] = useState("password");
   const navigate = useNavigate();
@@ -66,6 +67,7 @@ export default function RegisterPage() {
     createUser(email, password, name, async (e) => {
       const res = await e;
       console.log(res);
+      handleNavigate('/login')
     });
   };
 
@@ -76,8 +78,12 @@ export default function RegisterPage() {
         {currentTheme === "light" ? <img src={LogoV2Black} alt="Easy Cooking"/> : <img src={LogoWhite} alt="Easy Cooking"/>}
         </figure>
         <p>
-          Facilitando sua vida no dia a dia.<br/>Guiando sua <span className="redSpan">cozinha</span> com<br/>
-          <span className="redSpan">harmonia</span>, <br/>Pensado para <span className="redSpan">você</span>!
+          Facilitando sua vida no dia a dia.
+          <br />
+          Guiando sua <span className="redSpan">cozinha</span> com
+          <br />
+          <span className="redSpan">harmonia</span>, <br />
+          Pensado para <span className="redSpan">você</span>!
         </p>
       </div>
       <div className="divForm">
