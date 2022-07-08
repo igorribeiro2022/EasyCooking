@@ -4,9 +4,12 @@ import RecipeCard from "../../components/Templates/RecipeCard/index.jsx";
 import { Recipes, Container } from "./style.js";
 import { useContext } from "react";
 import { IngredientsContext } from "../../Providers/models/ingredients/ingredients.jsx";
+import { RecipesContext } from "../../Providers/models/recipes/recipes.jsx";
 
 function Home() {
   const { ingredients } = useContext(IngredientsContext);
+  const { recipes } = useContext(RecipesContext);
+  console.log(recipes);
 
   return (
     <>
