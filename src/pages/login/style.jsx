@@ -3,22 +3,36 @@ import styled from "styled-components"
 export const Page = styled.div`
     width: 100vw;
     height: 100vh;
-    background-image: linear-gradient(to bottom, ${(props) => props.theme.backgroundColorTwo}, ${(props) => props.theme.backgroundColorTwo}, rgb(0,0,0,0));
+    background: ${(props) => props.theme.background};
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    
+
+    .mainDiv{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
     .view {
         cursor: pointer;
         width: 25px;
         height: 25px;
     }
-
+    h1{
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+        margin-right: 120px;
+    }
     form {
-        width: 90%;
-        max-width: 400px;
-        margin: 0 auto;
-        border-radius: 10px;
+        width: 100%;
+        height: 70%;
+        max-width: 390px;
+        margin-bottom: 40px;
 
         div {
             margin-top: 25px 0;
@@ -43,18 +57,32 @@ export const Page = styled.div`
     }
 
     figure {
-        width: 90%;
+        width: 100%;
         height: 30%;
         overflow: hidden;
-        margin: 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
-        cursor: pointer;
+        margin-top: 50px;
+        
+        background-color: ${(props) => props.theme.background};
     }
 
-    img {
-        width: 100%;
+    figure img {
+        width: 90%;
+        height: 100%;
+        max-width: 400px;
+        cursor: pointer;
+    }
+    
+
+    .pic{
+        width: 50%;
+        margin-right: 100px;
+        display: none;
+        height: 70%;
+        margin-top: 100px;
+
     }
 
     .link{
@@ -64,18 +92,12 @@ export const Page = styled.div`
         color: ${props => props.theme.button.backgroundColor};
     }
 
-    @media (min-width: 668px) {
-        background-image: linear-gradient(to left, ${(props) => props.theme.backgroundColorTwo}, ${(props) => props.theme.backgroundColorTwo}, rgb(0,0,0,0));
-
-        flex-direction: row-reverse;
-        align-items: center;
-
-        form {
-            width: 40%;
-        }
-
-        figure {
-            width: 40%;
+    @media (min-width: 800px) {
+        .pic{
+            max-width: 710px;
+            margin-right: 100px;
+            display: flex;
+    
         }
     }
 `

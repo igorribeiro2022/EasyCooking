@@ -10,24 +10,25 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: space-around;
     width: 94%;
-    margin-top: 20px;
+    margin-top: 30px;
 
 }
 .button{
     width: 25%;
     max-width: 200px;
-    height: 30px;
-    border-radius: 5px;
+    height: 40px;
+    border-radius: 40px;
     border: none;
-    background-color: #B6D048;
+    background-color: #FF4444;
+    color: white;
 
 }
-button:hover{
-    color: white;
+.button:hover{
+    background-color: #EA1D2C;
 } 
 
 .dashboardContent{
-    background-color: #E6E6E6;
+    background-color: ${(props) => props.theme.colorThree};
     border-radius: 5px;
     width: 75%;
     height: 550px;

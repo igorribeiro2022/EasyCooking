@@ -16,16 +16,14 @@ export const StyledForm = styled.form`
     width: 25vw;
     min-height: 40vh;
     
+    border: none;
 
-    border-radius: 10px;
+    margin-top: 110px;
 
-    
-
-    background-color: ${(props) => props.theme.translucideBlack};
 
     span {
         font-size: 0.9rem;
-        color: ${(props) => props.theme.button.backgroundColor};
+        color: ${(props) => props.theme.button.background};
 
     }
 
@@ -42,8 +40,9 @@ export const StyledForm = styled.form`
 
 
     input{
-        border-radius: 10px;
+        border-radius: 40px;
         border: none;
+        background-color: ${(props) => props.theme.inputColor};
 
         width: 100%;
         height: 6.5vh;
@@ -54,7 +53,8 @@ export const StyledForm = styled.form`
 
     label{
         font-size: 18px;
-        color: white;
+        font-weight: bold;
+        color: ${(props) => props.theme.colorOne};
 
         display: flex;
         align-items: center;

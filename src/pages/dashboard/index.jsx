@@ -1,5 +1,5 @@
 import {Header} from '../../components/Templates/Header/index.jsx';
-import {Container} from './style'
+import {Container} from './style.js'
 import {UserRecipes} from '../../components/Templates/UserRecipes';
 
 function DashBoard () {

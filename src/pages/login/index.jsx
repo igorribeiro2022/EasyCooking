@@ -5,7 +5,8 @@ import { GiKnifeFork } from "react-icons/gi";
 import { TbCookieOff } from "react-icons/tb";
 import { TbCookie } from "react-icons/tb";
 import logoWhite from "../../assets/logoWhite.svg";
-import { Button } from "../../components/Atoms/Button";
+import loginImg from "../../assets/LoginImg.png";
+import LogoV2Black from "../../assets/LogoV2-Black.png";import { Button } from "../../components/Atoms/Button";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -43,50 +44,58 @@ export default function LoginPage() {
 
   return (
     <Page>
-      <figure>
-        <img src={logoWhite} alt="Easy Cooking"  onClick={() => callBackNavigate('/')}/>
-      </figure>
-      <Form onSubmit={handleSubmit(onSubmitFunction)}>
-        <div>
-          <label>
-            E-mail {errors.email && <span> - {errors.email.message}</span>}
-          </label>
+
+      <div className="mainDiv">
+        <figure>
+          <img src={LogoV2Black} alt="Easy Cooking"/>
+        </figure>
+        <Form onSubmit={handleSubmit(onSubmitFunction)}>
+          <h1>Faça seu login</h1>
           <div>
-            <GiCook />
-            <input
-              type="email"
-              placeholder="Digite seu email"
-              {...register("email")}
-            />
+            <label>
+              E-mail {errors.email && <span> - {errors.email.message}</span>}
+            </label>
+            <div>
+              <GiCook />
+              <input
+                type="email"
+                placeholder="Digite seu email"
+                {...register("email")}
+              />
+            </div>
           </div>
-        </div>
-        <div>
-          <label>
-            Senha {errors.password && <span> - {errors.password.message}</span>}
-          </label>
           <div>
-            <GiKnifeFork />
-            <input
-              type={inputType}
-              placeholder="Digite sua senha"
-              {...register("password")}
-            />
-            {inputType === "password" ? (
-              <TbCookieOff
-                className="view"
-                onClick={() => setInputType("text")}
+            <label>
+              Senha {errors.password && <span> - {errors.password.message}</span>}
+            </label>
+            <div>
+              <GiKnifeFork />
+              <input
+                type={inputType}
+                placeholder="Digite sua senha"
+                {...register("password")}
               />
-            ) : (
-              <TbCookie
-                className="view"
-                onClick={() => setInputType("password")}
-              />
-            )}
+              {inputType === "password" ? (
+                <TbCookieOff
+                  className="view"
+                  onClick={() => setInputType("text")}
+                />
+              ) : (
+                <TbCookie
+                  className="view"
+                  onClick={() => setInputType("password")}
+                />
+              )}
+            </div>
           </div>
-        </div>
-        <Button type="submit">Login</Button>
-        <p>Ainda não tem cadastro? Cadasatre-se <span className="link" onClick={() => callBackNavigate('/cadastro')}>aqui</span></p>
-      </Form>
+          <Button type="submit">Login</Button>
+          <p>Ainda não tem cadastro? Cadasatre-se <span className="link" onClick={() => callBackNavigate('/cadastro')}>aqui</span></p>
+        </Form>
+    
+      </div>
+
+      <img className="pic" src={loginImg} alt="Easy Cooking"  onClick={() => callBackNavigate('/')}/>
+
     </Page>
   );
 }

@@ -22,6 +22,7 @@ border-radius: 5px;
     margin-top: 20px;
     width: 120px;
     height: 130px;
+    
 
  }
  .DashboardRecipe p{

@@ -5,6 +5,8 @@ export const UserModal = ({state,setState}) => {
 
     const navigate = useNavigate();
 
+ 
+
     return (
         <UserModalContainer>
 

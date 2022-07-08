@@ -9,7 +9,7 @@ export const Header = () => {
   return (
     <HeaderContainer>
         <div className="Header">
-            <img src={EasyCooking} alt="" />
+            <img src={EasyCooking}  alt="" />
             <button onClick={() => setIsOpen(true)} className="UserButton"></button>
         </div>
         <UserModal state={isOpen} setState={setIsOpen} />

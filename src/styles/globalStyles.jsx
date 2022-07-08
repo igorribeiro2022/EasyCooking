@@ -3,10 +3,13 @@ import { createGlobalStyle } from "styled-components";
 const lightTheme = {
     colorOne: "#000000",
     colorTwo: "#ffffffff",
-    backgroundColorOne: "#ECECEC",
-    backgroundColorTwo: "#EA1D2C",
-    orange: "#FF642B",
-    yellow: "#F5E200",
+    colorThree: "#E6E6E6",
+    colorHeader: "#ffffff",
+    background: "#ffffff",
+    greenOne: "#f3ffc6ff",
+    greenTwo: "#b6d048ff",
+    inputColor: "#E2E2E2",
+
     translucideBlack: "rgba(0,0,0,0.6)",
     button: {
         textColor: "#ffffff",
@@ -17,10 +20,14 @@ const lightTheme = {
 const darkTheme = {
     colorOne: "#ffffffff",
     colorTwo: "#ffffffff",
-    backgroundColorOne: "#121212",
-    backgroundColorTwo: "#5D090E",
-    orange: "#F64F11",
-    yellow: "#FFEB0A",
+
+    colorThree: "#252525",
+    colorHeader: "#252525",
+    background: "#121212",
+    greenOne: "#607a00ff",
+    greenTwo: "#2a310cff",
+    inputColor:"#333333",
+
     translucideBlack: "rgba(0,0,0,0.6)",
     button: {
       textColor: "#ffffff",
@@ -42,7 +49,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${(props) => props.theme.backgroundColorOne};
+    background-color: ${(props) => props.theme.background};
     transition: background-color 0.2s linear, color 0.2s linear;
     color: ${(props) => props.theme.colorOne};
   }
