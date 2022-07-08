@@ -9,6 +9,7 @@ const lightTheme = {
     greenOne: "#f3ffc6ff",
     greenTwo: "#b6d048ff",
     inputColor: "#E2E2E2",
+
     translucideBlack: "rgba(0,0,0,0.6)",
     button: {
         textColor: "#ffffff",
@@ -19,15 +20,17 @@ const lightTheme = {
 const darkTheme = {
     colorOne: "#ffffffff",
     colorTwo: "#ffffffff",
+
     colorThree: "#252525",
     colorHeader: "#252525",
     background: "#121212",
     greenOne: "#607a00ff",
     greenTwo: "#2a310cff",
     inputColor:"#333333",
+
     translucideBlack: "rgba(0,0,0,0.6)",
     button: {
-      textColor: "#ffffffff",
+      textColor: "#ffffff",
       backgroundColor: "#cd131fff",
     },
 };
