@@ -6,7 +6,7 @@ export const StyledForm = styled.form`
 
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     gap: 3vh;
 
@@ -18,7 +18,7 @@ export const StyledForm = styled.form`
     
     border: none;
 
-    margin-top: 110px;
+    
 
 
     span {
@@ -40,12 +40,12 @@ export const StyledForm = styled.form`
 
 
     input{
-        border-radius: 40px;
+        
         border: none;
-        background-color: ${(props) => props.theme.inputColor};
+        background-color: transparent;
 
         width: 100%;
-        height: 6.5vh;
+        height: 45px;
 
         padding: 9px;
         font-size: 15px;
@@ -53,9 +53,9 @@ export const StyledForm = styled.form`
 
     label{
         font-size: 18px;
-        font-weight: bold;
+        font-weight: 600;
         color: ${(props) => props.theme.colorOne};
-
+        margin-left: 10px;
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -70,7 +70,7 @@ export const StyledForm = styled.form`
         }
 
         input{
-            height: 5vh;
+            height: 45px;
         }
 
 

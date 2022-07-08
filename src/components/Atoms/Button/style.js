@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledButton = styled.button`
   width: 82%;
-  height: 6.5vh;
+  height: 45px;
 
   border: none;
   border-radius: 40px;
@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
   background-color: ${(props) => props.theme.button.backgroundColor};
 
   margin: 10px 0;
-  margin-left: 40px;
+  width: 90%;
 
   :hover {
     filter: brightness(1.3);
@@ -20,6 +20,7 @@ export const StyledButton = styled.button`
   }
 
   @media (max-width: 567px) {
-    height: 6vh;
+    height: 45px;
   }
+  
 `;

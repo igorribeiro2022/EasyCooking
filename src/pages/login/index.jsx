@@ -4,7 +4,6 @@ import { GiCook } from "react-icons/gi";
 import { GiKnifeFork } from "react-icons/gi";
 import { TbCookieOff } from "react-icons/tb";
 import { TbCookie } from "react-icons/tb";
-import logoWhite from "../../assets/logoWhite.svg";
 import loginImg from "../../assets/LoginImg.png";
 import LogoV2Black from "../../assets/LogoV2-Black.png";import { Button } from "../../components/Atoms/Button";
 import { useContext, useState } from "react";
@@ -89,7 +88,7 @@ export default function LoginPage() {
             </div>
           </div>
           <Button type="submit">Login</Button>
-          <p>Ainda não tem cadastro? Cadasatre-se <span className="link" onClick={() => callBackNavigate('/cadastro')}>aqui</span></p>
+          <h4>Ainda não tem cadastro? Cadasatre-se <span className="link" onClick={() => callBackNavigate('/cadastro')}>aqui</span></h4>
         </Form>
     
       </div>
