@@ -90,8 +90,20 @@ export function UserProvider({ children }) {
       });
   }
 
+  function logoutUser(callback){
+      localStorage.clear()
+      setVerify(false)
+      callback('/login')
+  }
+
+  function isLoggedinForDashboard(navigate){
+    verify? navigate('/dashboard') : (
+      toast.error("Faça login para acessar suas receitas", navigate('/login') )      
+      )
+  }
+
   return (
-    <UserContext.Provider value={{ user, loginUser, createUser, verify }}>
+    <UserContext.Provider value={{ user, loginUser, createUser, logoutUser,isLoggedinForDashboard, verify }}>
       {children}
     </UserContext.Provider>
   );

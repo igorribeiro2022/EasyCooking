@@ -7,7 +7,7 @@ import { TbCookie } from "react-icons/tb";
 import loginImg from "../../assets/LoginImg.png";
 import LogoV2Black from "../../assets/LogoV2-Black.png";
 import { Button } from "../../components/Atoms/Button";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -23,6 +23,11 @@ export default function LoginPage() {
   const callBackNavigate = (page) => {
     navigate(page);
   };
+
+  // useEffect(() => {
+  //   verify && callBackNavigate('/')
+
+  // }, [<LoginPage/>])
 
   const formSchema = yup.object().shape({
     email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
