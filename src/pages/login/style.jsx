@@ -1,4 +1,68 @@
 import styled from "styled-components"
+import { GlobalThemeContext } from "../../Providers/models/theme/theme";
+import { useContext } from "react";
+
+function Switch() {
+    const { currentTheme } = useContext(GlobalThemeContext);
+    return currentTheme
+}
+
+
+export const ObjFormControl = {
+    position: "fixed",
+    top: 0,
+    right: 0,
+}
+
+export const ObjSwitch = {
+        margin: "25px",
+        width: 42,
+        height: 26,
+        padding: 0,
+        '& .MuiSwitch-switchBase': {
+          padding: 0,
+          margin: 0.2,
+          transitionDuration: '300ms',
+          '&.Mui-checked': {
+            transform: 'translateX(16px)',
+            color: '#fff',
+            '& + .MuiSwitch-track': {
+              backgroundColor: Switch === 'dark' ? '#EA1D2C' : '#EA1D2C',
+              opacity: 1,
+              border: 0,
+            },
+            '&.Mui-disabled + .MuiSwitch-track': {
+              opacity: 0.5,
+            },
+          },
+          '&.Mui-focusVisible .MuiSwitch-thumb': {
+            color: '#EA1D2C',
+            border: '6px solid #fff',
+          },
+          '&.Mui-disabled .MuiSwitch-thumb': {
+            color:
+            Switch === 'light'
+                ? "gray"
+                : "gray",
+          },
+          '&.Mui-disabled + .MuiSwitch-track': {
+            opacity: Switch === 'light' ? 0.7 : 0.3,
+          },
+        },
+        '& .MuiSwitch-thumb': {
+          boxSizing: 'border-box',
+          width: 22,
+          height: 22,
+        },
+        '& .MuiSwitch-track': {
+          borderRadius: 26 / 2,
+          backgroundColor: Switch === 'light' ? '#E9E9EA' : '#39393D',
+          opacity: 1,
+          //transition: theme.transitions.create(['background-color'], {
+            //duration: 500,
+         // }),
+        }
+}
 
 export const Page = styled.div`
     width: 100vw;

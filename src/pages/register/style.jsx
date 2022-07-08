@@ -81,7 +81,7 @@ form {
     
 }
 
-.redSpan {
+.red {
     font-size: 17pt;
     color: ${(props) => props.theme.button.backgroundColor}
 }
@@ -114,7 +114,7 @@ img {
     
 }
 
-span {
+.redSpan {
     color: ${(props) => props.theme.button.backgroundColor};
     font-size: 0.9rem;
 }
