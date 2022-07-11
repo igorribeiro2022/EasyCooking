@@ -15,6 +15,8 @@ export const RecipeCardContainer = styled.div`
     padding: 10px 0;
     justify-content: space-between;
 
+    cursor: pointer;
+
 
 .imgFig{
     display: flex;
