@@ -3,7 +3,7 @@ import LogoWhite from "../../../assets/logoWhite-V2.svg";
 import LogoBlack from "../../../assets/logoBlack-V2.svg";
 import { UserModal } from "../../Templates/UserModal";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { FormControlLabel, Switch } from "@mui/material";
 import { ObjFormControl, ObjSwitch } from "../../../pages/login/style";
 import { GlobalThemeContext } from "../../../Providers/models/theme/theme";
@@ -18,26 +18,28 @@ export const Header = () => {
   const handleNavigate = () => navigate('/')
 
   return (
+    <>
     <HeaderContainer>
-        <div className="Header">
 
             <img onClick={() => handleNavigate() } src={currentTheme === "dark"? LogoWhite : LogoBlack}  alt="" />
 
             <button onClick={() => setIsOpen(true)} className="UserButton"></button>
-        </div>
+        
         <UserModal state={isOpen} setState={setIsOpen} />
         <FormControlLabel
         sx={ObjFormControl}
-          value="end"
-          control={<Switch
-            sx={ObjSwitch}
-            checked={themeSwitch}
-            onChange={() => getOpositeTheme()}
+        value="end"
+        control={<Switch
+          sx={ObjSwitch}
+          checked={themeSwitch}
+          onChange={() => getOpositeTheme()}
           />}
           label="Tema"
           labelPlacement="start"
-        />
+          />
     </HeaderContainer>
+    <Outlet/>
+    </>
   );
   
 }

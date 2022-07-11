@@ -29,11 +29,12 @@ export const FilterBar = () => {
     <>
       <FilterBarContainer>
         <div className="filterBar">
+          <div className="divInput">
           <select
             value={option}
             onChange={(e) => setOption(e.target.value)}
             name="filter"
-          >
+            >
             <option value="Recipe">Receitas</option>
             <option value="Ingredient">Ingredientes</option>
           </select>
@@ -43,22 +44,23 @@ export const FilterBar = () => {
             onChange={(e) => handleSearch(e.target.value)}
             type="text"
             placeholder="Digite aqui"
-          />
+            />
 
           <button
             onClick={(e) => {
               e.preventDefault();
               handleSubmit();
             }}
-          >
+            >
             Pesquisar
           </button>
+            </div>
         </div>
         <div className="filterButtons">
-          <button className="B1">Receitas</button>
-          <button className="B2">Receitas</button>
-          <button className="B3">Receitas</button>
-          <button className="B4">Receitas</button>
+          <button id="B1">Receitas</button>
+          <button id="B2">Receitas</button>
+          <button id="B3">Receitas</button>
+          <button id="B4">Receitas</button>
         </div>
       </FilterBarContainer>
     </>

@@ -37,12 +37,12 @@ img{
 .RecipeButton{
     width: 80px;
     height: 17px;
-    background-color: ${(props) => props.theme.backgroundColorTwo};
+    background-color: ${(props) => props.theme.catTwo};
     border: none;
     border-radius: 8px;
     font-size: 8pt;
     font-weight: bold;
-    color: ${(props) => props.theme.colorTwo};
+    color: ${(props) => props.theme.colorOne};
     cursor: pointer;
 }
 
