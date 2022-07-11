@@ -5,7 +5,7 @@ import { GiKnifeFork } from "react-icons/gi";
 import { TbCookieOff } from "react-icons/tb";
 import { TbCookie } from "react-icons/tb";
 import { Button } from "../../components/Atoms/Button";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -15,14 +15,14 @@ import loginImg from "../../assets/CookNew.png";
 import LogoV2Black from "../../assets/logoBlack-V2.svg";
 import LogoWhite from "../../assets/logoWhite-V2.svg";
 import { GlobalThemeContext } from "../../Providers/models/theme/theme";
-import Switch from '@mui/material/Switch';
+import Switch from "@mui/material/Switch";
 import { FormControlLabel } from "@mui/material";
 
 export default function LoginPage() {
   const [inputType, setInputType] = useState("password");
   const { loginUser } = useContext(UserContext);
-  const { currentTheme, themeSwitch, getOpositeTheme } = useContext(GlobalThemeContext);
-  const { verify } = useContext(UserContext);
+  const { currentTheme, themeSwitch, getOpositeTheme } =
+    useContext(GlobalThemeContext);
 
   const navigate = useNavigate();
 
@@ -124,26 +124,22 @@ export default function LoginPage() {
       </div>
 
       <figure className="figCook">
-        <img
-          className="pic"
-          src={loginImg}
-          alt="Easy Cooking"
-          onClick={() => callBackNavigate("/")}
-        />
+        <img className="pic" src={loginImg} alt="Easy Cooking" />
       </figure>
 
       <FormControlLabel
         sx={ObjFormControl}
-          value="end"
-          control={<Switch
+        value="end"
+        control={
+          <Switch
             sx={ObjSwitch}
             checked={themeSwitch}
             onChange={() => getOpositeTheme()}
-          />}
-          label="Tema"
-          labelPlacement="start"
-        />
-      
+          />
+        }
+        label="Tema"
+        labelPlacement="start"
+      />
     </Page>
   );
 }
