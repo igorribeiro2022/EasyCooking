@@ -3,7 +3,7 @@ import {FullRecipe} from '../../Templates/FullRecipe';
 import {useState} from 'react';
 import { Rating } from '@mui/material';
 
-function RecipeCard ({recipe,key}) {
+function RecipeCard ({recipe}) {
   const [isOpen, setIsOpen] = useState(false);
   const [rating, setRating] = useState(2)
   const token = localStorage.getItem("@Easy:Token")
