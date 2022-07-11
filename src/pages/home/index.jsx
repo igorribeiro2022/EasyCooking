@@ -11,7 +11,7 @@ function Home() {
   const { ingredients } = useContext(IngredientsContext);
   const { recipes } = useContext(RecipesContext);
   const { verify } = useContext(UserContext);
-  console.log(verify);
+  //console.log(verify);
 
   return (
     <>

@@ -2,7 +2,7 @@ import {RecipeCardContainer} from './style.js'
 import {FullRecipe} from '../../Templates/FullRecipe';
 import {useState} from 'react';
 
-function RecipeCard ({recipe,key}) {
+function RecipeCard ({recipe}) {
   const [isOpen, setIsOpen] = useState(false);
 
     
