@@ -5,6 +5,7 @@ import { Header } from "../../components/Templates/Header";
 import { RecipesContext } from "../../Providers/models/recipes/recipes";
 import { ContentPage, NameRecipe, Preparation } from "./style";
 import { AiOutlineArrowLeft}from 'react-icons/ai'
+import { Rating } from "@mui/material";
 
 
 function RecipePage(){
@@ -16,7 +17,7 @@ function RecipePage(){
 
 
     const handleBack = () => {
-        // funçao para retornar
+        window.history.back()
     }
      console.log(recipes)
      console.log(viewRecipe)
@@ -30,7 +31,7 @@ function RecipePage(){
             <Header/>
             <NameRecipe>
                 <h1>{viewRecipe[0].name}</h1>
-                <span>(rating aqui)</span>
+                <span><Rating/></span>
             </NameRecipe>
 
             <ContentPage>
