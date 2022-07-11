@@ -14,11 +14,10 @@ function Home() {
   const { searchOn } = useContext(RecipesContext);
   const { recipesTitles } = useContext(RecipesContext);
 
-
   return (
     <>
       <Container>
-        <Header />
+        
         <FilterBar />
         <Recipes>
           {!searchOn

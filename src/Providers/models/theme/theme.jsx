@@ -11,7 +11,7 @@ export function GlobalTheme({ children }) {
   
   useEffect(() => {
     themeSwitch? setCurrentTheme("dark") : setCurrentTheme("light")
-  }, [themeSwitch]) 
+  }, [themeSwitch])
   
   function getOpositeTheme() {
     setThemeSwitch(!themeSwitch)

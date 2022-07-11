@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 export const Container  = styled.div`
-
+   
     display: flex;
-    flex-direction: column;;    
+    flex-direction: column;    
     align-items: center;
     justify-content: space-around;
     width: 100%;
-	
-
 `;
 
 export const Recipes  = styled.div`
@@ -19,7 +17,5 @@ export const Recipes  = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 40%;
-	
-
 `;
 

@@ -17,7 +17,6 @@ function DashBoard() {
 
   return (
     <Container>
-      <Header />
       <div className="buttonsDiv">
         <button className="button">Minhas Receitas</button>
         <button className="button">Receitas Salvas</button>

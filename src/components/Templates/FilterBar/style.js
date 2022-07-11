@@ -8,7 +8,8 @@ export const FilterBarContainer = styled.div`
     justify-content: center;
     width: 100%;
     height: 140px;
-    
+    padding: 120px 0;
+    background-color: ${(props) => props.theme.colorHeader};
 
 .filterBar{
     margin-top: 10px;
@@ -20,37 +21,50 @@ export const FilterBarContainer = styled.div`
 
 
 }
-.filterBar select{
+
+.divInput {
+    background-color: ${(props) => props.theme.backgroundColorOne};
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: none;
+    padding: 10px;
+    border-radius: 35px;
+}
+
+.filterBar div select{
     height: 40px;
     width: 100px;
     border: none;
-    border-radius: 5px 0px 0px 5px;
-    background-color: #f6f4f6ff;
-
-    
-
+    border-radius: 35px;
+    background-color: transparent;
+    color: ${(props) => props.theme.colorOne};
 }
 .filterBar input{
 
     height: 40px;
     width: 500px;
     border: none;
-    background-color: #f6f4f6ff;
+    background-color: transparent;
     padding-left: 10px;
+    color: ${(props) => props.theme.colorOne};
     
-
+    ::placeholder {
+        color: ${(props) => props.theme.colorOne};
+    }
 }
-.filterBar button{
+.filterBar div button{
 
     border: none;
     background-color: red;
     color: white;
     height: 40px;
     width: 100px;
-    border-radius: 0px 5px 5px 0px;
-    
+    border-radius: 35px;
+
 
 }
+
 .filterButtons{
     display: flex;
     flex-direction: row;
@@ -58,22 +72,35 @@ export const FilterBarContainer = styled.div`
     width: 40%;
     margin-top: 30px;
 }
+
 .filterButtons button{
     border: none;
     width: 150px;
     height: 30px;
     border-radius: 8px;
 }
-.B1{
-    background-color: #EF6F6F;
+
+#B1{
+    border-radius: 35px;
+    background-color: ${(props) => props.theme.catOne};
+    margin: 0 5px;
 }
-.B2{
-    background-color: #81F3AF;
+
+#B2{
+    background-color: ${(props) => props.theme.catTwo};
+    border-radius: 35px;
+    margin: 0 5px;
 }
-.B3{
-    background-color: #8A81F3;
+
+#B3{
+    background-color: ${(props) => props.theme.catTree};
+    border-radius: 35px;
+    margin: 0 5px;
 }
-.B4{
-    background-color: #EFD36F;
+
+#B4{
+    background-color: ${(props) => props.theme.catFour};
+    border-radius: 35px;
+    margin: 0 5px;
 }
 `;
