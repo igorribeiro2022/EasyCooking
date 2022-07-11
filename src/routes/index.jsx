@@ -5,6 +5,7 @@ import RegisterPage from "../pages/register";
 import Home from "../pages/home";
 import DashBoard from "../pages/dashboard";
 import { Header } from "../components/Templates/Header";
+import RecipePage from "../pages/recipePage";
 
 export default function RoutesApp() {
   return (
@@ -16,6 +17,9 @@ export default function RoutesApp() {
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/cadastro" element={<RegisterPage />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/dashboard" element={<DashBoard />} />
+      <Route path = "/receita/:recipeName" element={<RecipePage/>}/>
     </Routes>
   );
 }
