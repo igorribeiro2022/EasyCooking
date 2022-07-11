@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const NameRecipe = styled.div`
 
     width: 100vw;
-    height: 10vh;
+    height: 14vh;
     
     padding: 5px;
     font-size: 1.2rem;
@@ -13,6 +13,35 @@ export const NameRecipe = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
+    h1{
+        padding: 10px;
+        
+    }
+
+    div{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        width: 28%;
+
+        button{
+            display: flex;
+            justify-content: space-around;
+            width: 80px;
+            background-color: ${props => props.theme.button.backgroundColor};
+            color: ${props => props.theme.button.textColor};
+            border: none;
+            border-radius: 10px;
+            padding: 1.4%;
+
+            :hover{
+                filter: brightness(1.3);
+            }
+
+        }
+    }
 
 `
 
@@ -32,6 +61,15 @@ export const ContentPage = styled.div`
 
     
     border-bottom: 2px solid ${props => props.theme.orange};
+
+
+    .buttons{
+        display: flex;
+        justify-content: space-between;
+
+
+        width: 100%;
+    }
 
     button{
         display: flex;

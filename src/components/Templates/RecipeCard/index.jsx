@@ -6,7 +6,7 @@ import { useState } from "react";
 function RecipeCard({ recipe }) {
   const navigate = useNavigate();
 
-  const { id } = useParams();
+  // const { id } = useParams();
   const [rating, setRating] = useState(2);
   const token = localStorage.getItem("@Easy:Token");
   const ratingAPI = recipe.rating;
@@ -16,14 +16,14 @@ function RecipeCard({ recipe }) {
   };
   return (
     <>
-      <RecipeCardContainer>
+      <RecipeCardContainer onClick={() => handleView()} >
         <figure className="imgFig">
           <img src={recipe.image} alt="" />
         </figure>
         <h1 className="RecipeName">{recipe.name}</h1>
 
-        <button onClick={() => handleView()} className="RecipeButton">
-          Ver receita
+        <button className="RecipeButton">
+          {recipe.category}
         </button>
 
         <div>
