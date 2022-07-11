@@ -6,6 +6,7 @@ import { Api } from "../../../services/api";
 export const UserContext = createContext([]);
 
 export function UserProvider({ children }) {
+  const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
@@ -103,7 +104,7 @@ export function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{ user, loginUser, createUser, logoutUser,isLoggedinForDashboard, verify }}>
+    <UserContext.Provider value={{ user, loginUser, createUser, logoutUser,isLoggedinForDashboard, verify, isOpen, setIsOpen }}>
       {children}
     </UserContext.Provider>
   );
