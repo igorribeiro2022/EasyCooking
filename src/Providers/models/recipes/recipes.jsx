@@ -64,9 +64,6 @@ export function RecipesProvider({ children }) {
 
   function searchRecipesIngredients(data) {
     const ingredients = data.split(", ");
-    // const userSearch = data.normalize("NFD")
-    //   .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "");
-    // debugger;
 
     const searchRecipes = ingredients.map((ingredient) => {
       return recipes.find((element) => {
