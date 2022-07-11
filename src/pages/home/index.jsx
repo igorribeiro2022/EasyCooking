@@ -11,7 +11,9 @@ function Home() {
   const { ingredients } = useContext(IngredientsContext);
   const { recipes } = useContext(RecipesContext);
   const { verify } = useContext(UserContext);
-  console.log(verify);
+  const { searchOn } = useContext(RecipesContext);
+  const { recipesTitles } = useContext(RecipesContext);
+
 
   return (
     <>
@@ -19,13 +21,13 @@ function Home() {
         <Header />
         <FilterBar />
         <Recipes>
-          {recipes ? (
-            recipes.map((recipe) => (
-              <RecipeCard key={recipe.id} recipe={recipe} />
-            ))
-          ) : (
-            <div>Loading...</div>
-          )}
+          {!searchOn
+            ? recipes?.map((recipe) => (
+                <RecipeCard key={recipe.id} recipe={recipe} />
+              ))
+            : recipesTitles?.map((recipe) => (
+                <RecipeCard key={recipe.id} recipe={recipe} />
+              ))}
         </Recipes>
       </Container>
     </>
