@@ -47,6 +47,10 @@ export const ContentPage = styled.div`
         border-radius: 8px;
 
         margin-bottom: 3vh;
+
+        :hover{
+            filter: brightness(1.1);
+        }
     }
 
     figure{
@@ -84,11 +88,10 @@ export const ContentPage = styled.div`
          ul{
             display: flex;
             flex-direction: column;
-            /* justify-content: space-around; */
             height: 60vh;
             overflow-y: auto;
             gap: 10px;
-            
+
             li{
  
                 display: flex;
