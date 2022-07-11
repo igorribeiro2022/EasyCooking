@@ -1,9 +1,15 @@
 import {RecipeCardContainer} from './style.js'
-import {FullRecipe} from '../../Templates/FullRecipe';
-import {useState} from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
-function RecipeCard ({recipe,key}) {
-  const [isOpen, setIsOpen] = useState(false);
+function RecipeCard ({recipe}) {
+  const navigate = useNavigate()
+  const { id } = useParams()
+
+  const handleView = () => {
+    navigate(`receita/${recipe.name}`)
+  }
+
+
 
     
   return (
@@ -14,7 +20,7 @@ function RecipeCard ({recipe,key}) {
         <img src={recipe.image} alt=""/>
       </div>
       <h1 className="RecipeName">{recipe.name}</h1>
-      <button  onClick={() => setIsOpen(true)} className="RecipeButton">View Recipe</button>
+      <button  onClick={() => handleView()} className="RecipeButton">Ver receita</button>
     </div>
     </RecipeCardContainer>
     {/* <FullRecipe state={isOpen} setState={setIsOpen}/> */}
