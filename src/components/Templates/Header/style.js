@@ -13,21 +13,38 @@ export const HeaderContainer = styled.header`
     align-items: center;
     padding: 0 15vw;
 
-    img {
+    .imgLogo {
         width: 150px;
         height: 180px;
-        margin-left: 80px;
         cursor: pointer;
     }
 
-
-    button {
-        width: 40px;
-        height: 40px;
-        background-color: black;
+    .divButtons button {
+        margin: 0 10px;
         border: none;
+        background-color: #EA1D2C;
         color: white;
-        border-radius: 50%;
-        margin-right: 80px;
+        height: 35px;
+        width: 100px;
+        border-radius: 35px;
     }
+
+    .figurePerfil {
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 70px;
+        height: 70px;
+        overflow: hidden;
+
+        border-radius: 50%;
+
+        cursor: pointer;
+    }
+
+    .imgPerfil {
+        width: 100%;
+    }
+
 `;

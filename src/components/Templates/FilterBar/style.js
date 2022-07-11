@@ -18,8 +18,6 @@ export const FilterBarContainer = styled.div`
     justify-content: center;
     border: none;
     width: 50%;
-
-
 }
 
 .divInput {
@@ -33,6 +31,7 @@ export const FilterBarContainer = styled.div`
 }
 
 .filterBar div select{
+    
     height: 40px;
     width: 100px;
     border: none;
@@ -56,12 +55,11 @@ export const FilterBarContainer = styled.div`
 .filterBar div button{
 
     border: none;
-    background-color: red;
+    background-color: #EA1D2C;
     color: white;
     height: 40px;
     width: 100px;
     border-radius: 35px;
-
 
 }
 

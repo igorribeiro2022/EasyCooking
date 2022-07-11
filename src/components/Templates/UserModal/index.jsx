@@ -6,7 +6,7 @@ import { UserContext } from "../../../Providers/models/user/user";
 export const UserModal = ({state,setState}) => {
 
     const navigate = useNavigate();
-    const { verify } = useContext(UserContext);
+    const { verify, setIsOpen } = useContext(UserContext);
     const { logoutUser } = useContext(UserContext)
     const {isLoggedinForDashboard} = useContext(UserContext)
 
@@ -14,32 +14,29 @@ export const UserModal = ({state,setState}) => {
 
 
     return (
-        <UserModalContainer>
+        <UserModalContainer
+        onMouseLeave={() => setIsOpen(false)}
+        >
 
-                {state === true ? 
+                {state ? 
                     <div className="UserModal">
-                     <button onClick={() => setState(false)} className="UserButton"></button>
                         <div className="UserModalContent">
 
                             <button onClick={() => {
                                 navigate("/");
+                                setIsOpen(false)
                             }}>Home</button>
 
                             <button onClick={() => {
                                 isLoggedinForDashboard(navigate);
+                                setIsOpen(false)
                             }}>Dashboard</button>
+                             
+                            <button onClick={() => {
+                                logoutUser(navigate)
+                                setIsOpen(false)
+                            }}>Logout</button>
 
-
-                             { 
-                                verify ? (
-                                    <button onClick={() => {
-                                        logoutUser(navigate)
-                                    }}>Logout</button>
-                                ) : (
-                                    <button onClick={() => navigate("/login")}>Login</button>
-                                )}
-    
-                            
                         </div>
                     </div>
                     :
