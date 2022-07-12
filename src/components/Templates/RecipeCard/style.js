@@ -62,7 +62,7 @@ export const Span = styled.span`
   align-items: center;
   justify-content: center;
   padding: 5px;
-  width: 80px;
+  width: 85px;
 
   background-color: ${(props) =>
     props.lunch === "Sobremesa"
@@ -74,7 +74,8 @@ export const Span = styled.span`
       : props.theme.catFour};
   border: none;
   border-radius: 8px;
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 500;
 
   color: ${(props) => props.theme.colorOne};
   cursor: pointer;
