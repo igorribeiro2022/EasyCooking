@@ -106,6 +106,7 @@ export function RecipesProvider({ children }) {
       setRecipesTitles(recipes.filter((e) => e.category === "Sobremesas"));
       setSearchOn(true);
     } else {
+      setRecipesTitles(recipes);
       searchOn(false);
     }
   }
