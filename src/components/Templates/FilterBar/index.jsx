@@ -57,6 +57,7 @@ export const FilterBar = () => {
             </div>
         </div>
         <div className="filterButtons">
+          <button id="B0">Todas</button>
           <button id="B1">Lanches</button>
           <button id="B2">Prato Principal</button>
           <button id="B3">Sobremesas</button>

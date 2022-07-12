@@ -38,6 +38,7 @@ export const FilterBarContainer = styled.div`
     border-radius: 35px;
     background-color: transparent;
     color: ${(props) => props.theme.colorOne};
+    cursor: pointer;
 }
 .filterBar input{
 
@@ -76,6 +77,14 @@ export const FilterBarContainer = styled.div`
     width: 150px;
     height: 30px;
     border-radius: 8px;
+}
+
+#B0{
+    border-radius: 35px;
+    margin: 0 5px;
+    border: 2px solid ${props => props.theme.catFour};
+    background-color: ${props => props.theme.backgroundColorOne};
+    color: ${props => props.theme.colorIcon};
 }
 
 #B1{

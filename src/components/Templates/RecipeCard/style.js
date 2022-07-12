@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+
+
 export const RecipeCardContainer = styled.div`
 
     display: flex;
@@ -16,8 +18,11 @@ export const RecipeCardContainer = styled.div`
 
 
     h1{
-        padding: 1%;
+        display: inline-block;
+        width: 90%;
+        padding: 1%;        
     }
+
 
     figure{
         display: flex;
@@ -58,7 +63,7 @@ img{
     background-color: ${(props) => props.theme.catTwo};
     border: none;
     border-radius: 8px;
-    font-size: 8pt;
+    font-size: 11px;
 
     color: ${(props) => props.theme.colorOne};
     cursor: pointer;
