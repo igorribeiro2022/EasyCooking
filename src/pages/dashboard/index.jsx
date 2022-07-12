@@ -5,30 +5,25 @@ import { UserContext } from "../../Providers/models/user/user.jsx";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "@mui/material";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 import { useState } from "react";
 import { style } from "../../components/Templates/AddRecipeModal/style.js";
 
 function DashBoard() {
-  const { verifyToken } = useContext(UserContext);
+  const { verify } = useContext(UserContext);
   let navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-     const teste = async () => {
-      const algumaCoisa = await verifyToken()
-      console.log(algumaCoisa);
-       if (algumaCoisa) {
-         return navigate("/login");
-       }
-     }
-     
+    if (!verify) {
+      navigate("/login");
+    }
   }, []);
 
   const clickOnCard = (e) => {
-    setOpen(true)
+    setOpen(true);
     console.log(e.target);
-  }
+  };
 
   return (
     <>
@@ -39,13 +34,10 @@ function DashBoard() {
           <button className="button">Ingredientes</button>
         </div>
 
-        <div className="dashboardContent" >
-          <UserRecipes onClick={clickOnCard}/>
+        <div className="dashboardContent">
+          <UserRecipes onClick={clickOnCard} />
         </div>
-
       </Container>
-
-      
     </>
   );
 }
