@@ -58,6 +58,7 @@ export const FilterBar = () => {
           </div>
         </div>
         <div className="filterButtons">
+          <button id="B0">Todas</button>
           <button onClick={(e) => tagFilter(e.target.innerText)} id="B1">
             Lanches
           </button>
@@ -70,6 +71,7 @@ export const FilterBar = () => {
           <button onClick={(e) => tagFilter(e.target.innerText)} id="B4">
             Bebidas
           </button>
+
         </div>
       </FilterBarContainer>
     </>
