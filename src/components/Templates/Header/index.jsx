@@ -8,23 +8,13 @@ import { FormControlLabel, Switch } from "@mui/material";
 import { ObjFormControl, ObjSwitch } from "../../../pages/login/style";
 import { GlobalThemeContext } from "../../../Providers/models/theme/theme";
 import { UserContext } from "../../../Providers/models/user/user";
-import { useEffect } from "react";
-import { useState } from "react";
 
 export const Header = () => {
   const { currentTheme, themeSwitch, getOpositeTheme } =
     useContext(GlobalThemeContext);
-  const { verify, isOpen, setIsOpen } = useContext(UserContext);
-  const [teste, setTeste] = useState(false);
-
+  const { user, isOpen, setIsOpen } = useContext(UserContext);
   const navigate = useNavigate();
   const handleNavigate = () => navigate("/");
-
-  useEffect(() => {
-    if (verify) {
-      setTeste(true);
-    }
-  }, []);
 
   return (
     <>
@@ -36,7 +26,7 @@ export const Header = () => {
           alt=""
         />
 
-        {verify ? (
+        {user ? (
           <figure className="figurePerfil" onMouseEnter={() => setIsOpen(true)}>
             <img
               className="imgPerfil"
