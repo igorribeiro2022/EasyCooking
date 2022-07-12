@@ -1,4 +1,4 @@
-import { RecipeCardContainer } from "./style.js";
+import { RecipeCardContainer, Span } from "./style.js";
 import { useNavigate, useParams } from "react-router-dom";
 import { Rating } from "@mui/material";
 import { useState } from "react";
@@ -41,13 +41,12 @@ function RecipeCard({ recipe }) {
             />
           )}
 
-          <span className="RecipeButton">
+          <Span className="RecipeButton" lunch={recipe.category}>
                 {recipe.category}
-          </span>
+          </Span>
 
         </div>
       </RecipeCardContainer>
-      {/* <FullRecipe state={isOpen} setState={setIsOpen}/> */}
     </>
   );
 }
