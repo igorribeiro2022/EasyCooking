@@ -7,6 +7,7 @@ export function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState(null);
   const [searchOn, setSearchOn] = useState(false);
   const [recipesTitles, setRecipesTitles] = useState();
+  const [tagRecipes, setTagRecipes] = useState();
   const token = localStorage.getItem("@Easy:Token");
   const userId = localStorage.getItem("@Easy:Id");
 
@@ -91,6 +92,24 @@ export function RecipesProvider({ children }) {
     setRecipesTitles(filteredRecipes);
   }
 
+  function tagFilter(data) {
+    if (data === "Lanches") {
+      setRecipesTitles(recipes.filter((e) => e.category === "Lanches"));
+      setSearchOn(true);
+    } else if (data === "Prato Principal") {
+      setRecipesTitles(recipes.filter((e) => e.category === "Prato Principal"));
+      setSearchOn(true);
+    } else if (data === "Bebidas") {
+      setRecipesTitles(recipes.filter((e) => e.category === "Bebidas"));
+      setSearchOn(true);
+    } else if (data === "Sobremesas") {
+      setRecipesTitles(recipes.filter((e) => e.category === "Sobremesas"));
+      setSearchOn(true);
+    } else {
+      searchOn(false);
+    }
+  }
+
   return (
     <RecipesContext.Provider
       value={{
@@ -101,6 +120,7 @@ export function RecipesProvider({ children }) {
         searchRecipesTitle,
         recipesTitles,
         searchRecipesIngredients,
+        tagFilter,
       }}
     >
       {children}

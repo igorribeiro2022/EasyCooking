@@ -1,3 +1,4 @@
+import { CompressOutlined } from "@mui/icons-material";
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Home from "../../../pages/home";
@@ -11,7 +12,7 @@ export function UserProvider({ children }) {
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
   const [verify, setVerify] = useState(false);
-  const token = localStorage.getItem("@Easy:Token");
+  const [token, setToken] = useState(localStorage.getItem("@Easy:Token"));
 
   useEffect(() => {
     async function verifyToken() {
@@ -21,12 +22,12 @@ export function UserProvider({ children }) {
             Authorization: `Bearer ${token}`,
           },
         })
-          .then(() => setVerify(true))
-          .catch((err) => console.log(err));
+          .then((e) => setVerify(true))
+          .catch((err) => setVerify(false));
       }
     }
     verifyToken();
-  }, [<Home />]);
+  }, []);
 
   async function createUser(email, password, name, callback) {
     const data = { email, password, name };
@@ -91,20 +92,47 @@ export function UserProvider({ children }) {
       });
   }
 
-  function logoutUser(callback){
-      localStorage.clear()
-      setVerify(false)
-      callback('/login')
+  function logoutUser(callback) {
+    localStorage.removeItem("@Easy:Token");
+    localStorage.removeItem("@Easy:Id");
+    setUser(null);
+    setToken(null);
+    callback("/login");
   }
 
-  function isLoggedinForDashboard(navigate){
-    verify? navigate('/dashboard') : (
-      toast.error("Faça login para acessar suas receitas", navigate('/login') )      
-      )
+  function saveRecipe(data) {
+    const fav = { favorites: data };
+    Api.patch(`/users/${user.id}`, fav, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((e) => console.log(e))
+      .catch((e) => console.log(e));
+  }
+
+  function isLoggedinForDashboard(navigate) {
+    verify
+      ? navigate("/dashboard")
+      : toast.error(
+          "Faça login para acessar suas receitas",
+          navigate("/login")
+        );
   }
 
   return (
-    <UserContext.Provider value={{ user, loginUser, createUser, logoutUser,isLoggedinForDashboard, verify, isOpen, setIsOpen }}>
+    <UserContext.Provider
+      value={{
+        user,
+        loginUser,
+        createUser,
+        logoutUser,
+        isLoggedinForDashboard,
+        verify,
+        isOpen,
+        setIsOpen,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

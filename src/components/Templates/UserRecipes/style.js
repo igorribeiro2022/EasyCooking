@@ -1,42 +1,26 @@
 import styled from "styled-components";
+import {ImPlus} from "react-icons/im"
 
-export const DashBoardRecipesContainer = styled.header`
-display: flex;
-margin-top: 20px;
-margin-left: 30px;
-flex-direction: column;
-align-items: center;
-width: 210px;
-height: 250px;
-background-color: #fff;
-border-radius: 5px;
+export const PlusAdd = styled(ImPlus)`
+   color: white;
+   width: 50px;
+   height: 50px;
+`
 
-.DashboardRecipe{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 85%;
-   height: 100%;
- }
- .DashboardRecipe img{
-    margin-top: 20px;
-    width: 120px;
-    height: 130px;
-    
+export const DashBoardRecipesContainer = styled.main`
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   width: 210px;
+   height: 250px;
+   background-color: #EA1D2C;
+   border-radius: 5px;
+   cursor: pointer;
 
- }
- .DashboardRecipe p{
-    margin-top: 30px;
-    margin-right: 90px;
-    font-size: 18px;
-    font-weight: bold;
 
- }
- .DashboardRecipe span{
-    margin-top: 10px;
-    margin-left: 120px;
-    font-size: 14px;
-    font-weight: 400;
-    
-}
+   :hover {
+      transition: all .3s;
+      filter: brightness(1.5);
+   }
 `;
