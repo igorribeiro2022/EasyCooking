@@ -25,16 +25,15 @@ function RecipePage() {
   useEffect(() => {
     Api.get(`/recipes/${recipeName}`)
       .then((res) => {
-        console.log(res.data);
         setonlyRecipe(res.data);
       })
       .catch((err) => console.log(err));
 
-    const value = onlyRecipe.reviews?.reduce(
+    const value = onlyRecipe?.reviews?.reduce(
       (prev, acc) => prev + acc.rating,
       0
     );
-    const result = value / onlyRecipe.reviews.length;
+    const result = value / onlyRecipe?.reviews.length;
     setRating(result);
   }, []);
 
@@ -51,7 +50,7 @@ function RecipePage() {
     data.push(onlyRecipe);
     return saveRecipe(data);
   };
-  console.log(onlyRecipe);
+  console.log(rating);
   return (
     <>
       <Header />
@@ -93,7 +92,6 @@ function RecipePage() {
 
       <ContentPage>
         <div className="divIngredients">
-
           <h2>Ingredientes e quantidades</h2>
           <ul>
             {onlyRecipe?.ingredients.map((ingredient, index) => (
