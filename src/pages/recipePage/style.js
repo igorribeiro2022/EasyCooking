@@ -14,6 +14,24 @@ export const NameRecipe = styled.div`
     flex-direction: column;
     align-items: center;
 
+    .ratingAndTitle{
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+ 
+        
+
+        h1{
+            display: inline-block;
+            position: absolute;
+        }
+
+        span{
+            padding-top: 3.5vh;
+        }
+    }
+
     h1{
         padding: 10px;
         
@@ -24,7 +42,7 @@ export const NameRecipe = styled.div`
         align-items: center;
         justify-content: space-between;
 
-        width: 28%;
+        width: 69%;
 
         button{
             display: flex;
@@ -54,7 +72,7 @@ export const ContentPage = styled.div`
 
     width: 100vw;
     padding-left: 4vw;
-    padding-top: 5vh;
+    padding-top: 8vh;
     padding-bottom: 5vh;
     gap: 20vw;
 
@@ -62,14 +80,6 @@ export const ContentPage = styled.div`
     
     border-bottom: 2px solid ${props => props.theme.orange};
 
-
-    .buttons{
-        display: flex;
-        justify-content: space-between;
-
-
-        width: 100%;
-    }
 
     button{
         display: flex;

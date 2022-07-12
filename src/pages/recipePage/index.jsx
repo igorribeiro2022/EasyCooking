@@ -51,8 +51,8 @@ function RecipePage() {
     <>
       <Header />
       <NameRecipe>
-        <h1>{viewRecipe[0].name}</h1>
-        <div>
+        <div className="ratingAndTitle">
+          <h1>{viewRecipe[0].name}</h1>
           <span>
             {console.log(user)}
             {user ? (
@@ -66,6 +66,16 @@ function RecipePage() {
               <Rating readOnly value={rating} />
             )}
           </span>
+        </div>
+
+        <div>
+          <button
+            onClick={() => {
+              handleBack();
+            }}
+          >
+            <AiOutlineArrowLeft /> Voltar
+          </button>
           <button
             onClick={() => {
               handleSave();
@@ -78,13 +88,6 @@ function RecipePage() {
 
       <ContentPage>
         <div className="divIngredients">
-          <button
-            onClick={() => {
-              handleBack();
-            }}
-          >
-            <AiOutlineArrowLeft /> Voltar
-          </button>
 
           <h2>Ingredientes e quantidades</h2>
           <ul>
