@@ -5,6 +5,11 @@ export const IngredientsContext = createContext({});
 
 export function IngredientsProvider({ children }) {
   const [ingredients, setIngredients] = useState(null);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    setToken(localStorage.getItem("@Easy:Token"));
+  });
 
   useEffect(() => {
     async function getIngredients() {
@@ -15,8 +20,22 @@ export function IngredientsProvider({ children }) {
     getIngredients();
   }, []);
 
+  function ratingMax(user, element, rating) {
+    const prevRev = element.reviews;
+    prevRev.push({ userId: user.id, rating });
+    const data = { reviews: prevRev };
+    const { id } = element;
+    Api.patch(`/recipes/${id}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+
   return (
-    <IngredientsContext.Provider value={{ ingredients }}>
+    <IngredientsContext.Provider value={{ ingredients, ratingMax }}>
       {children}
     </IngredientsContext.Provider>
   );

@@ -1,14 +1,21 @@
 import { RecipeCardContainer } from "./style.js";
 import { useNavigate, useParams } from "react-router-dom";
 import { Rating } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../Providers/models/user/user.jsx";
+import { IngredientsContext } from "../../../Providers/models/ingredients/ingredients.jsx";
 
 function RecipeCard({ recipe }) {
   const navigate = useNavigate();
-  const { verify } = useContext(UserContext);
+  const { verify, user } = useContext(UserContext);
+  const { ratingMax } = useContext(IngredientsContext);
   const [rating, setRating] = useState(2);
-  const ratingAPI = recipe.rating;
+
+  useEffect(() => {
+    const value = recipe.reviews?.reduce((prev, acc) => prev + acc.rating, 0);
+    const result = value / recipe.reviews.length;
+    setRating(result);
+  }, []);
 
   const handleView = () => {
     navigate(`receita/${recipe.name}`);
@@ -24,19 +31,9 @@ function RecipeCard({ recipe }) {
 
         <div>
           {verify ? (
-            <Rating
-              defaultValue={ratingAPI}
-              value={rating}
-              onChange={(e) => setRating(e.target.value)}
-              size="small"
-            />
+            <Rating value={rating} size="small" readOnly />
           ) : (
-            <Rating
-              defaultValue={ratingAPI}
-              value={rating}
-              size="small"
-              readOnly
-            />
+            <Rating value={rating} size="small" readOnly />
           )}
 
           <span className="RecipeButton">{recipe.category}</span>

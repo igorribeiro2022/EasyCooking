@@ -10,9 +10,11 @@ import { BsFillSaveFill } from "react-icons/bs";
 import { Rating } from "@mui/material";
 import { UserContext } from "../../Providers/models/user/user";
 import { useEffect } from "react";
+import { IngredientsContext } from "../../Providers/models/ingredients/ingredients";
 
 function RecipePage() {
   const { recipeName } = useParams();
+  const { ratingMax } = useContext(IngredientsContext);
   const { recipes } = useContext(RecipesContext);
   const { saveRecipe } = useContext(UserContext);
   const { user } = useContext(UserContext);
@@ -33,6 +35,11 @@ function RecipePage() {
     setRating(result);
   }, [viewRecipe]);
 
+  const handleRating = (e) => {
+    console.log({ e, user });
+    ratingMax(user, viewRecipe[0], e);
+  };
+
   const handleSave = () => {
     const data = user.favorites;
     data.push(viewRecipe[0]);
@@ -47,7 +54,17 @@ function RecipePage() {
         <h1>{viewRecipe[0].name}</h1>
         <div>
           <span>
-            <Rating value={rating} />
+            {console.log(user)}
+            {user ? (
+              <Rating
+                value={rating}
+                onChange={(event, newValue) => {
+                  handleRating(newValue);
+                }}
+              />
+            ) : (
+              <Rating readOnly value={rating} />
+            )}
           </span>
           <button
             onClick={() => {
