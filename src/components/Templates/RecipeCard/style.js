@@ -4,16 +4,27 @@ export const RecipeCardContainer = styled.div`
 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     border: 1px solid #e6e6e6;
-    margin-top: 30px;
     background-color: ${(props) => props.theme.colorHeader};
     border-radius: 5px;
     border: none;
-    width: 200px;
-    height: 200px;
+    width: 230px;
+    height: 250px;
     padding: 10px 0;
-    justify-content: space-between;
+    justify-content: space-around;
+
+
+    h1{
+        padding: 1%;
+    }
+
+    figure{
+        display: flex;
+        flex-direction: column;
+   
+        
+    }
 
     cursor: pointer;
 
@@ -28,7 +39,8 @@ export const RecipeCardContainer = styled.div`
 }
 img{
     width: 100%;
-    height: 100px;
+    height: 120px;
+    border-radius: 8px;
 }
 .RecipeName{
     font-size: 11pt;
@@ -37,13 +49,17 @@ img{
 
 }
 .RecipeButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
     width: 80px;
-    height: 17px;
+
     background-color: ${(props) => props.theme.catTwo};
     border: none;
     border-radius: 8px;
     font-size: 8pt;
-    font-weight: bold;
+
     color: ${(props) => props.theme.colorOne};
     cursor: pointer;
 }

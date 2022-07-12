@@ -1,3 +1,4 @@
+import { CompressOutlined } from "@mui/icons-material";
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Home from "../../../pages/home";
@@ -89,22 +90,40 @@ export function UserProvider({ children }) {
       });
   }
 
+
   function logoutUser(callback){
       localStorage.removeItem("@Easy:Token")
       localStorage.removeItem("@Easy:Id")
       setUser(null)
       setToken(null)
       callback('/login')
+
   }
 
-  function isLoggedinForDashboard(navigate){
-    verify? navigate('/dashboard') : (
-      toast.error("Faça login para acessar suas receitas", navigate('/login') )      
-      )
+  function saveRecipe(data) {
+    const fav = { favorites: data };
+    Api.patch(`/users/${user.id}`, fav, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((e) => console.log(e))
+      .catch((e) => console.log(e));
+  }
+
+  function isLoggedinForDashboard(navigate) {
+    verify
+      ? navigate("/dashboard")
+      : toast.error(
+          "Faça login para acessar suas receitas",
+          navigate("/login")
+        );
   }
 
   return (
+
     <UserContext.Provider value={{ user, loginUser, createUser, logoutUser,isLoggedinForDashboard, verifyToken, isOpen, setIsOpen }}>
+
       {children}
     </UserContext.Provider>
   );
