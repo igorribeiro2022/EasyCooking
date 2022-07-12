@@ -2,23 +2,29 @@ import { HeaderContainer } from "./style";
 import LogoWhite from "../../../assets/logoWhite-V2.svg";
 import LogoBlack from "../../../assets/logoBlack-V2.svg";
 import { UserModal } from "../../Templates/UserModal";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { FormControlLabel, Popover, Switch, Typography } from "@mui/material";
+import { FormControlLabel, Switch } from "@mui/material";
 import { ObjFormControl, ObjSwitch } from "../../../pages/login/style";
 import { GlobalThemeContext } from "../../../Providers/models/theme/theme";
 import { UserContext } from "../../../Providers/models/user/user";
-
+import { useEffect } from "react";
+import { useState } from "react";
 
 export const Header = () => {
-  const { currentTheme, themeSwitch, getOpositeTheme } = useContext(GlobalThemeContext);
-  const { verifyToken, isOpen, setIsOpen } = useContext(UserContext);
+  const { currentTheme, themeSwitch, getOpositeTheme } =
+    useContext(GlobalThemeContext);
+  const { verify, isOpen, setIsOpen } = useContext(UserContext);
+  const [teste, setTeste] = useState(false);
 
-  const [verify, setVerify] = useState(verifyToken())
-  
   const navigate = useNavigate();
-
   const handleNavigate = () => navigate("/");
+
+  useEffect(() => {
+    if (verify) {
+      setTeste(true);
+    }
+  }, []);
 
   return (
     <>
@@ -31,10 +37,7 @@ export const Header = () => {
         />
 
         {verify ? (
-          <figure
-          className="figurePerfil"
-          onMouseEnter={() => setIsOpen(true)}
-          >
+          <figure className="figurePerfil" onMouseEnter={() => setIsOpen(true)}>
             <img
               className="imgPerfil"
               src="https://static.vecteezy.com/ti/vetor-gratis/p3/364628-chef-avatar-ilustracao-gr%C3%A1tis-vetor.jpg"
