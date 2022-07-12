@@ -1,23 +1,13 @@
-import {DashBoardRecipesContainer} from './style';
+import { useContext } from 'react';
+import { UserContext } from '../../../Providers/models/user/user';
+import {DashBoardRecipesContainer, PlusAdd} from './style';
 
-export const UserRecipes =  () => {
-
-
+export const UserRecipes =  ({onClick}) => {
+  // const { verify } = useContext(UserContext)
     return (
-      <>
-        <DashBoardRecipesContainer>
-        <div className="DashboardRecipe">
-            <img src="https://picsum.photos/200" alt=""/>
-            <p>Nome</p>
-            <span>Autor</span>
-
-        </div>
-  
-        <div className="dashboardContent">
-  
-        </div>
+        <DashBoardRecipesContainer onClick={onClick}>
+            <PlusAdd/>
         </DashBoardRecipesContainer>
-      </>
     )
   }
   

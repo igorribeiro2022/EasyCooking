@@ -12,8 +12,9 @@ import { UserContext } from "../../../Providers/models/user/user";
 
 export const Header = () => {
   const { currentTheme, themeSwitch, getOpositeTheme } = useContext(GlobalThemeContext);
-  const { verify, isOpen, setIsOpen } = useContext(UserContext);
+  const { verifyToken, isOpen, setIsOpen } = useContext(UserContext);
 
+  const [verify, setVerify] = useState(verifyToken())
   
   const navigate = useNavigate();
 

@@ -12,9 +12,8 @@ export function UserProvider({ children }) {
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
   const [verify, setVerify] = useState(false);
-  const token = localStorage.getItem("@Easy:Token");
-
-  useEffect(() => {
+  const [token, setToken] = useState(localStorage.getItem("@Easy:Token"))
+  
     async function verifyToken() {
       if (token) {
         await Api.get("/verify", {
@@ -22,12 +21,11 @@ export function UserProvider({ children }) {
             Authorization: `Bearer ${token}`,
           },
         })
-          .then(() => setVerify(true))
+          .then(() => true)
           .catch((err) => console.log(err));
       }
     }
-    verifyToken();
-  }, [<Home />]);
+ 
 
   async function createUser(email, password, name, callback) {
     const data = { email, password, name };
@@ -92,10 +90,14 @@ export function UserProvider({ children }) {
       });
   }
 
-  function logoutUser(callback) {
-    localStorage.clear();
-    setVerify(false);
-    callback("/login");
+
+  function logoutUser(callback){
+      localStorage.removeItem("@Easy:Token")
+      localStorage.removeItem("@Easy:Id")
+      setUser(null)
+      setToken(null)
+      callback('/login')
+
   }
 
   function saveRecipe(data) {
@@ -119,19 +121,9 @@ export function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider
-      value={{
-        user,
-        loginUser,
-        createUser,
-        logoutUser,
-        isLoggedinForDashboard,
-        verify,
-        isOpen,
-        setIsOpen,
-        saveRecipe,
-      }}
-    >
+
+    <UserContext.Provider value={{ user, loginUser, createUser, logoutUser,isLoggedinForDashboard, verifyToken, isOpen, setIsOpen }}>
+
       {children}
     </UserContext.Provider>
   );
