@@ -2,16 +2,19 @@ import {UserModalContainer} from './style';
 import {useNavigate} from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from "../../../Providers/models/user/user";
+import { useState } from 'react';
 
 export const UserModal = ({state,setState}) => {
 
     const navigate = useNavigate();
-    const { verify, setIsOpen } = useContext(UserContext);
+    const { verifyToken, setIsOpen } = useContext(UserContext);
     const { logoutUser } = useContext(UserContext)
-    const {isLoggedinForDashboard} = useContext(UserContext)
 
+    const [ verify, setVerify ] = useState(verifyToken)
 
-
+    function handleClick() {
+        verify? navigate("/dashboard"):navigate("/login")
+    }
 
     return (
         <UserModalContainer
@@ -28,7 +31,7 @@ export const UserModal = ({state,setState}) => {
                             }}>Home</button>
 
                             <button onClick={() => {
-                                isLoggedinForDashboard(navigate);
+                                handleClick();
                                 setIsOpen(false)
                             }}>Dashboard</button>
                              

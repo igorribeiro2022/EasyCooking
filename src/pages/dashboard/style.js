@@ -19,21 +19,21 @@ export const Container = styled.div`
     height: 40px;
     border-radius: 40px;
     border: none;
-    background-color: #FF4444;
+    background-color: #EA1D2C;
     color: white;
-
 }
 .button:hover{
-    background-color: #EA1D2C;
+    filter: brightness(1.5);
 } 
 
 .dashboardContent{
+    display: flex;
+    flex-wrap: wrap;
     background-color: ${(props) => props.theme.colorThree};
     border-radius: 5px;
     width: 75%;
     height: 550px;
     margin-top: 25px;
-
 }
 
 `;
