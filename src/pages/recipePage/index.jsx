@@ -71,6 +71,16 @@ function RecipePage() {
               <Rating readOnly value={rating} />
             )}
           </span>
+        </div>
+
+        <div>
+          <button
+            onClick={() => {
+              handleBack();
+            }}
+          >
+            <AiOutlineArrowLeft /> Voltar
+          </button>
           <button
             onClick={() => {
               handleSave();
@@ -83,13 +93,6 @@ function RecipePage() {
 
       <ContentPage>
         <div className="divIngredients">
-          <button
-            onClick={() => {
-              handleBack();
-            }}
-          >
-            <AiOutlineArrowLeft /> Voltar
-          </button>
 
           <h2>Ingredientes e quantidades</h2>
           <ul>
