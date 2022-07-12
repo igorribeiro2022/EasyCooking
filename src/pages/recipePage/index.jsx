@@ -9,12 +9,14 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BsFillSaveFill } from "react-icons/bs";
 import { Rating } from "@mui/material";
 import { UserContext } from "../../Providers/models/user/user";
+import { useEffect } from "react";
 
 function RecipePage() {
   const { recipeName } = useParams();
   const { recipes } = useContext(RecipesContext);
   const { saveRecipe } = useContext(UserContext);
   const { user } = useContext(UserContext);
+  const [rating, setRating] = useState(null);
   const [viewRecipe] = useState(
     recipes.filter((recipe) => recipe.name == recipeName)
   );
@@ -22,11 +24,21 @@ function RecipePage() {
     window.history.back();
   };
 
+  useEffect(() => {
+    const value = viewRecipe[0].reviews?.reduce(
+      (prev, acc) => prev + acc.rating,
+      0
+    );
+    const result = value / viewRecipe[0].reviews.length;
+    setRating(result);
+  }, [viewRecipe]);
+
   const handleSave = () => {
     const data = user.favorites;
     data.push(viewRecipe[0]);
     return saveRecipe(data);
   };
+  console.log(viewRecipe);
 
   return (
     <>
@@ -35,7 +47,7 @@ function RecipePage() {
         <h1>{viewRecipe[0].name}</h1>
         <div>
           <span>
-            <Rating />
+            <Rating value={rating} />
           </span>
           <button
             onClick={() => {

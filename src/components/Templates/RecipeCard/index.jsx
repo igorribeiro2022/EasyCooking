@@ -6,7 +6,7 @@ import { UserContext } from "../../../Providers/models/user/user.jsx";
 
 function RecipeCard({ recipe }) {
   const navigate = useNavigate();
-  const { verify } = useContext(UserContext)
+  const { verify } = useContext(UserContext);
   const [rating, setRating] = useState(2);
   const ratingAPI = recipe.rating;
 
@@ -15,14 +15,12 @@ function RecipeCard({ recipe }) {
   };
   return (
     <>
-      <RecipeCardContainer onClick={() => handleView()} >
+      <RecipeCardContainer onClick={() => handleView()}>
         <figure className="imgFig">
           <img src={recipe.image} alt="" />
         </figure>
 
         <p className="RecipeName">{recipe.name}</p>
-
-
 
         <div>
           {verify ? (
@@ -41,10 +39,7 @@ function RecipeCard({ recipe }) {
             />
           )}
 
-          <span className="RecipeButton">
-                {recipe.category}
-          </span>
-
+          <span className="RecipeButton">{recipe.category}</span>
         </div>
       </RecipeCardContainer>
       {/* <FullRecipe state={isOpen} setState={setIsOpen}/> */}
