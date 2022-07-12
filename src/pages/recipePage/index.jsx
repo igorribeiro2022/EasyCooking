@@ -11,47 +11,52 @@ import { Rating } from "@mui/material";
 import { UserContext } from "../../Providers/models/user/user";
 import { useEffect } from "react";
 import { IngredientsContext } from "../../Providers/models/ingredients/ingredients";
+import { Api } from "../../services/api";
 
 function RecipePage() {
   const { recipeName } = useParams();
   const { ratingMax } = useContext(IngredientsContext);
-  const { recipes } = useContext(RecipesContext);
+
   const { saveRecipe } = useContext(UserContext);
   const { user } = useContext(UserContext);
   const [rating, setRating] = useState(null);
-  const [viewRecipe] = useState(
-    recipes.filter((recipe) => recipe.name == recipeName)
-  );
+  const [onlyRecipe, setonlyRecipe] = useState(null);
+
+  useEffect(() => {
+    Api.get(`/recipes/${recipeName}`)
+      .then((res) => {
+        console.log(res.data);
+        setonlyRecipe(res.data);
+      })
+      .catch((err) => console.log(err));
+
+    const value = onlyRecipe.reviews?.reduce(
+      (prev, acc) => prev + acc.rating,
+      0
+    );
+    const result = value / onlyRecipe.reviews.length;
+    setRating(result);
+  }, []);
+
   const handleBack = () => {
     window.history.back();
   };
 
-  useEffect(() => {
-    const value = viewRecipe[0].reviews?.reduce(
-      (prev, acc) => prev + acc.rating,
-      0
-    );
-    const result = value / viewRecipe[0].reviews.length;
-    setRating(result);
-  }, [viewRecipe]);
-
   const handleRating = (e) => {
-    console.log({ e, user });
-    ratingMax(user, viewRecipe[0], e);
+    ratingMax(user, onlyRecipe, e);
   };
 
   const handleSave = () => {
     const data = user.favorites;
-    data.push(viewRecipe[0]);
+    data.push(onlyRecipe);
     return saveRecipe(data);
   };
-  console.log(viewRecipe);
-
+  console.log(onlyRecipe);
   return (
     <>
       <Header />
       <NameRecipe>
-        <h1>{viewRecipe[0].name}</h1>
+        <h1>{onlyRecipe?.name}</h1>
         <div>
           <span>
             {console.log(user)}
@@ -88,7 +93,7 @@ function RecipePage() {
 
           <h2>Ingredientes e quantidades</h2>
           <ul>
-            {viewRecipe[0].ingredients.map((ingredient, index) => (
+            {onlyRecipe?.ingredients.map((ingredient, index) => (
               <li key={index}>
                 {ingredient.name} - {ingredient.quantity} {ingredient.unit}
               </li>
@@ -98,13 +103,13 @@ function RecipePage() {
 
         <div className="divImage">
           <figure>
-            <img src={viewRecipe[0].image} alt={viewRecipe[0].name} />
+            <img src={onlyRecipe?.image} alt={onlyRecipe?.name} />
           </figure>
         </div>
       </ContentPage>
       <Preparation>
         <h2>Modo de preparo</h2>
-        <p>{viewRecipe[0].preparation_mode}</p>
+        <p>{onlyRecipe?.preparation_mode}</p>
       </Preparation>
     </>
   );
