@@ -57,10 +57,10 @@ export const FilterBar = () => {
             </div>
         </div>
         <div className="filterButtons">
-          <button id="B1">Receitas</button>
-          <button id="B2">Receitas</button>
-          <button id="B3">Receitas</button>
-          <button id="B4">Receitas</button>
+          <button id="B1">Lanches</button>
+          <button id="B2">Prato Principal</button>
+          <button id="B3">Sobremesas</button>
+          <button id="B4">Bebidas</button>
         </div>
       </FilterBarContainer>
     </>

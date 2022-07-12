@@ -15,7 +15,12 @@ export const Recipes  = styled.div`
     flex-direction: row;   
     flex-wrap: wrap; 
     align-items: center;
-    justify-content: space-between;
-    width: 40%;
+    justify-content: flex-start;
+
+    padding-top: 2rem;
+    gap: 3.2rem;
+    width: 70%
+
+    
 `;
 
