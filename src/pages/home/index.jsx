@@ -17,7 +17,6 @@ function Home() {
   return (
     <>
       <Container>
-        
         <FilterBar />
         <Recipes>
           {!searchOn
