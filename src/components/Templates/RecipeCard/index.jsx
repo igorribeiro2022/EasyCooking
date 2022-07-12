@@ -1,14 +1,12 @@
 import { RecipeCardContainer, Span } from "./style.js";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Rating } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../Providers/models/user/user.jsx";
-import { IngredientsContext } from "../../../Providers/models/ingredients/ingredients.jsx";
 
 function RecipeCard({ recipe }) {
   const navigate = useNavigate();
-  const { verify, user } = useContext(UserContext);
-  const { ratingMax } = useContext(IngredientsContext);
+  const { verify } = useContext(UserContext);
   const [rating, setRating] = useState(2);
 
   useEffect(() => {
@@ -18,7 +16,7 @@ function RecipeCard({ recipe }) {
   }, []);
 
   const handleView = () => {
-    navigate(`receita/${recipe.name}`);
+    navigate(`receita/${recipe.id}`);
   };
   return (
     <>
