@@ -1,6 +1,7 @@
 import { Header } from "../../components/Templates/Header/index.jsx";
 import { Container } from "./style.js";
 import { UserRecipes } from "../../components/Templates/UserRecipes";
+import { UserSavedRecipes } from "../../components/Templates/UserSavedRecipes";
 import { UserContext } from "../../Providers/models/user/user.jsx";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +14,7 @@ function DashBoard() {
   const { verify } = useContext(UserContext);
   let navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [buttonfilter, setButtonfilter] = useState("userRecipes");
 
   useEffect(() => {
     if (!verify) {
@@ -29,13 +31,15 @@ function DashBoard() {
     <>
       <Container>
         <div className="buttonsDiv">
-          <button className="button">Minhas Receitas</button>
-          <button className="button">Receitas Salvas</button>
+          <button onClick={()=>{setButtonfilter("userRecipes")}} className="button">Minhas Receitas</button>
+          <button onClick={()=>{setButtonfilter("savedRecipes")}} className="button">Receitas Salvas</button>
           <button className="button">Ingredientes</button>
         </div>
 
         <div className="dashboardContent">
-          <UserRecipes onClick={clickOnCard} />
+
+          {buttonfilter === "userRecipes" ? <UserRecipes onClick={clickOnCard} /> : null}
+          {buttonfilter === "savedRecipes" ? <UserSavedRecipes onClick={clickOnCard} /> : null}
         </div>
       </Container>
     </>
