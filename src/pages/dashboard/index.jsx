@@ -17,10 +17,8 @@ function DashBoard() {
   const { recipes } = useContext(RecipesContext);
 
   useEffect(() => {
-    console.log(recipes);
     const id = localStorage.getItem("@Easy:Id");
     const newRecipes = recipes?.filter((e) => e.userId === id);
-    console.log(newRecipes);
     setMyRecipes(newRecipes);
   }, []);
 
@@ -57,7 +55,7 @@ function DashBoard() {
             <UserSavedRecipes onClick={clickOnCard} />
           ) : null}
         </div>
-        {console.log({ myRecipes })}
+        
         {myRecipes?.map((e) => (
           <RecipeCard key={e.id} recipe={e} del />
         ))}

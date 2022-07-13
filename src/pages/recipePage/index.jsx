@@ -53,7 +53,6 @@ function RecipePage() {
             <NameRecipe>
                 <div className="titleAndRating">
                 <h1>{onlyRecipe?.name}</h1>
-                        {console.log(user)}
                         {user ? (
                             <RatingStyle>
                                 <Rating value={rating} onChange={(event, newValue) => { handleRating(newValue); }} />

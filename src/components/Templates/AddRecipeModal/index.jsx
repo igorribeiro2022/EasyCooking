@@ -14,17 +14,12 @@ import { toast } from "react-toastify";
 
 export const AddRecipeModal = ({ open, setOpen }) => {
   const { listIngredients } = useContext(IngredientsContext);
-  const [un, setUn] = useState("");
   const [ingredientSave, setIngredientSave] = useState([]);
-  const [autocompleteValue, setAutocompleteValue] = useState("");
+  const [autocompleteValue, setAutocompleteValue] = useState(null);
   const [autocomplete, setAutocomplete] = useState("");
-  const [unity, setUnity] = useState("");
+  const [unity, setUnity] = useState("Selecione");
   const [quanti, setQuanti] = useState(0);
   const [dataUser, setDataUser] = useState(null);
-  const [nameRecipe, setNameRecipe] = useState("");
-  const [categRecipe, setCategRecipe] = useState("");
-  const [linkRecipe, setLinkRecipe] = useState("");
-  const [preparationRecipe, setPreparationRecipe] = useState("");
 
   useEffect(()=>{
     const idUser = localStorage.getItem("@Easy:Id")
@@ -51,6 +46,7 @@ export const AddRecipeModal = ({ open, setOpen }) => {
 
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -58,11 +54,16 @@ export const AddRecipeModal = ({ open, setOpen }) => {
   });
 
   function onSubmitFunction(data) {
+    if (data.category === "Selecione") {
+      return toast.error("Por favor, selecione uma categoria!")
+    }
     const token = localStorage.getItem("@Easy:Token")
+    
     data.reviews = []
     data.ingredients = ingredientSave
     data.userName = dataUser.name
     data.userId = dataUser.id
+    
 
     toast.promise(Api.post("/recipes", data, {
       headers: {
@@ -81,60 +82,61 @@ export const AddRecipeModal = ({ open, setOpen }) => {
       },
       error: "Não foi possível criar, verifique as informações!",
     })
-    .then(resp => console.log(resp))
-    .catch(err => console.log(err))
+    .then(resp => resp)
+    .catch(err => err)
+    .finally(() => {
+      setIngredientSave([])
+      setOpen(!open)
+      setValue("name", "")
+      setValue("preparation_mode", "")
+      setValue("category", "")
+      setValue("image", "")
+    })
+
   }
 
-  function saveRecipe() {
-    setIngredientSave([])
-    setOpen(!open)
-    setNameRecipe("")
-    setLinkRecipe("")
-    setPreparationRecipe("")
-  }
+  
   function addIngredient(e) {
     e.preventDefault()
     const obj = {name: autocompleteValue, quantity: quanti, unit: unity}
-    obj.name !== null && obj.quantity > 0 &&
-    setIngredientSave([...ingredientSave, obj])
-    console.log(ingredientSave)
-    setAutocompleteValue(null)
-    setQuanti([0])
-    setUnity(0)
+    if (obj.name !== null && obj.quantity > 0 && obj.unit !== "Selecione") {
+      setIngredientSave([...ingredientSave, obj])
+      setAutocompleteValue(null)
+      setQuanti([0])
+      setUnity("Selecione")
+    } else {
+      toast.error("Verifique as informações de ingrediente")
+    }
+    
+
   }
+  
   return (
     <Modal open={open} onClose={() => setOpen(!open)}>
       <BoxStyled sx={style}>
         <div className="div">
-          <label>Nome</label>
+          <label>Nome {errors.name && <span className="labelError"> - {errors.name.message}</span>}</label>
           <input
-            defaultValue={nameRecipe}
-            onChange={(e)=>setNameRecipe(e.target.value)}
+            
             type="text"
             placeholder="Digite aqui o nome da receita"
             {...register("name")}
           />
         </div>
         <div className="catImg">
-          <div className="" {...register("category")}>
-            <label>Categoria</label>
-            <SelectStyled
-              defaultValue={categRecipe}
-              onChange={(e)=>setCategRecipe(e.target.value)}
-              id="demo-simple-select"
-              label="Unidade"
-            >
+          <div>
+            <label>Categoria {errors.category && <span className="labelError"> - {errors.category.message}</span>}</label>
+            <SelectStyled {...register("category")}>
+              <option value="Selecione">Selecione</option>
               <option value="Prato Principal">Prato Principal</option>
               <option value="Sobremesas">Sobremesas</option>
               <option value="Lanches">Lanches</option>
               <option value="Bebidas">Bebidas</option>
             </SelectStyled>
           </div>
-          <div className="">
-            <label>Link da imagem</label>
+          <div>
+            <label>Link da imagem {errors.image && <span className="labelError"> - {errors.image.message}</span>}</label>
             <input
-              defaultValue={linkRecipe}
-              onChange={(e) => setLinkRecipe(e.target.value)}
               type="text"
               placeholder="Coloque aqui o link da imagem"
               {...register("image")}
@@ -142,10 +144,8 @@ export const AddRecipeModal = ({ open, setOpen }) => {
           </div>
         </div>
         <div className="div">
-          <label>Modo de Preparo</label>
+          <label>Modo de Preparo {errors.preparation_mode && <span className="labelError"> - {errors.preparation_mode.message}</span>}</label>
           <textarea
-            defaultValue={preparationRecipe}
-            onChange={(e) => setPreparationRecipe(e.target.value)}
             type="text"
             placeholder="Digite aqui o modo de preparo"
             {...register("preparation_mode")}
@@ -153,17 +153,17 @@ export const AddRecipeModal = ({ open, setOpen }) => {
         </div>
         <form className="divIngre" onSubmit={handleSubmit(onSubmitFunction)}>
           <AutoStyled
-            defaultValue={autocomplete}
+            value={autocompleteValue}
             onChange={(event, newValue) => {
               setAutocompleteValue(newValue);
             }}
-            inputValue={autocompleteValue}
+            inputValue={autocomplete}
             onInputChange={(event, newInputValue) => {
               setAutocomplete(newInputValue);
             }}
     
             options={listIngredients}
-            disableCloseOnSelect
+            
             getOptionLabel={(option) => {
               return option || "";
             }}
@@ -190,24 +190,27 @@ export const AddRecipeModal = ({ open, setOpen }) => {
             )}
           />
           <SelectStyled
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
             value={unity}
-            label="Unidade"
             onChange={(e) => setUnity(e.target.value)}
           >
-            <option value="Litros">Litros</option>
-            <option value="MiliLitros">MiliLitros</option>
-            <option value="Unidades">Unidades</option>
-            <option value="Gramas">Gramas</option>
+            <option value="Selecione">Selecione</option>
+            <option value="litros">Litros</option>
+            <option value="miliLitros">MiliLitros</option>
+            <option value="unidades">Unidades</option>
+            <option value="gramas">Gramas</option>
             <option value="Kg">Kg</option>
-            <option value="Colher de Sopa">Colher de Sopa</option>
-            <option value="Colher de chá">Colher de chá</option>
-            <option value="Xícara">Xícara</option>
+            <option value="colher de Sopa">Colher de Sopa</option>
+            <option value="colher de chá">Colher de chá</option>
+            <option value="xícara">Xícara</option>
+            <option value="folhas">Folhas</option>
+            <option value="A gosto">A gosto</option>
+            <option value="dentes">Dentes</option>
+            <option value="latas">Latas</option>
+            <option value="caixinhas">Caixinhas</option>
           </SelectStyled>
-          <input defaultValue={quanti} type="number" min={0} max={1000} onChange={(e) => setQuanti(e.target.value)}/>
-          <button className="butAdd" onClick={() => addIngredient()}>Adicionar</button>
-          <button className="buttonSave" type="submit" >Salvar Receita</button>
+          <input value={quanti} type="number" min={0} max={1000} onChange={(e) => setQuanti(e.target.value)}/>
+          <button className="butAdd" onClick={(e) => addIngredient(e)}>Adicionar</button>
+          <button type="submit" className="buttonSave">Salvar Receita</button>
         </form>
         <ul className="ulIngredients">
           {ingredientSave?.map((elem, index) => <li key={index}>{elem.name} - {elem.quantity} {elem.unit}</li>)}
