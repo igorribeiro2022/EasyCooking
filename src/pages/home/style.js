@@ -18,6 +18,7 @@ export const Recipes  = styled.div`
     justify-content: flex-start;
 
     padding-top: 2rem;
+    padding-bottom: 2rem;
     gap: 3.2rem;
     width: 70%
 

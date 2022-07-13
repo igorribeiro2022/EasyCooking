@@ -8,7 +8,8 @@ export const FilterBar = () => {
   const [option, setOption] = useState("Recipe");
   const { searchRecipesTitle } = useContext(RecipesContext);
   const { setSearchOn } = useContext(RecipesContext);
-  const { searchRecipesIngredients } = useContext(RecipesContext);
+  const { searchRecipesIngredients, tagFilter } = useContext(RecipesContext);
+
   console.log(option);
 
   const handleSearch = (e) => {
@@ -30,37 +31,48 @@ export const FilterBar = () => {
       <FilterBarContainer>
         <div className="filterBar">
           <div className="divInput">
-          <select
-            value={option}
-            onChange={(e) => setOption(e.target.value)}
-            name="filter"
+            <select
+              value={option}
+              onChange={(e) => setOption(e.target.value)}
+              name="filter"
             >
-            <option value="Recipe">Receitas</option>
-            <option value="Ingredient">Ingredientes</option>
-          </select>
+              <option value="Recipe">Receitas</option>
+              <option value="Ingredient">Ingredientes</option>
+            </select>
 
-          <input
-            value={search}
-            onChange={(e) => handleSearch(e.target.value)}
-            type="text"
-            placeholder="Digite aqui"
+            <input
+              value={search}
+              onChange={(e) => handleSearch(e.target.value)}
+              type="text"
+              placeholder="Digite aqui"
             />
 
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              handleSubmit();
-            }}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
             >
-            Pesquisar
-          </button>
-            </div>
+              Pesquisar
+            </button>
+          </div>
         </div>
         <div className="filterButtons">
-          <button id="B1">Lanches</button>
-          <button id="B2">Prato Principal</button>
-          <button id="B3">Sobremesas</button>
-          <button id="B4">Bebidas</button>
+          <button onClick={(e) => tagFilter(e.target.innerText)} id="B0">
+            Todas
+          </button>
+          <button onClick={(e) => tagFilter(e.target.innerText)} id="B1">
+            Lanches
+          </button>
+          <button onClick={(e) => tagFilter(e.target.innerText)} id="B2">
+            Prato Principal
+          </button>
+          <button onClick={(e) => tagFilter(e.target.innerText)} id="B3">
+            Sobremesas
+          </button>
+          <button onClick={(e) => tagFilter(e.target.innerText)} id="B4">
+            Bebidas
+          </button>
         </div>
       </FilterBarContainer>
     </>

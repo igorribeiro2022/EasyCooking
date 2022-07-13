@@ -11,12 +11,9 @@ export function RecipesProvider({ children }) {
   const userId = localStorage.getItem("@Easy:Id");
 
   useEffect(() => {
-    async function getRecipes() {
-      await Api.get("/recipes")
-        .then((res) => setRecipes(res.data))
-        .catch((err) => console.log(err));
-    }
-    getRecipes();
+    Api.get("/recipes")
+      .then((res) => setRecipes(res.data))
+      .catch((err) => console.log(err));
   }, []);
 
   async function RegisterRecipe({
@@ -91,6 +88,25 @@ export function RecipesProvider({ children }) {
     setRecipesTitles(filteredRecipes);
   }
 
+  function tagFilter(data) {
+    if (data === "Lanches") {
+      setRecipesTitles(recipes.filter((e) => e.category === "Lanches"));
+      setSearchOn(true);
+    } else if (data === "Prato Principal") {
+      setRecipesTitles(recipes.filter((e) => e.category === "Prato Principal"));
+      setSearchOn(true);
+    } else if (data === "Bebidas") {
+      setRecipesTitles(recipes.filter((e) => e.category === "Bebidas"));
+      setSearchOn(true);
+    } else if (data === "Sobremesas") {
+      setRecipesTitles(recipes.filter((e) => e.category === "Sobremesas"));
+      setSearchOn(true);
+    } else {
+      setRecipesTitles(recipes);
+      searchOn(false);
+    }
+  }
+
   return (
     <RecipesContext.Provider
       value={{
@@ -101,6 +117,7 @@ export function RecipesProvider({ children }) {
         searchRecipesTitle,
         recipesTitles,
         searchRecipesIngredients,
+        tagFilter,
       }}
     >
       {children}

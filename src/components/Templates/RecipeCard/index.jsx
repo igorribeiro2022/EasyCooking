@@ -1,53 +1,57 @@
-import { RecipeCardContainer } from "./style.js";
-import { useNavigate, useParams } from "react-router-dom";
+import { RecipeCardContainer, Span, StyledButton } from "./style.js";
+import { useNavigate } from "react-router-dom";
 import { Rating } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../Providers/models/user/user.jsx";
+import { Api } from "../../../services/api.js";
 
-function RecipeCard({ recipe }) {
+function RecipeCard({ recipe, del }) {
   const navigate = useNavigate();
-  const { verify } = useContext(UserContext)
+  const { verify } = useContext(UserContext);
   const [rating, setRating] = useState(2);
-  const ratingAPI = recipe.rating;
+
+  useEffect(() => {
+    const value = recipe.reviews?.reduce((prev, acc) => prev + acc.rating, 0);
+    const result = value / recipe.reviews.length;
+    setRating(result);
+  }, []);
 
   const handleView = () => {
-    navigate(`receita/${recipe.name}`);
+    navigate(`receita/${recipe.id}`);
+  };
+
+  const handleDelete = () => {
+    Api.delete(`/recipes/${recipe.id}`);
+    window.location.reload();
   };
   return (
     <>
-      <RecipeCardContainer onClick={() => handleView()} >
+      <RecipeCardContainer
+        onClick={() => {
+          !del && handleView();
+        }}
+      >
         <figure className="imgFig">
           <img src={recipe.image} alt="" />
         </figure>
 
         <p className="RecipeName">{recipe.name}</p>
 
-
-
         <div>
           {verify ? (
-            <Rating
-              defaultValue={ratingAPI}
-              value={rating}
-              onChange={(e) => setRating(e.target.value)}
-              size="small"
-            />
+            <Rating value={rating} size="small" readOnly />
           ) : (
-            <Rating
-              defaultValue={ratingAPI}
-              value={rating}
-              size="small"
-              readOnly
-            />
+            <Rating value={rating} size="small" readOnly />
           )}
 
-          <span className="RecipeButton">
-                {recipe.category}
-          </span>
-
+          <Span className="RecipeButton" lunch={recipe.category}>
+            {recipe.category}
+          </Span>
+          {del && (
+            <StyledButton onClick={() => handleDelete}>Delete</StyledButton>
+          )}
         </div>
       </RecipeCardContainer>
-      {/* <FullRecipe state={isOpen} setState={setIsOpen}/> */}
     </>
   );
 }

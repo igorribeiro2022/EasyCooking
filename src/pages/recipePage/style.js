@@ -1,178 +1,139 @@
 import styled from "styled-components";
 
+export const StyleContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    gap: 5vh;
+    align-items: center;
+`
 
 export const NameRecipe = styled.div`
-
     width: 100vw;
-    height: 14vh;
-    
-    padding: 5px;
-    font-size: 1.2rem;
-    
+    margin-top: 10px;
+    padding: 0 5vw;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
 
-    h1{
-        padding: 10px;
-        
-    }
-
-    div{
+    .titleAndRating{
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
 
-        width: 28%;
+        span {
+            align-self: flex-end;
+        }
+    }
+        
+    .divBtn {
+        display: flex;
+        justify-content: space-between;
 
         button{
             display: flex;
+            margin-top: 1vh;
             justify-content: space-around;
-            width: 80px;
+            width: 90px;
             background-color: ${props => props.theme.button.backgroundColor};
             color: ${props => props.theme.button.textColor};
             border: none;
-            border-radius: 10px;
-            padding: 1.4%;
+            border-radius: 25px;
+            padding: 10px;
 
             :hover{
                 filter: brightness(1.3);
             }
-
-        }
     }
+}
+    @media screen and (min-width: 650px){
+        padding: 0 15vw;
+    }
+`
 
+export const RatingStyle = styled.span`
+span {
+    svg {
+        color: ${props => props.theme.rating};
+    }
+}
 `
 
 export const ContentPage = styled.div`
-
     display: flex;
-    justify-content: center;
-    
-    
-
+    flex-direction: column-reverse;
+    justify-content: space-around;
     width: 100vw;
-    padding-left: 4vw;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-    gap: 20vw;
-
-
-    
-    border-bottom: 2px solid ${props => props.theme.orange};
-
-
-    .buttons{
-        display: flex;
-        justify-content: space-between;
-
-
-        width: 100%;
-    }
-
-    button{
-        display: flex;
-        justify-content: center;
-        gap: 2%;
-        box-sizing: border-box;
-        background-color: ${props => props.theme.button.backgroundColor};
-        color: ${props => props.theme.button.textColor} ;
-        padding: 4%;
-        font-size: 1.1rem;
-
-        border: none;
-        border-radius: 8px;
-
-        margin-bottom: 3vh;
-
-        :hover{
-            filter: brightness(1.1);
-        }
-    }
+    padding: 2vh 5vw 0 5vw;
 
     figure{
-        width: 34vw;
-        height: 30%;
+        width: 90vw;
+        height: fit-content;
         display: flex;
         justify-content: center;
         align-items: center;
-        justify-content: center;
-
 
         border-radius: 8px;
         background-color: white;
         
         img{
             width: 100%;
+            height: 100%;
             border-radius: 8px;
             border: 2px solid ${props => props.theme.orange} ;
         }
     }
 
     .divIngredients{
-         
          display: flex;
          flex-direction: column;
-
          justify-content: space-around;
 
          h2{
-            font-size: 1.6rem;
-            color: ${props => props.theme.backgroundColorTwo};
-            padding-bottom: 5vh;
+            font-size: 1.5rem;
+            color: ${props => props.theme.title};
+            padding-bottom: 2vh;
          }
 
          ul{
+            list-style: none;
             display: flex;
             flex-direction: column;
-            height: 60vh;
-            overflow-y: auto;
-            gap: 10px;
-
-            li{
- 
-                display: flex;
-                flex-direction: column;
-
-          
-
-                h3{
-                    display: block;
-                    box-sizing: border-box;
-                    padding: 2px;
-                }
-
-            }
+            max-height: 50vh;
+            overflow: auto;
+            gap: 15px;
          }
-
-         
     }
 
     .divImage{
         display: flex;
-        align-items: center;
         justify-content: center;
-
-        max-width: 40vw;
     }
 
+    @media screen and (min-width: 700px) {
+        flex-direction: row;
+
+        figure {
+            width: 40vw;
+        }
+
+        .divIngredients {
+            justify-content: flex-start;
+
+            h2 {
+                padding-bottom: 5vh;
+            }
+        }
+    }
 `
 
-export const  Preparation = styled.div`
-
-    width: 88vw;
-    padding-top: 2vh;
-    padding-left: 14.5vw;
+export const Preparation = styled.div`
+    padding: 0 5vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: flex-end;
 
     h2{
         padding-bottom: 2vh;
-        color: ${props => props.theme.backgroundColorTwo};
-
+        color: ${props => props.theme.title};
     }
 
     p{
@@ -181,6 +142,8 @@ export const  Preparation = styled.div`
         padding-bottom: 5vh;
     }
 
-
+    @media screen and (min-width: 700px) {
+        padding: 0 15vw;
+    }
 
 `

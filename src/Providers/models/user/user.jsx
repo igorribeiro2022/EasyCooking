@@ -12,22 +12,9 @@ export function UserProvider({ children }) {
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(false);
   const [verify, setVerify] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("@Easy:Token"))
-  
-    async function verifyToken() {
-      if (token) {
-        await Api.get("/verify", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-          .then(() => true)
-          .catch((err) => (err));
-      }
-    }
- 
+  const [token, setToken] = useState(localStorage.getItem("@Easy:Token"));
 
-  async function createUser(email, password, name, callback) {
+    async function createUser(email, password, name, callback) {
     const data = { email, password, name };
 
     toast.promise(Api.post("/register", data), {
@@ -89,14 +76,12 @@ export function UserProvider({ children }) {
       });
   }
 
-
-  function logoutUser(callback){
-      localStorage.removeItem("@Easy:Token")
-      localStorage.removeItem("@Easy:Id")
-      setUser(null)
-      setToken(null)
-      callback('/login')
-
+  function logoutUser(callback) {
+    localStorage.removeItem("@Easy:Token");
+    localStorage.removeItem("@Easy:Id");
+    setUser(null);
+    setToken(null);
+    callback("/login");
   }
 
   function saveRecipe(data) {
@@ -120,9 +105,19 @@ export function UserProvider({ children }) {
   }
 
   return (
-
-    <UserContext.Provider value={{ user, loginUser, createUser, logoutUser,isLoggedinForDashboard, verifyToken, isOpen, setIsOpen }}>
-
+    <UserContext.Provider
+      value={{
+        user,
+        loginUser,
+        createUser,
+        logoutUser,
+        isLoggedinForDashboard,
+        verify,
+        isOpen,
+        setIsOpen,
+        saveRecipe,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
