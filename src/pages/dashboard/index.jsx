@@ -16,6 +16,9 @@ function DashBoard() {
   const [buttonfilter, setButtonfilter] = useState("userRecipes");
   const { recipes } = useContext(RecipesContext);
 
+
+  const { user } = useContext(UserContext);
+
   useEffect(() => {
     console.log(recipes);
     const id = localStorage.getItem("@Easy:Id");
@@ -38,6 +41,7 @@ function DashBoard() {
           >
             Minhas Receitas
           </button>
+
           <button
             onClick={() => {
               setButtonfilter("savedRecipes");
@@ -46,7 +50,6 @@ function DashBoard() {
           >
             Receitas Salvas
           </button>
-          <button className="button">Ingredientes</button>
         </div>
 
         <div className="dashboardContent">
@@ -58,9 +61,7 @@ function DashBoard() {
           ) : null}
         </div>
         {console.log({ myRecipes })}
-        {myRecipes?.map((e) => (
-          <RecipeCard key={e.id} recipe={e} del />
-        ))}
+
       </Container>
       <AddRecipeModal open={open} setOpen={setOpen} />
     </>
