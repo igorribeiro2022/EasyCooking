@@ -5,11 +5,11 @@ import { UserContext } from "../../../Providers/models/user/user";
 
 export const UserModal = ({ state, setState }) => {
   const navigate = useNavigate();
-  const { verify, setIsOpen } = useContext(UserContext);
+  const { user, setIsOpen } = useContext(UserContext);
   const { logoutUser } = useContext(UserContext);
 
   function handleClick() {
-    verify ? navigate("/dashboard") : navigate("/login");
+    user ? navigate("/dashboard") : navigate("/login");
   }
 
   return (

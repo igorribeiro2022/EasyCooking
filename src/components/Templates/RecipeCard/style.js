@@ -80,3 +80,5 @@ export const Span = styled.span`
   color: ${(props) => props.theme.colorOne};
   cursor: pointer;
 `;
+
+export const StyledButton = styled.button``;
