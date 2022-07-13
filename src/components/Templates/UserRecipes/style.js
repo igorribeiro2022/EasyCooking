@@ -7,7 +7,7 @@ export const PlusAdd = styled(ImPlus)`
    height: 50px;
 `
 
-export const DashBoardRecipesContainer = styled.main`
+export const DashBoardRecipesContainer = styled.div`
    display: flex;
    flex-direction: column;
    align-items: center;

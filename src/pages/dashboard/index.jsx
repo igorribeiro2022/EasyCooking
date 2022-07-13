@@ -2,17 +2,15 @@ import { Header } from "../../components/Templates/Header/index.jsx";
 import { Container } from "./style.js";
 import { UserRecipes } from "../../components/Templates/UserRecipes";
 import { UserContext } from "../../Providers/models/user/user.jsx";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Modal } from "@mui/material";
-import Box from '@mui/material/Box';
-import { useState } from "react";
-import { style } from "../../components/Templates/AddRecipeModal/style.js";
+import { AddRecipeModal } from "../../components/Templates/AddRecipeModal/index.jsx";
 
 function DashBoard() {
   const { verifyToken } = useContext(UserContext);
   let navigate = useNavigate();
   const [open, setOpen] = useState(false);
+
 
   useEffect(() => {
      const teste = async () => {
@@ -25,11 +23,8 @@ function DashBoard() {
      
   }, []);
 
-  const clickOnCard = (e) => {
-    setOpen(true)
-    console.log(e.target);
-  }
-
+  const clickOnCard = (e) => setOpen(true)
+  
   return (
     <>
       <Container>
@@ -44,8 +39,7 @@ function DashBoard() {
         </div>
 
       </Container>
-
-      
+      <AddRecipeModal open={open} setOpen={setOpen} />
     </>
   );
 }

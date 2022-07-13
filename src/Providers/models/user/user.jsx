@@ -21,7 +21,7 @@ export function UserProvider({ children }) {
           },
         })
           .then(() => true)
-          .catch((err) => console.log(err));
+          .catch((err) => (err));
       }
     }
  
@@ -29,8 +29,7 @@ export function UserProvider({ children }) {
   async function createUser(email, password, name, callback) {
     const data = { email, password, name };
 
-    toast
-      .promise(Api.post("/register", data), {
+    toast.promise(Api.post("/register", data), {
         pending: {
           render() {
             return "Organizando a cozinha";
@@ -43,7 +42,7 @@ export function UserProvider({ children }) {
           icon: "🍴",
         },
         error: "Vergonha da profissón, verifique seus dados!",
-      })
+    })
       .then(() => {
         setRegister(true);
       })
