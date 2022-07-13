@@ -1,4 +1,4 @@
-import { RecipeCardContainer, Span, StyledButton } from "./style.js";
+import { RecipeCardContainer, Span, StyledButton, StyleRating } from "./style.js";
 import { useNavigate } from "react-router-dom";
 import { Rating } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
@@ -49,10 +49,14 @@ function RecipeCard({ recipe, del, setMyRecipes, myRecipes }) {
 
         <div>
           {verify ? (
-            <Rating value={rating} size="small" readOnly />
-          ) : (
-            <Rating value={rating} size="small" readOnly />
-          )}
+             <StyleRating>
+                            <Rating value={rating} size="small" readOnly />
+                        </StyleRating>
+                    ) : (
+                        <StyleRating>
+                            <Rating value={rating} size="small" readOnly />
+                        </StyleRating>
+                    )}
 
           <Span className="RecipeButton" lunch={recipe.category}>
             {recipe.category}
@@ -64,6 +68,7 @@ function RecipeCard({ recipe, del, setMyRecipes, myRecipes }) {
       </RecipeCardContainer>
     </>
   );
+
 }
 
 export default RecipeCard;
