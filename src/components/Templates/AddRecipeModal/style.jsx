@@ -84,7 +84,7 @@ export const BoxStyled = styled(Box)`
   }
 
   .labelError {
-    color: ${(props) => props.theme.backgroundColorTwo};
+    color: #ea1d2cff;
   }
 
   .ulIngredients{

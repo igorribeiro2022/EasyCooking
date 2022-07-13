@@ -3,6 +3,7 @@ import RecipeCard from "../../components/Templates/RecipeCard/index.jsx";
 import { Recipes, Container } from "./style.js";
 import { useContext } from "react";
 import { RecipesContext } from "../../Providers/models/recipes/recipes.jsx";
+import { motion } from "framer-motion";
 
 function Home() {
   const { recipes } = useContext(RecipesContext);
@@ -11,20 +12,27 @@ function Home() {
   const { recipesTitles } = useContext(RecipesContext);
 
   return (
-    <>
-      <Container>
-        <FilterBar />
-        <Recipes>
-          {!searchOn
-            ? recipes?.map((recipe) => (
-                <RecipeCard key={recipe.id} recipe={recipe} />
-              ))
-            : recipesTitles?.map((recipe) => (
-                <RecipeCard key={recipe.id} recipe={recipe} />
-              ))}
-        </Recipes>
-      </Container>
-    </>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <>
+        <Container>
+          <FilterBar />
+          <Recipes>
+            {!searchOn
+              ? recipes?.map((recipe) => (
+                  <RecipeCard key={recipe.id} recipe={recipe} />
+                ))
+              : recipesTitles?.map((recipe) => (
+                  <RecipeCard key={recipe.id} recipe={recipe} />
+                ))}
+          </Recipes>
+        </Container>
+      </>
+    </motion.div>
   );
 }
 

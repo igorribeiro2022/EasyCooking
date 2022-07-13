@@ -1,9 +1,4 @@
-import {
-  RecipeCardContainer,
-  Span,
-  StyledButton,
-  StyleRating,
-} from "./style.js";
+import { RecipeCardContainer, Span, StyledButton, StyleRating} from "./style.js";
 import { useNavigate } from "react-router-dom";
 import { Rating } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
@@ -22,7 +17,7 @@ function RecipeCard({ recipe, del, setMyRecipes, myRecipes }) {
   }, []);
 
   const handleView = () => {
-    navigate(`receita/${recipe.id}`);
+    navigate(`/receita/${recipe.id}`);
   };
 
   const handleDelete = () => {
