@@ -10,8 +10,6 @@ export const FilterBar = () => {
   const { setSearchOn } = useContext(RecipesContext);
   const { searchRecipesIngredients, tagFilter } = useContext(RecipesContext);
 
-  console.log(option);
-
   const handleSearch = (e) => {
     if (e === "") {
       setSearchOn(false);

@@ -68,7 +68,6 @@ export default function RegisterPage() {
   const submiting = ({ email, password, name }) => {
     createUser(email, password, name, async (e) => {
       const res = await e;
-      console.log(res);
       handleNavigate('/login')
     });
   };

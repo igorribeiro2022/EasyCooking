@@ -16,7 +16,6 @@ function DashBoard() {
 
   useEffect(() => {
     const id = localStorage.getItem("@Easy:Id");
-    console.log(id);
     Api.get(`/recipes/?userId=${id}`)
       .then((res) => setMyRecipes(res.data))
       .catch((err) => console.log(err));
@@ -55,7 +54,7 @@ function DashBoard() {
             <UserSavedRecipes onClick={clickOnCard} />
           ) : null}
         </div>
-        {console.log({ myRecipes })}
+        
         {myRecipes?.map((e) => (
           <RecipeCard
             key={e.id}

@@ -82,6 +82,11 @@ export const BoxStyled = styled(Box)`
   * {
     color: ${(props) => props.theme.colorOne};
   }
+
+  .labelError {
+    color: ${(props) => props.theme.backgroundColorTwo};
+  }
+
   .ulIngredients{
     display: flex;
     flex-direction: column;
