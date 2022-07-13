@@ -12,6 +12,8 @@ function DashBoard() {
   const [open, setOpen] = useState(false);
   const [buttonfilter, setButtonfilter] = useState("userRecipes");
 
+
+
   useEffect(() => {
     const id = localStorage.getItem("@Easy:Id");
     console.log(id);
@@ -34,6 +36,7 @@ function DashBoard() {
           >
             Minhas Receitas
           </button>
+
           <button
             onClick={() => {
               setButtonfilter("savedRecipes");
@@ -42,7 +45,6 @@ function DashBoard() {
           >
             Receitas Salvas
           </button>
-          <button className="button">Ingredientes</button>
         </div>
 
         <div className="dashboardContent">
