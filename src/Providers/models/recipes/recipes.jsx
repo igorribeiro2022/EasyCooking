@@ -5,19 +5,15 @@ export const RecipesContext = createContext([]);
 
 export function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState(null);
-  const [onlyRecipe, setOnlyRecipe] = useState(null);
   const [searchOn, setSearchOn] = useState(false);
   const [recipesTitles, setRecipesTitles] = useState();
   const token = localStorage.getItem("@Easy:Token");
   const userId = localStorage.getItem("@Easy:Id");
 
   useEffect(() => {
-    async function getRecipes() {
-      await Api.get("/recipes")
-        .then((res) => setRecipes(res.data))
-        .catch((err) => console.log(err));
-    }
-    getRecipes();
+    Api.get("/recipes")
+      .then((res) => setRecipes(res.data))
+      .catch((err) => console.log(err));
   }, []);
 
   async function RegisterRecipe({
