@@ -10,53 +10,53 @@ import { GlobalThemeContext } from "../../../Providers/models/theme/theme";
 import { UserContext } from "../../../Providers/models/user/user";
 
 export const Header = () => {
-  const { currentTheme, themeSwitch, getOpositeTheme } =
-    useContext(GlobalThemeContext);
-  const { user, isOpen, setIsOpen } = useContext(UserContext);
-  const navigate = useNavigate();
-  const handleNavigate = () => navigate("/");
+    const { currentTheme, themeSwitch, getOpositeTheme } =
+        useContext(GlobalThemeContext);
+    const { user, isOpen, setIsOpen } = useContext(UserContext);
+    const navigate = useNavigate();
+    const handleNavigate = () => navigate("/");
 
-  return (
-    <>
-      <HeaderContainer>
-        <img
-          className="imgLogo"
-          onClick={() => handleNavigate()}
-          src={currentTheme === "dark" ? LogoWhite : LogoBlack}
-          alt=""
-        />
+    return (
+        <>
+            <HeaderContainer>
+                <img
+                    className="imgLogo"
+                    onClick={() => handleNavigate()}
+                    src={currentTheme === "dark" ? LogoWhite : LogoBlack}
+                    alt=""
+                />
 
-        {user ? (
-          <figure className="figurePerfil" onMouseEnter={() => setIsOpen(true)}>
-            <img
-              className="imgPerfil"
-              src="https://static.vecteezy.com/ti/vetor-gratis/p3/364628-chef-avatar-ilustracao-gr%C3%A1tis-vetor.jpg"
-              alt=""
-            />
-          </figure>
-        ) : (
-          <div className="divButtons">
-            <button onClick={() => navigate("/login")}>Fazer Login</button>
-            <button onClick={() => navigate("/cadastro")}>Cadastrar</button>
-          </div>
-        )}
+                {user ? (
+                    <figure className="figurePerfil" onMouseEnter={() => setIsOpen(true)}>
+                        <img
+                            className="imgPerfil"
+                            src="https://static.vecteezy.com/ti/vetor-gratis/p3/364628-chef-avatar-ilustracao-gr%C3%A1tis-vetor.jpg"
+                            alt=""
+                        />
+                    </figure>
+                ) : (
+                    <div className="divButtons">
+                        <button onClick={() => navigate("/login")}>Fazer Login</button>
+                        <button onClick={() => navigate("/cadastro")}>Cadastrar</button>
+                    </div>
+                )}
 
-        <UserModal state={isOpen} setState={setIsOpen} />
-        <FormControlLabel
-          sx={ObjFormControl}
-          value="end"
-          control={
-            <Switch
-              sx={ObjSwitch}
-              checked={themeSwitch}
-              onChange={() => getOpositeTheme()}
-            />
-          }
-          label="Tema"
-          labelPlacement="start"
-        />
-      </HeaderContainer>
-      <Outlet />
-    </>
-  );
+                <UserModal state={isOpen} setState={setIsOpen} />
+                    <FormControlLabel
+                        sx={ObjFormControl}
+                        value="end"
+                        control={
+                            <Switch
+                                sx={ObjSwitch}
+                                checked={themeSwitch}
+                                onChange={() => getOpositeTheme()}
+                            />
+                        }
+                        label="Tema"
+                        labelPlacement="start"
+                    />
+            </HeaderContainer>
+            <Outlet />
+        </>
+    );
 };
