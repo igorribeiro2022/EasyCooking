@@ -136,7 +136,6 @@ export const Page = styled.div`
         svg {
           width: 21px;
           height: 21px;
-
           color: #0000009b;
         }
       }
@@ -178,7 +177,7 @@ export const Page = styled.div`
     cursor: pointer;
 
     font-size: 1rem;
-    color: ${(props) => props.theme.button.backgroundColor};
+    color: ${(props) => props.theme.title};
   }
 
   @media (min-width: 800px) {
@@ -191,7 +190,6 @@ export const Page = styled.div`
       align-items: center;
       margin-top: 50px;
       margin-left: 50px;
-
       background-color: ${(props) => props.theme.background};
     }
 

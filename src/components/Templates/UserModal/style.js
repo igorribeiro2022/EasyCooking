@@ -31,8 +31,8 @@ export const UserModalContainer = styled.div`
         height: 30px;
         border: none;
         border-radius: 25px;
-        background-color: ${(props) => props.theme.backgroundColorTwo};
-        color: white;
+        background-color: ${(props) => props.theme.button.backgroundColor};
+        color: ${(props) => props.theme.button.textColor};
         margin: 10px 0;
     }
 

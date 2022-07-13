@@ -81,4 +81,11 @@ export const Span = styled.span`
   cursor: pointer;
 `;
 
+export const StyleRating = styled.span`
+span {
+    svg {
+        color: ${props => props.theme.rating};
+    }
+}
+`
 export const StyledButton = styled.button``;
