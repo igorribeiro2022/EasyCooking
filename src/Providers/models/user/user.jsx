@@ -1,7 +1,6 @@
-import { CompressOutlined } from "@mui/icons-material";
-import { createContext, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { createContext, useState } from "react";
 import { toast } from "react-toastify";
-import Home from "../../../pages/home";
 import { Api } from "../../../services/api";
 
 export const UserContext = createContext([]);
@@ -13,11 +12,27 @@ export function UserProvider({ children }) {
   const [login, setLogin] = useState(false);
   const [verify, setVerify] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("@Easy:Token"));
+  const [id, setId] = useState(localStorage.getItem("@Easy:Id"));
 
-    async function createUser(email, password, name, callback) {
+  useEffect(() => {
+    if (token) {
+      console.log(id);
+      console.log(token);
+      Api.get(`/users/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => setUser(res.data))
+        .catch((err) => console.log(err));
+    }
+  }, []);
+
+  async function createUser(email, password, name, callback) {
     const data = { email, password, name };
 
-    toast.promise(Api.post("/register", data), {
+    toast
+      .promise(Api.post("/register", data), {
         pending: {
           render() {
             return "Organizando a cozinha";
@@ -30,7 +45,7 @@ export function UserProvider({ children }) {
           icon: "🍴",
         },
         error: "Vergonha da profissón, verifique seus dados!",
-    })
+      })
       .then(() => {
         setRegister(true);
       })

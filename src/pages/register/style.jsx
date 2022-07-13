@@ -100,7 +100,7 @@ p {
 }
 
 h2 {
-    color: #EA1D2C;
+    color: ${props => props.theme.title};
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -121,7 +121,7 @@ img {
 
 .link {
     font-size: 1rem;
-    color: ${props => props.theme.button.backgroundColor};
+    color: ${props => props.theme.title};
 
     cursor: pointer;
 }

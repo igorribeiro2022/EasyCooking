@@ -1,30 +1,25 @@
 import { Container } from "./style.js";
 import { UserRecipes } from "../../components/Templates/UserRecipes";
-import { UserContext } from "../../Providers/models/user/user.jsx";
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { AddRecipeModal } from "../../components/Templates/AddRecipeModal/index.jsx";
 import { UserSavedRecipes } from "../../components/Templates/UserSavedRecipes";
 import { Api } from "../../services/api.js";
 import RecipeCard from "../../components/Templates/RecipeCard/index.jsx";
-import { RecipesContext } from "../../Providers/models/recipes/recipes.jsx";
 
 function DashBoard() {
   const [myRecipes, setMyRecipes] = useState(null);
 
   const [open, setOpen] = useState(false);
   const [buttonfilter, setButtonfilter] = useState("userRecipes");
-  const { recipes } = useContext(RecipesContext);
 
 
-  const { user } = useContext(UserContext);
 
   useEffect(() => {
-    console.log(recipes);
     const id = localStorage.getItem("@Easy:Id");
-    const newRecipes = recipes?.filter((e) => e.userId === id);
-    console.log(newRecipes);
-    setMyRecipes(newRecipes);
+    console.log(id);
+    Api.get(`/recipes/?userId=${id}`)
+      .then((res) => setMyRecipes(res.data))
+      .catch((err) => console.log(err));
   }, []);
 
   const clickOnCard = (e) => setOpen(true);
@@ -61,7 +56,15 @@ function DashBoard() {
           ) : null}
         </div>
         {console.log({ myRecipes })}
-
+        {myRecipes?.map((e) => (
+          <RecipeCard
+            key={e.id}
+            recipe={e}
+            del
+            setMyRecipes={setMyRecipes}
+            myRecipes={myRecipes}
+          />
+        ))}
       </Container>
       <AddRecipeModal open={open} setOpen={setOpen} />
     </>

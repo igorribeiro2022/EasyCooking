@@ -19,8 +19,8 @@ export const Container = styled.div`
     height: 40px;
     border-radius: 40px;
     border: none;
-    background-color: #EA1D2C;
-    color: white;
+    background-color: ${props => props.theme.button.backgroundColor};
+    color: ${props=> props.theme.button.textColor};
 }
 .button:hover{
     filter: brightness(1.5);
