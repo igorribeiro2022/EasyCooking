@@ -147,7 +147,12 @@ export const BoxStyled = styled(Box)`
       height: 45px;
       width: 20%;
       border-radius: 35px;
-      margin: 0 5px; 
+      margin: 0 5px;
+      
+      :hover {
+      transition: all 0.3s;
+      filter: brightness(1.5);
+      }
     }
 
     input {
@@ -160,9 +165,6 @@ export const BoxStyled = styled(Box)`
       height: 45px;
       margin: 0 5px;
       padding: 0 10px;
-      button {
-        
-      }
     }
   }
 
