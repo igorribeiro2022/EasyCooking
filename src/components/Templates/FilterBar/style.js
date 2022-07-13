@@ -56,8 +56,8 @@ export const FilterBarContainer = styled.div`
 .filterBar div button{
 
     border: none;
-    background-color: #EA1D2C;
-    color: white;
+    background-color: ${props => props.theme.button.backgroundColor};
+    color: ${props => props.theme.button.textColor};
     height: 40px;
     width: 100px;
     border-radius: 35px;

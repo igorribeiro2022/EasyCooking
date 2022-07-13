@@ -2,13 +2,13 @@ import { Autocomplete, Box, TextField } from "@mui/material";
 import styled from "styled-components";
 
 export const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "80vw",
-  boxShadow: 24,
-  p: 4,
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "80vw",
+    boxShadow: 24,
+    p: 4,
 };
 
 export const TextFieldStyled = styled(TextField)`
@@ -142,8 +142,8 @@ export const BoxStyled = styled(Box)`
 
     .butAdd {
       border: none;
-      background-color: #ea1d2c;
-      color: white;
+      background-color: ${props => props.theme.button.backgroundColor};
+      color: ${props => props.theme.button.textColor};
       height: 45px;
       width: 20%;
       border-radius: 35px;
@@ -199,8 +199,8 @@ export const BoxStyled = styled(Box)`
 
   .buttonSave {
     border: none;
-    background-color: #ea1d2c;
-    color: white;
+    background-color: ${props => props.theme.button.backgroundColor};
+    color: ${props => props.theme.button.textColor};
     height: 45px;
     width: 200px;
     border-radius: 35px;

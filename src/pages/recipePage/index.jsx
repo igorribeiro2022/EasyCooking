@@ -42,9 +42,17 @@ function RecipePage() {
 
     const handleSave = () => {
         const data = user.favorites;
-        data.push(onlyRecipe);
-        return saveRecipe(data);
+        
+        if(data.map ((recipe) => recipe.id).includes(onlyRecipe.id)) {
+
+            console.log("receita já salva");
+        }
+        else {           
+            data.push(onlyRecipe);
+            return saveRecipe(data);
+        }
     };
+    console.log(user.favorites);
 
 
     return (

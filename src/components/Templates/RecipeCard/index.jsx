@@ -1,11 +1,16 @@
-import { RecipeCardContainer, Span, StyledButton } from "./style.js";
+import {
+  RecipeCardContainer,
+  Span,
+  StyledButton,
+  StyleRating,
+} from "./style.js";
 import { useNavigate } from "react-router-dom";
 import { Rating } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../Providers/models/user/user.jsx";
 import { Api } from "../../../services/api.js";
 
-function RecipeCard({ recipe, del }) {
+function RecipeCard({ recipe, del, setMyRecipes, myRecipes }) {
   const navigate = useNavigate();
   const { verify } = useContext(UserContext);
   const [rating, setRating] = useState(2);
@@ -21,8 +26,18 @@ function RecipeCard({ recipe, del }) {
   };
 
   const handleDelete = () => {
-    Api.delete(`/recipes/${recipe.id}`);
-    window.location.reload();
+    const token = localStorage.getItem("@Easy:Token");
+    Api.delete(`/recipes/${recipe.id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        const newList = myRecipes.filter((e) => e !== recipe);
+        console.log(res);
+        setMyRecipes(newList);
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <>
@@ -39,16 +54,20 @@ function RecipeCard({ recipe, del }) {
 
         <div>
           {verify ? (
-            <Rating value={rating} size="small" readOnly />
+            <StyleRating>
+              <Rating value={rating} size="small" readOnly />
+            </StyleRating>
           ) : (
-            <Rating value={rating} size="small" readOnly />
+            <StyleRating>
+              <Rating value={rating} size="small" readOnly />
+            </StyleRating>
           )}
 
           <Span className="RecipeButton" lunch={recipe.category}>
             {recipe.category}
           </Span>
           {del && (
-            <StyledButton onClick={() => handleDelete}>Delete</StyledButton>
+            <StyledButton onClick={() => handleDelete()}>Delete</StyledButton>
           )}
         </div>
       </RecipeCardContainer>

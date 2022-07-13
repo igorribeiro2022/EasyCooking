@@ -1,25 +1,24 @@
 import { Container } from "./style.js";
 import { UserRecipes } from "../../components/Templates/UserRecipes";
-import { UserContext } from "../../Providers/models/user/user.jsx";
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { AddRecipeModal } from "../../components/Templates/AddRecipeModal/index.jsx";
 import { UserSavedRecipes } from "../../components/Templates/UserSavedRecipes";
 import { Api } from "../../services/api.js";
 import RecipeCard from "../../components/Templates/RecipeCard/index.jsx";
-import { RecipesContext } from "../../Providers/models/recipes/recipes.jsx";
 
 function DashBoard() {
   const [myRecipes, setMyRecipes] = useState(null);
 
   const [open, setOpen] = useState(false);
   const [buttonfilter, setButtonfilter] = useState("userRecipes");
-  const { recipes } = useContext(RecipesContext);
+
+
 
   useEffect(() => {
     const id = localStorage.getItem("@Easy:Id");
-    const newRecipes = recipes?.filter((e) => e.userId === id);
-    setMyRecipes(newRecipes);
+    Api.get(`/recipes/?userId=${id}`)
+      .then((res) => setMyRecipes(res.data))
+      .catch((err) => console.log(err));
   }, []);
 
   const clickOnCard = (e) => setOpen(true);
@@ -36,6 +35,7 @@ function DashBoard() {
           >
             Minhas Receitas
           </button>
+
           <button
             onClick={() => {
               setButtonfilter("savedRecipes");
@@ -44,7 +44,6 @@ function DashBoard() {
           >
             Receitas Salvas
           </button>
-          <button className="button">Ingredientes</button>
         </div>
 
         <div className="dashboardContent">
@@ -57,7 +56,13 @@ function DashBoard() {
         </div>
         
         {myRecipes?.map((e) => (
-          <RecipeCard key={e.id} recipe={e} del />
+          <RecipeCard
+            key={e.id}
+            recipe={e}
+            del
+            setMyRecipes={setMyRecipes}
+            myRecipes={myRecipes}
+          />
         ))}
       </Container>
       <AddRecipeModal open={open} setOpen={setOpen} />
