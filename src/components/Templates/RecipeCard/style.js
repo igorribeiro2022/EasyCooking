@@ -6,16 +6,18 @@ export const RecipeCardContainer = styled.div`
   align-items: center;
   border: 1px solid #e6e6e6;
   background-color: ${(props) => props.theme.colorHeader};
-  border-radius: 5px;
+  border-radius: 8px;
   border: none;
   width: 230px;
   height: 250px;
-  padding: 10px 0;
-  justify-content: space-around;
+  padding: 15px;
+  margin-bottom: 15px;
+  justify-content: space-between;
+  cursor: pointer;
 
   h1 {
     display: inline-block;
-    width: 90%;
+    width: 100%;
     padding: 1%;
   }
 
@@ -24,27 +26,26 @@ export const RecipeCardContainer = styled.div`
     flex-direction: column;
   }
 
-  cursor: pointer;
 
   .imgFig {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 100%;
     height: 100px;
-    margin: 0 auto;
+    margin: 10px auto 0 auto;
   }
   img {
     width: 100%;
     height: 120px;
-    border-radius: 8px;
+    border-radius: 5px;
   }
   .RecipeName {
     font-size: 11pt;
+    width: 100%;
+    text-align: left;
     font-weight: bold;
     margin: 0 auto;
-  }
-  .RecipeButton {
   }
 
   div {
@@ -52,7 +53,7 @@ export const RecipeCardContainer = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
   }
 `;
@@ -77,7 +78,7 @@ export const Span = styled.span`
   font-size: 12px;
   font-weight: 500;
 
-  color: ${(props) => props.theme.colorOne};
+  color: #121212;
   cursor: pointer;
 `;
 
@@ -88,4 +89,3 @@ span {
     }
 }
 `
-export const StyledButton = styled.button``;
