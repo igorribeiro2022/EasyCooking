@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const UserModalContainer = styled.div`
     position: absolute;
+    z-index: 10;
     top: 100px;
     right: 15%;
 

@@ -8,25 +8,25 @@ function Switch() {
 }
 
 export const ObjFormControl = {
-  position: "fixed",
+  position: "absolute",
   top: 0,
   right: 0,
 };
 
 export const ObjSwitch = {
-  margin: "25px",
-  width: 42,
-  height: 26,
+  margin: "10px 20px 5px 10px",
+  width: 40,
+  height: 24,
   padding: 0,
   "& .MuiSwitch-switchBase": {
-    padding: 0,
-    margin: 0.2,
+    padding: 0.1,
+    margin: 0.1,
     transitionDuration: "300ms",
     "&.Mui-checked": {
       transform: "translateX(16px)",
       color: "#fff",
       "& + .MuiSwitch-track": {
-        backgroundColor: Switch === "dark" ? "#EA1D2C" : "#EA1D2C",
+        backgroundColor: Switch === "dark" ? "#800000" : "#800000",
         opacity: 1,
         border: 0,
       },
@@ -35,7 +35,7 @@ export const ObjSwitch = {
       },
     },
     "&.Mui-focusVisible .MuiSwitch-thumb": {
-      color: "#EA1D2C",
+      color: "#800000",
       border: "6px solid #fff",
     },
     "&.Mui-disabled .MuiSwitch-thumb": {
@@ -47,16 +47,13 @@ export const ObjSwitch = {
   },
   "& .MuiSwitch-thumb": {
     boxSizing: "border-box",
-    width: 22,
-    height: 22,
+    width: 20,
+    height: 20,
   },
   "& .MuiSwitch-track": {
     borderRadius: 26 / 2,
     backgroundColor: Switch === "light" ? "#E9E9EA" : "#39393D",
     opacity: 1,
-    //transition: theme.transitions.create(['background-color'], {
-    //duration: 500,
-    // }),
   },
 };
 
