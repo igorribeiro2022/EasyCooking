@@ -5,13 +5,9 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddRecipeModal } from "../../components/Templates/AddRecipeModal/index.jsx";
 import { UserSavedRecipes } from "../../components/Templates/UserSavedRecipes";
-import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { Api } from "../../services/api.js";
 import RecipeCard from "../../components/Templates/RecipeCard/index.jsx";
 import { RecipesContext } from "../../Providers/models/recipes/recipes.jsx";
-
 
 function DashBoard() {
   const [myRecipes, setMyRecipes] = useState(null);
@@ -19,7 +15,6 @@ function DashBoard() {
   const [open, setOpen] = useState(false);
   const [buttonfilter, setButtonfilter] = useState("userRecipes");
   const { recipes } = useContext(RecipesContext);
-
 
   useEffect(() => {
     console.log(recipes);
@@ -29,8 +24,7 @@ function DashBoard() {
     setMyRecipes(newRecipes);
   }, []);
 
-
-  const clickOnCard = (e) => setOpen(true)
+  const clickOnCard = (e) => setOpen(true);
 
   return (
     <>
@@ -69,7 +63,6 @@ function DashBoard() {
         ))}
       </Container>
       <AddRecipeModal open={open} setOpen={setOpen} />
-
     </>
   );
 }
