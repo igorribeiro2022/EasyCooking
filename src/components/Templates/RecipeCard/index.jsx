@@ -22,7 +22,7 @@ function RecipeCard({ recipe, del, setMyRecipes, myRecipes }) {
   }, []);
 
   const handleView = () => {
-    navigate(`receita/${recipe.id}`);
+    navigate(`/receita/${recipe.id}`);
   };
 
   const handleDelete = () => {
