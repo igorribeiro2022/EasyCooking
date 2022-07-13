@@ -14,26 +14,10 @@ export function UserProvider({ children }) {
   const [verify, setVerify] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("@Easy:Token"));
 
-  useEffect(() => {
-    async function verifyToken() {
-      if (token) {
-        await Api.get("/verify", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-          .then((e) => setVerify(true))
-          .catch((err) => setVerify(false));
-      }
-    }
-    verifyToken();
-  }, []);
-
-  async function createUser(email, password, name, callback) {
+    async function createUser(email, password, name, callback) {
     const data = { email, password, name };
 
-    toast
-      .promise(Api.post("/register", data), {
+    toast.promise(Api.post("/register", data), {
         pending: {
           render() {
             return "Organizando a cozinha";
@@ -46,7 +30,7 @@ export function UserProvider({ children }) {
           icon: "🍴",
         },
         error: "Vergonha da profissón, verifique seus dados!",
-      })
+    })
       .then(() => {
         setRegister(true);
       })
