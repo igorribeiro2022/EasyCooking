@@ -19,11 +19,10 @@ function RecipeCard({ recipe }) {
         <figure className="imgFig">
           <img src={recipe.image} alt="" />
         </figure>
+
         <p className="RecipeName">{recipe.name}</p>
 
-        <button className="RecipeButton">
-          {recipe.category}
-        </button>
+
 
         <div>
           {verify ? (
@@ -41,6 +40,11 @@ function RecipeCard({ recipe }) {
               readOnly
             />
           )}
+
+          <span className="RecipeButton">
+                {recipe.category}
+          </span>
+
         </div>
       </RecipeCardContainer>
       {/* <FullRecipe state={isOpen} setState={setIsOpen}/> */}
