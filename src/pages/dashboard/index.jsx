@@ -12,6 +12,8 @@ function DashBoard() {
 
   const [open, setOpen] = useState(false);
   const [buttonfilter, setButtonfilter] = useState("userRecipes");
+  const [onSaved, setOnSaved] = useState(false);
+  const [savedRecipes, setSavedRecipes] = useState(false);
 
   useEffect(() => {
     const id = localStorage.getItem("@Easy:Id");
@@ -20,6 +22,22 @@ function DashBoard() {
       .catch((err) => console.log(err));
   }, []);
   const clickOnCard = (e) => setOpen(true);
+
+  const handleSaved = () => {
+    const token = localStorage.getItem("@Easy:Token");
+    const id = localStorage.getItem("@Easy:Id");
+    Api.get(`/users/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        setSavedRecipes(res.data.favorites);
+        console.log(res.data.favorites);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setOnSaved(!onSaved));
+  };
 
   return (
     <motion.div
@@ -33,7 +51,7 @@ function DashBoard() {
           <div className="buttonsDiv">
             <button
               onClick={() => {
-                setButtonfilter("userRecipes");
+                setOnSaved(!onSaved);
               }}
               className="button"
             >
@@ -42,7 +60,7 @@ function DashBoard() {
 
             <button
               onClick={() => {
-                setButtonfilter("savedRecipes");
+                handleSaved();
               }}
               className="button"
             >
@@ -51,21 +69,25 @@ function DashBoard() {
           </div>
 
           <div className="dashboardContent">
-            {buttonfilter === "userRecipes" ? (
-              <UserRecipes onClick={clickOnCard} />
-            ) : null}
-            {buttonfilter === "savedRecipes" ? (
-              <UserSavedRecipes onClick={clickOnCard} />
-            ) : null}
-            {myRecipes?.map((e) => (
-              <RecipeCard
-                key={e.id}
-                recipe={e}
-                del
-                setMyRecipes={setMyRecipes}
-                myRecipes={myRecipes}
-              />
-            ))}
+            {!onSaved
+              ? myRecipes?.map((e) => (
+                  <RecipeCard
+                    key={e.id}
+                    recipe={e}
+                    del
+                    setMyRecipes={setMyRecipes}
+                    myRecipes={myRecipes}
+                  />
+                ))
+              : savedRecipes?.map((e) => (
+                  <RecipeCard
+                    key={e.id}
+                    recipe={e}
+                    del
+                    setMyRecipes={setMyRecipes}
+                    myRecipes={savedRecipes}
+                  />
+                ))}
           </div>
         </Container>
         <AddRecipeModal open={open} setOpen={setOpen} />
