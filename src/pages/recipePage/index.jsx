@@ -29,17 +29,17 @@ function RecipePage() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    Api.get(`/recipes/${recipeName}`)
+    Api.get(`/recipes/${+recipeName}`)
       .then((res) => {
         setonlyRecipe(res.data);
       })
       .catch((err) => console.log(err));
-
     const value = onlyRecipe?.reviews?.reduce(
       (prev, acc) => prev + acc.rating,
       0
     );
     const result = value / onlyRecipe?.reviews.length;
+
     setRating(result);
   }, []);
 
