@@ -65,6 +65,7 @@ function RecipePage() {
 
   const handleRating = (e) => {
     ratingMax(user, onlyRecipe, e);
+    setRating(e);
   };
 
   const handleSave = () => {
@@ -152,7 +153,6 @@ function RecipePage() {
         </StyleContainer>
       </>
     </motion.div>
-
   );
 }
 
