@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { Api } from "../../../services/api";
 
 export const IngredientsContext = createContext({});
@@ -29,8 +30,14 @@ export function IngredientsProvider({ children }) {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res)
+        toast.success("Avaliação feita")
+      })
+      .catch((err) => {
+        console.log(err)
+        toast.error("Falha ao avaliar")
+      });
   }
 
   return (

@@ -22,7 +22,7 @@ export const UserSavedRecipes = () => {
   return (
     <>
       {favorites ? (
-        favorites?.map((recipe) => <RecipeCard recipe={recipe} />)
+        favorites?.map((recipe, index) => <RecipeCard key={index} recipe={recipe} />)
       ) : (
         <h1>Não há receitas salvas</h1>
       )}
