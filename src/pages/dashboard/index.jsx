@@ -7,67 +7,67 @@ import { Api } from "../../services/api.js";
 import RecipeCard from "../../components/Templates/RecipeCard/index.jsx";
 
 function DashBoard() {
-  const [myRecipes, setMyRecipes] = useState(null);
+    const [myRecipes, setMyRecipes] = useState(null);
 
-  const [open, setOpen] = useState(false);
-  const [buttonfilter, setButtonfilter] = useState("userRecipes");
+    const [open, setOpen] = useState(false);
+    const [buttonfilter, setButtonfilter] = useState("userRecipes");
 
 
 
-  useEffect(() => {
-    const id = localStorage.getItem("@Easy:Id");
-    Api.get(`/recipes/?userId=${id}`)
-      .then((res) => setMyRecipes(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+    useEffect(() => {
+        const id = localStorage.getItem("@Easy:Id");
+        Api.get(`/recipes/?userId=${id}`)
+            .then((res) => setMyRecipes(res.data))
+            .catch((err) => console.log(err));
+    }, []);
 
-  const clickOnCard = (e) => setOpen(true);
+    const clickOnCard = (e) => setOpen(true);
 
-  return (
-    <>
-      <Container>
-        <div className="buttonsDiv">
-          <button
-            onClick={() => {
-              setButtonfilter("userRecipes");
-            }}
-            className="button"
-          >
-            Minhas Receitas
-          </button>
+    return (
+        <>
+            <Container>
+                <div className="buttonsDiv">
+                    <button
+                        onClick={() => {
+                            setButtonfilter("userRecipes");
+                        }}
+                        className="button"
+                    >
+                        Minhas Receitas
+                    </button>
 
-          <button
-            onClick={() => {
-              setButtonfilter("savedRecipes");
-            }}
-            className="button"
-          >
-            Receitas Salvas
-          </button>
-        </div>
+                    <button
+                        onClick={() => {
+                            setButtonfilter("savedRecipes");
+                        }}
+                        className="button"
+                    >
+                        Receitas Salvas
+                    </button>
+                </div>
 
-        <div className="dashboardContent">
-          {buttonfilter === "userRecipes" ? (
-            <UserRecipes onClick={clickOnCard} />
-          ) : null}
-          {buttonfilter === "savedRecipes" ? (
-            <UserSavedRecipes onClick={clickOnCard} />
-          ) : null}
-        </div>
-        
-        {myRecipes?.map((e) => (
-          <RecipeCard
-            key={e.id}
-            recipe={e}
-            del
-            setMyRecipes={setMyRecipes}
-            myRecipes={myRecipes}
-          />
-        ))}
-      </Container>
-      <AddRecipeModal open={open} setOpen={setOpen} />
-    </>
-  );
+                <div className="dashboardContent">
+                    {buttonfilter === "userRecipes" ? (
+                        <UserRecipes onClick={clickOnCard} />
+                    ) : null}
+                    {buttonfilter === "savedRecipes" ? (
+                        <UserSavedRecipes onClick={clickOnCard} />
+                    ) : null}
+
+                    {myRecipes?.map((e) => (
+                        <RecipeCard
+                            key={e.id}
+                            recipe={e}
+                            del
+                            setMyRecipes={setMyRecipes}
+                            myRecipes={myRecipes}
+                        />
+                    )).reverse()}
+                </div>
+            </Container>
+            <AddRecipeModal open={open} setOpen={setOpen} />
+        </>
+    );
 }
 
 export default DashBoard;
