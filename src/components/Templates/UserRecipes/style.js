@@ -12,12 +12,17 @@ export const DashBoardRecipesContainer = styled.div`
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   width: 210px;
+   width: 230px;
+   min-width: 230px; 
    height: 250px;
+   min-height: 250px;
    background-color: ${props => props.theme.button.backgroundColor};
    border-radius: 5px;
    cursor: pointer;
-
+   
+   @media (max-width: 700px) {
+      margin-bottom: 15px;
+   }
 
    :hover {
       transition: all .3s;
