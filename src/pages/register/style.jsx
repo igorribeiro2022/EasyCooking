@@ -5,6 +5,7 @@ width: 100vw;
 height: 100vh;
 background-color: ${(props) => props.theme.background};
 display: flex;
+flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 12vw;
@@ -72,7 +73,17 @@ form {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    width: 50vw;
+    width: 100vw;
+
+    figure {
+        width: 70%;
+        align-self: center;
+
+        img {
+            width: 100%;
+
+        }
+    }
 
     p {
         font-size: 17pt;
@@ -87,7 +98,7 @@ form {
 }
 
 .divForm {
-    width: 50vw;
+    width: 90vw;
 }
 
 p {
@@ -96,7 +107,8 @@ p {
     width: 100%;
     font-size: 2rem;
     font-weight: bold;
-    color: ${(props) => props.theme.colorOne}; 
+    color: ${(props) => props.theme.colorOne};
+    display: none;
 }
 
 h2 {
@@ -126,16 +138,26 @@ img {
     cursor: pointer;
 }
 
+@media( min-width: 500px ){
+    flex-direction: row;
+    p {
+        display: block;
+    }
 
+    .divForm {
+        width: 50vw;
+    }
 
-@media( max-width: 567px ){
-    flex-direction: column;
-    gap: 0;
+    .logoDiv {
+    width: 30vw;
 
-    background-image: linear-gradient(to bottom, ${(props) => props.theme.backgroundColorTwo}, ${(props) => props.theme.backgroundColorTwo}, rgb(0,0,0,0));
-    img{
-        width: 90%;
+    figure {
+        align-self: flex-start;
+
+        img {
+            width: 100%;
+        }
     }
 }
-
+}
 `
