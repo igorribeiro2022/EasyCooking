@@ -9,8 +9,8 @@ export const Container = styled.div`
 .buttonsDiv{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: space-around;
+    width: 50%;
     padding: 0 15vw;
     margin-top: 30px;
 
