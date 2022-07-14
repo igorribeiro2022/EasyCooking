@@ -60,6 +60,10 @@ export const AutoStyled = styled(Autocomplete)`
     width: 90%;
     height: 45px;
   }
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 export const SelectStyled = styled.select`
@@ -70,6 +74,10 @@ export const SelectStyled = styled.select`
   height: 45px;
   margin: 0 5px; 
   padding: 0 10px;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 export const BoxStyled = styled(Box)`
@@ -210,6 +218,34 @@ export const BoxStyled = styled(Box)`
     :hover {
       transition: all 0.3s;
       filter: brightness(1.5);
+    }
+  }
+
+  @media (max-width: 700px) {
+    overflow-y: auto;
+    max-height: 100vh;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-height: 250px;
+
+      input {
+        min-width: 100%;
+      }
+
+      button {
+        min-width: 100%;
+      }
+    }
+    ul {
+      flex-wrap: nowrap;
+    }
+    .catImg {
+      flex-direction: column;
+      div {
+        width: 100%;
+      }
     }
   }
 `;

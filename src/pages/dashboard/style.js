@@ -42,7 +42,19 @@ export const Container = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     width: 70vw;
-    gap: 1vw;
+    gap: 3vw;
     padding: 25px 0;
+  }
+
+  @media (max-width: 700px) {
+
+    .dashboardContent {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      width: 95vw;
+      height: 50vh;
+      overflow-x: auto;
+    }
   }
 `;
