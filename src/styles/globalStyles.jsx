@@ -15,6 +15,7 @@ const lightTheme = {
     rating: "#f68f11",
     title: "#ea1d2cff",
 
+
     button: {
         textColor: "#ffffff",
         backgroundColor: "#ea1d2cff",
@@ -84,4 +85,3 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 `;
-

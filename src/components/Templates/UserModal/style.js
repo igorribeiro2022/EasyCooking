@@ -8,9 +8,12 @@ export const UserModalContainer = styled.div`
 
     .UserModal{
         border-radius: 5px;
-        width: 170px;
+        width: 250px;
+        height: 200px;
         display: flex;
+
         flex-direction: column;
+        justify-content: center;
         align-items: flex-end;
         background-color: ${(props) => props.theme.colorHeader};
         box-shadow: 0px 0px 10px 0px black;

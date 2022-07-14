@@ -8,19 +8,18 @@ import RecipeCard from "../../components/Templates/RecipeCard/index.jsx";
 import { motion } from "framer-motion";
 
 function DashBoard() {
-  const [myRecipes, setMyRecipes] = useState(null);
+    const [myRecipes, setMyRecipes] = useState(null);
 
-  const [open, setOpen] = useState(false);
-  const [buttonfilter, setButtonfilter] = useState("userRecipes");
+    const [open, setOpen] = useState(false);
+    const [buttonfilter, setButtonfilter] = useState("userRecipes");
 
-  useEffect(() => {
-    const id = localStorage.getItem("@Easy:Id");
-    Api.get(`/recipes/?userId=${id}`)
-      .then((res) => setMyRecipes(res.data))
-      .catch((err) => console.log(err));
-  }, []);
-
-  const clickOnCard = (e) => setOpen(true);
+useEffect(() => {
+        const id = localStorage.getItem("@Easy:Id");
+        Api.get(`/recipes/?userId=${id}`)
+            .then((res) => setMyRecipes(res.data))
+            .catch((err) => console.log(err));
+    }, []);
+    const clickOnCard = (e) => setOpen(true);
 
   return (
     <motion.div
@@ -74,6 +73,7 @@ function DashBoard() {
       </>
     </motion.div>
   );
+
 }
 
 export default DashBoard;

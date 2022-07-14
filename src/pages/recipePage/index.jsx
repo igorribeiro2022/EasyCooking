@@ -3,7 +3,14 @@ import { useContext } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "../../components/Templates/Header";
-import { ContentPage, NameRecipe, Preparation, RatingStyle, StyleContainer} from "./style";
+import { RecipesContext } from "../../Providers/models/recipes/recipes";
+import {
+  ContentPage,
+  NameRecipe,
+  Preparation,
+  RatingStyle,
+  StyleContainer,
+} from "./style";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BsFillSaveFill } from "react-icons/bs";
 import { Rating } from "@mui/material";
@@ -19,12 +26,13 @@ function RecipePage() {
   const { ratingMax } = useContext(IngredientsContext);
 
   const { saveRecipe } = useContext(UserContext);
-  const { user } = useContext(UserContext);
+
   const [rating, setRating] = useState(null);
   const [onlyRecipe, setonlyRecipe] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    Api.get(`/recipes/${recipeName}`)
+    Api.get(`/recipes/${+recipeName}`)
       .then((res) => {
         setonlyRecipe(res.data);
       })
@@ -35,8 +43,21 @@ function RecipePage() {
       0
     );
     const result = value / onlyRecipe?.reviews.length;
+
     setRating(result);
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("@Easy:Token");
+    const id = localStorage.getItem("@Easy:Id");
+    Api.get(`/users/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => setUser(res.data))
+      .catch((err) => console.log(err));
+  });
 
   const handleBack = () => {
     window.history.back();
@@ -131,6 +152,7 @@ function RecipePage() {
         </StyleContainer>
       </>
     </motion.div>
+
   );
 }
 
