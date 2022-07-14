@@ -1,9 +1,4 @@
-import {
-  RecipeCardContainer,
-  Span,
-  StyledButton,
-  StyleRating,
-} from "./style.js";
+import { RecipeCardContainer, Span, StyledButton, StyleRating} from "./style.js";
 import { useNavigate } from "react-router-dom";
 import { Rating } from "@mui/material";
 import { useEffect, useState } from "react";

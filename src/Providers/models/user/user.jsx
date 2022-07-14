@@ -16,8 +16,6 @@ export function UserProvider({ children }) {
 
   useEffect(() => {
     if (token) {
-      console.log(id);
-      console.log(token);
       Api.get(`/users/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,

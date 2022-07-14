@@ -17,6 +17,7 @@ import LogoWhite from "../../assets/logoWhite-V2.svg";
 import { GlobalThemeContext } from "../../Providers/models/theme/theme";
 import Switch from "@mui/material/Switch";
 import { FormControlLabel } from "@mui/material";
+import { motion } from "framer-motion";
 
 export default function LoginPage() {
   const [inputType, setInputType] = useState("password");
@@ -53,93 +54,100 @@ export default function LoginPage() {
   }
 
   return (
-    <Page>
-      <div className="mainDiv">
-        <figure className="figLogo">
-          {currentTheme === "light" ? (
-            <img src={LogoV2Black} alt="Easy Cooking" />
-          ) : (
-            <img src={LogoWhite} alt="Easy Cooking" />
-          )}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <Page>
+        <div className="mainDiv">
+          <figure className="figLogo">
+            {currentTheme === "light" ? (
+              <img src={LogoV2Black} alt="Easy Cooking" />
+            ) : (
+              <img src={LogoWhite} alt="Easy Cooking" />
+            )}
+          </figure>
+
+          <Form onSubmit={handleSubmit(onSubmitFunction)}>
+            <h1>Faça seu login</h1>
+
+            <div>
+              <label>
+                E-mail {errors.email && <span> - {errors.email.message}</span>}
+              </label>
+              <div>
+                <GiCook className="iconInputs" />
+                <input
+                  type="email"
+                  placeholder="Digite seu email"
+                  {...register("email")}
+                />
+              </div>
+            </div>
+            <div>
+              <label>
+                Senha{" "}
+                {errors.password && <span> - {errors.password.message}</span>}
+              </label>
+              <div>
+                <GiKnifeFork className="iconInputs" />
+                <input
+                  type={inputType}
+                  placeholder="Digite sua senha"
+                  {...register("password")}
+                />
+                {inputType === "password" ? (
+                  <TbCookieOff
+                    className="view iconInputs"
+                    onClick={() => setInputType("text")}
+                  />
+                ) : (
+                  <TbCookie
+                    className="view iconInputs"
+                    onClick={() => setInputType("password")}
+                  />
+                )}
+              </div>
+            </div>
+
+            <Button type="submit">Login</Button>
+
+            <h4>
+              Cadasatre-se{" "}
+              <span
+                className="link"
+                onClick={() => callBackNavigate("/cadastro")}
+              >
+                aqui
+              </span>{" "}
+              ou navegue{" "}
+              <span className="link" onClick={() => callBackNavigate("/")}>
+                anônimamente
+              </span>
+            </h4>
+          </Form>
+        </div>
+
+        <figure className="figCook">
+          <img className="pic" src={loginImg} alt="Easy Cooking" />
         </figure>
 
-        <Form onSubmit={handleSubmit(onSubmitFunction)}>
-          <h1>Faça seu login</h1>
-
-          <div>
-            <label>
-              E-mail {errors.email && <span> - {errors.email.message}</span>}
-            </label>
-            <div>
-              <GiCook className="iconInputs" />
-              <input
-                type="email"
-                placeholder="Digite seu email"
-                {...register("email")}
-              />
-            </div>
-          </div>
-          <div>
-            <label>
-              Senha{" "}
-              {errors.password && <span> - {errors.password.message}</span>}
-            </label>
-            <div>
-              <GiKnifeFork className="iconInputs" />
-              <input
-                type={inputType}
-                placeholder="Digite sua senha"
-                {...register("password")}
-              />
-              {inputType === "password" ? (
-                <TbCookieOff
-                  className="view iconInputs"
-                  onClick={() => setInputType("text")}
-                />
-              ) : (
-                <TbCookie
-                  className="view iconInputs"
-                  onClick={() => setInputType("password")}
-                />
-              )}
-            </div>
-          </div>
-
-          <Button type="submit">Login</Button>
-
-          <h4>
-            Cadasatre-se{" "}
-            <span
-              className="link"
-              onClick={() => callBackNavigate("/cadastro")}
-            >
-              aqui
-            </span>{" "}
-            ou navegue{" "}
-            <span className="link" onClick={() => callBackNavigate("/")}>
-              anônimamente
-            </span>
-          </h4>
-        </Form>
-      </div>
-
-      <figure className="figCook">
-        <img className="pic" src={loginImg} alt="Easy Cooking" />
-      </figure>
-
-      <FormControlLabel
-        sx={ObjFormControl}
-        value="end"
-        control={
-          <Switch
-            sx={ObjSwitch}
-            checked={themeSwitch}
-            onChange={() => getOpositeTheme()}
-          />
-        }
-        label="Tema"
-        labelPlacement="start"
-      />
-    </Page>
+        <FormControlLabel
+          sx={ObjFormControl}
+          value="end"
+          control={
+            <Switch
+              sx={ObjSwitch}
+              checked={themeSwitch}
+              onChange={() => getOpositeTheme()}
+            />
+          }
+          label="Tema"
+          labelPlacement="start"
+        />
+      </Page>
+    </motion.div>
   );
 }
