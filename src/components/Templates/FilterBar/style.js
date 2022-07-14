@@ -6,7 +6,7 @@ export const FilterBarContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 100vw;
     height: 140px;
     padding: 120px 0;
     background-color: ${(props) => props.theme.colorHeader};
@@ -23,6 +23,7 @@ export const FilterBarContainer = styled.div`
 .divInput {
     background-color: ${(props) => props.theme.backgroundColorOne};
     display: flex;
+    width: 90vw;
     flex-direction: row;
     justify-content: center;
     border: none;
@@ -31,9 +32,8 @@ export const FilterBarContainer = styled.div`
 }
 
 .filterBar div select{
-    
     height: 40px;
-    width: 100px;
+    width: 95px;
     border: none;
     border-radius: 35px;
     background-color: transparent;
@@ -41,9 +41,8 @@ export const FilterBarContainer = styled.div`
     cursor: pointer;
 }
 .filterBar input{
-
     height: 40px;
-    width: 500px;
+    width: 50vw;
     border: none;
     background-color: transparent;
     padding-left: 10px;
@@ -54,22 +53,21 @@ export const FilterBarContainer = styled.div`
     }
 }
 .filterBar div button{
-
     border: none;
     background-color: ${props => props.theme.button.backgroundColor};
     color: ${props => props.theme.button.textColor};
     height: 40px;
     width: 100px;
     border-radius: 35px;
-
 }
 
 .filterButtons{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 40%;
+    width: 90vw;
     margin-top: 30px;
+    gap: 2vw;
 }
 
 .filterButtons button{
@@ -81,7 +79,6 @@ export const FilterBarContainer = styled.div`
 
 #B0{
     border-radius: 35px;
-    margin: 0 5px;
     border: 2px solid ${props => props.theme.catFour};
     background-color: ${props => props.theme.backgroundColorOne};
     color: ${props => props.theme.colorIcon};
@@ -90,24 +87,37 @@ export const FilterBarContainer = styled.div`
 #B1{
     border-radius: 35px;
     background-color: ${(props) => props.theme.catOne};
-    margin: 0 5px;
 }
 
 #B2{
     background-color: ${(props) => props.theme.catTwo};
     border-radius: 35px;
-    margin: 0 5px;
 }
 
 #B3{
     background-color: ${(props) => props.theme.catTree};
     border-radius: 35px;
-    margin: 0 5px;
 }
 
 #B4{
     background-color: ${(props) => props.theme.catFour};
     border-radius: 35px;
-    margin: 0 5px;
+}
+
+@media screen and (min-width: 700px){
+
+    .filterBar div select {
+        width: 95px;
+}
+
+    .divInput {
+        width: 60vw;
+}
+
+    .filterButtons {
+        width: 50vw;
+        gap: 1vw;
+}
+
 }
 `;

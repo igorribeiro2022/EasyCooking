@@ -60,7 +60,7 @@ export const ObjSwitch = {
 export const Page = styled.div`
   width: 100vw;
   height: 100vh;
-  background: ${(props) => props.theme.background};
+  background: ${(props) => props.theme.backgroundColorOne};
 
   display: flex;
   flex-direction: row;
@@ -82,7 +82,7 @@ export const Page = styled.div`
   }
 
   .mainDiv {
-    width: 50%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -166,6 +166,7 @@ export const Page = styled.div`
     height: 580px;
     border-radius: 50px;
     margin: auto;
+    display: none;
   }
 
   .pic {
@@ -180,23 +181,12 @@ export const Page = styled.div`
     color: ${(props) => props.theme.title};
   }
 
-  @media (min-width: 800px) {
-    figure {
-      width: 60%;
-      height: 20%;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 50px;
-      margin-left: 50px;
-      background-color: ${(props) => props.theme.background};
-    }
-
-    .pic {
-      max-width: 710px;
-      margin-right: 100px;
-      display: flex;
-    }
+  @media (min-width: 700px) {
+     .figCook {
+        display: block;
+     }
+     .mainDiv {
+        width: 50%;
+     }
   }
 `;
