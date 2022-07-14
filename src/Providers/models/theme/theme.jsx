@@ -1,36 +1,27 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from "react";
 
 export const GlobalThemeContext = createContext([]);
 
 export function GlobalTheme({ children }) {
+  const themeLocal = localStorage.getItem("@Easy:Theme") || "light";
+  const [currentTheme, setCurrentTheme] = useState(themeLocal);
 
-    const themeLocal = localStorage.getItem("themeSite") || "dark"
-    const [currentTheme, setCurrentTheme] = useState(themeLocal);
-
-    function getOpositeTheme() {
+  const switchLocal = JSON.parse(localStorage.getItem("@Easy:Switch")) || false;
+  const [themeSwitch, setThemeSwitch] = useState(switchLocal);
   
-      setCurrentTheme(currentTheme === "light" ? "dark" : "light");
-      localStorage.setItem("themeSite", currentTheme === "light" ? "dark" : "light")
-    }
+  useEffect(() => {
+    themeSwitch? setCurrentTheme("dark") : setCurrentTheme("light")
+  }, [themeSwitch])
+  
+  function getOpositeTheme() {
+    setThemeSwitch(!themeSwitch)
+    localStorage.setItem("@Easy:Switch", !themeSwitch);
+    localStorage.setItem("@Easy:Theme", currentTheme === "light" ? "dark" : "light");
+  }
 
-    return (
-        <GlobalThemeContext.Provider
-            value={{ currentTheme, getOpositeTheme }}>
-            {children}
-        </GlobalThemeContext.Provider>
-    )
+  return (
+    <GlobalThemeContext.Provider value={{ currentTheme, getOpositeTheme, themeSwitch, setThemeSwitch }}>
+      {children}
+    </GlobalThemeContext.Provider>
+  );
 }
-
-
-
-
-
-
-
-
-
-/*
-
-
-
-*/

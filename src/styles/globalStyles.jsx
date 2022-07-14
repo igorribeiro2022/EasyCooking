@@ -2,11 +2,20 @@ import { createGlobalStyle } from "styled-components";
 
 const lightTheme = {
     colorOne: "#000000",
-    colorTwo: "#ffffffff",
-    backgroundColorOne: "#E6E6E6",
-    backgroundColorTwo: "#ea1d2cff",
-    greenOne: "#f3ffc6ff",
-    greenTwo: "#b6d048ff",
+    colorTwo: "#ffffff",
+    colorHeader: "#ECECEC",
+    backgroundColorOne: "#ffffff",
+    backgroundColorTwo: "#EA1D2C",
+    catOne: "#FFEB0A",
+    catTwo: "#ffc60a",
+    catTree: "#f68f11",
+    catFour: "#F64F11",
+    inputColor: "#E2E2E2", 
+    colorIcon: "#252525",
+    rating: "#f68f11",
+    title: "#ea1d2cff",
+
+
     button: {
         textColor: "#ffffff",
         backgroundColor: "#ea1d2cff",
@@ -14,15 +23,24 @@ const lightTheme = {
 };
 
 const darkTheme = {
-    colorOne: "#ffffffff",
-    colorTwo: "#ffffffff",
-    backgroundColorOne: "#121212ff",
-    backgroundColorTwo: "#cd131fff",
-    greenOne: "#607a00ff",
-    greenTwo: "#2a310cff",
+    colorOne: "#ffffff",
+    colorTwo: "#000000",
+    colorHeader: "#121212",
+    backgroundColorOne: "#252525",
+    backgroundColorTwo: "#5D090E",
+    catOne: "#FFEB0A",
+    catTwo: "#ffc60a",
+    catTree: "#f68f11",
+    catFour: "#F64F11",
+    inputColor:"#333333",
+    colorIcon: "#E2E2E2",
+    rating: "#ffc60a",
+    title: "#cd131fff",
+
+    
     button: {
-      textColor: "#ffffffff",
-      backgroundColor: "#cd131fff",
+      textColor: "#ffffff",
+      backgroundColor: "#800000",
     },
 };
 
@@ -63,8 +81,7 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: #015ea0;
   }
 
 `;
-
-// Olá mundo
