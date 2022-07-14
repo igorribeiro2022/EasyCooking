@@ -31,10 +31,7 @@ function DashBoard() {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((res) => {
-        setSavedRecipes(res.data.favorites);
-        console.log(res.data.favorites);
-      })
+      .then((res) => setSavedRecipes(res.data.favorites))
       .catch((err) => console.log(err))
       .finally(() => setOnSaved(!onSaved));
   };
@@ -69,6 +66,12 @@ function DashBoard() {
           </div>
 
           <div className="dashboardContent">
+            {buttonfilter === "userRecipes" ? (
+              <UserRecipes onClick={clickOnCard} />
+            ) : null}
+            {buttonfilter === "savedRecipes" ? (
+              <UserSavedRecipes onClick={handleSaved} />
+            ) : null}
             {!onSaved
               ? myRecipes?.map((e) => (
                   <RecipeCard
