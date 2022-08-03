@@ -4,9 +4,9 @@ import { ThemeProvider } from "styled-components";
 import { GlobalThemeContext } from "./Providers/models/theme/theme";
 import { useContext } from "react";
 import RoutesApp from "./routes";
-import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer } from 'react-toastify'
 import { Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 function App() {
   const { currentTheme } = useContext(GlobalThemeContext);
