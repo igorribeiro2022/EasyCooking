@@ -163,7 +163,7 @@ export const Page = styled.div`
 
   .figCook {
     width: 580px;
-    height: 580px;
+    height: 450px;
     border-radius: 50px;
     margin: auto;
     display: none;
