@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.min.css';
 
 function App() {
   const { currentTheme } = useContext(GlobalThemeContext);
-
   return (
     <ThemeProvider theme={themes[currentTheme]}>
       <>
